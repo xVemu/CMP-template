@@ -11,6 +11,12 @@ dependencyResolutionManagement {
     repositories {
         maven("https://proxyrepo.inno4med.pl/repository/maven-proxy-grouped/")
     }
+
+    versionCatalogs {
+        create("ktorLibs") {
+            from("io.ktor:ktor-version-catalog:3.3.0")
+        }
+    }
 }
 
 plugins {

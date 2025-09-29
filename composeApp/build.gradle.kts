@@ -47,15 +47,32 @@ kotlin {
             implementation(compose.ui)
             implementation(compose.components.resources)
             implementation(compose.components.uiToolingPreview)
+
             implementation(libs.androidx.lifecycle.viewmodelCompose)
             implementation(libs.androidx.lifecycle.runtimeCompose)
+
             implementation(libs.koin.compose)
             implementation(libs.koin.compose.viewmodel)
             implementation(libs.koin.compose.viewmodel.navigation)
             api(libs.koin.annotations)
+
             implementation(libs.androidx.room.runtime)
             implementation(libs.androidx.sqlite.bundled)
+
             implementation(libs.androidx.datastore.preferences)
+
+            implementation(libs.kotlinx.datetime)
+
+            implementation(libs.material3.adaptive)
+            implementation(compose.material3AdaptiveNavigationSuite)
+
+            implementation(libs.ktorfit)
+            implementation(ktorLibs.client.core)
+            implementation(ktorLibs.client.contentNegotiation)
+            implementation(ktorLibs.serialization.kotlinx.json)
+
+            implementation(libs.coil)
+            implementation(libs.coil.ktor)
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)

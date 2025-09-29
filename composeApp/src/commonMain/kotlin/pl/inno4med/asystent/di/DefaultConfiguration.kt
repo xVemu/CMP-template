@@ -13,4 +13,5 @@ class DefaultModule
 val DefaultKoinConfiguration = koinConfiguration {
     DefaultModule().module
     DatabaseModule().module
+    NetworkModule().module
 }
