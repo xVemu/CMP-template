@@ -16,6 +16,7 @@ import kotlinx.coroutines.flow.Flow
 import org.koin.core.annotation.Module
 import org.koin.core.annotation.Single
 import org.koin.core.component.KoinComponent
+import pl.inno4med.asystent.di.ContextWrapper
 
 @Database(entities = [TodoEntity::class], version = 1, exportSchema = false)
 @ConstructedBy(MainDatabaseConstructor::class)
@@ -33,8 +34,8 @@ expect object MainDatabaseConstructor : RoomDatabaseConstructor<MainDatabase> {
 class DatabaseModule {
 
     @Single
-    fun provideDatabase() =
-        getDatabasePlatformBuilder()
+    fun provideDatabase(contextW: ContextWrapper) =
+        getDatabasePlatformBuilder(contextW)
             .fallbackToDestructiveMigration(true)
             .setDriver(BundledSQLiteDriver())
             .setQueryCoroutineContext(Dispatchers.IO)
@@ -44,7 +45,7 @@ class DatabaseModule {
     fun provideTodoDao(db: MainDatabase) = db.todoDao()
 }
 
-expect fun getDatabasePlatformBuilder(): RoomDatabase.Builder<MainDatabase>
+expect fun getDatabasePlatformBuilder(contextW: ContextWrapper): RoomDatabase.Builder<MainDatabase>
 
 @Entity
 data class TodoEntity(

@@ -3,11 +3,12 @@ package pl.inno4med.asystent
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import kotlinx.cinterop.ExperimentalForeignApi
+import pl.inno4med.asystent.di.ContextWrapper
 import platform.Foundation.NSDocumentDirectory
 import platform.Foundation.NSFileManager
 import platform.Foundation.NSUserDomainMask
 
-actual fun getDatabasePlatformBuilder(): RoomDatabase.Builder<MainDatabase> {
+actual fun getDatabasePlatformBuilder(contextW: ContextWrapper): RoomDatabase.Builder<MainDatabase> {
     val dbFilePath = documentDirectory() + "/main.db"
     return Room.databaseBuilder<MainDatabase>(
         name = dbFilePath,

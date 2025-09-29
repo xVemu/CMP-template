@@ -24,6 +24,7 @@ import org.jetbrains.compose.ui.tooling.preview.Preview
 import org.koin.compose.KoinMultiplatformApplication
 import org.koin.core.annotation.KoinExperimentalAPI
 import org.koin.core.annotation.Single
+import pl.inno4med.asystent.di.DefaultKoinConfiguration
 
 @OptIn(KoinExperimentalAPI::class)
 @Composable
