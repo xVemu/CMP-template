@@ -20,15 +20,12 @@ import androidx.compose.ui.Modifier
 import asystent.composeapp.generated.resources.Res
 import asystent.composeapp.generated.resources.compose_multiplatform
 import org.jetbrains.compose.resources.painterResource
-import org.jetbrains.compose.ui.tooling.preview.Preview
 import org.koin.compose.KoinMultiplatformApplication
 import org.koin.core.annotation.KoinExperimentalAPI
-import org.koin.core.annotation.Single
 import pl.inno4med.asystent.di.DefaultKoinConfiguration
 
 @OptIn(KoinExperimentalAPI::class)
 @Composable
-@Preview
 fun App() {
     KoinMultiplatformApplication(config = DefaultKoinConfiguration) {
         MaterialTheme {
@@ -56,6 +53,3 @@ fun App() {
         }
     }
 }
-
-@Single
-class Test

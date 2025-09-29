@@ -75,7 +75,7 @@ kotlin {
             implementation(libs.coil.ktor)
         }
         commonTest.dependencies {
-            implementation(libs.kotlin.test)
+//            implementation(libs.kotlin.test)
         }
         jvmMain.dependencies {
             implementation(compose.desktop.currentOs)
@@ -162,8 +162,4 @@ afterEvaluate {
 ksp {
     arg("KOIN_CONFIG_CHECK", "true")
     arg("KOIN_USE_COMPOSE_VIEWMODEL", "true")
-}
-
-room {
-    schemaDirectory("$projectDir/schemas")
 }
