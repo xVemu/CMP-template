@@ -40,6 +40,11 @@ kotlin {
             implementation(compose.preview)
             implementation(libs.androidx.activity.compose)
         }
+        androidUnitTest.dependencies {
+            implementation(libs.mockk.android)
+            implementation(libs.mockk.android.agent)
+            implementation(libs.roboelectric)
+        }
         commonMain.dependencies {
             implementation(compose.runtime)
             implementation(compose.foundation)
@@ -75,11 +80,15 @@ kotlin {
             implementation(libs.coil.ktor)
         }
         commonTest.dependencies {
-//            implementation(libs.kotlin.test)
+            implementation(libs.kotlin.test)
         }
         jvmMain.dependencies {
             implementation(compose.desktop.currentOs)
             implementation(libs.kotlinx.coroutinesSwing)
+            implementation(libs.prettytime)
+        }
+        jvmTest.dependencies {
+            implementation(libs.mockk.jvm)
         }
     }
 }

@@ -1,0 +1,28 @@
+package pl.inno4med.asystent.utils
+
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.calculateEndPadding
+import androidx.compose.foundation.layout.calculateStartPadding
+import androidx.compose.ui.unit.LayoutDirection
+import kotlinx.datetime.LocalDateTime
+import kotlinx.datetime.TimeZone
+import kotlinx.datetime.toLocalDateTime
+import kotlin.time.Clock
+import kotlin.time.ExperimentalTime
+
+fun String.capitalize() = lowercase().replaceFirstChar { it.uppercase() }
+
+@OptIn(ExperimentalTime::class)
+fun LocalDateTime.Companion.now() =
+    Clock.System.now().toLocalDateTime(TimeZone.currentSystemDefault())
+
+operator fun PaddingValues.plus(other: PaddingValues) =
+    PaddingValues(
+        top = calculateTopPadding() + other.calculateTopPadding(),
+        start = calculateStartPadding(LayoutDirection.Ltr) + other.calculateStartPadding(
+            LayoutDirection.Ltr
+        ),
+        end = calculateEndPadding(LayoutDirection.Ltr) + other.calculateEndPadding(LayoutDirection.Ltr),
+        bottom = calculateBottomPadding() + other.calculateBottomPadding(),
+    )
+
