@@ -24,3 +24,4 @@ plugins {
 }
 
 include(":composeApp")
+include(":components")

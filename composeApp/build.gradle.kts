@@ -46,6 +46,8 @@ kotlin {
             implementation(libs.roboelectric)
         }
         commonMain.dependencies {
+            implementation(projects.components)
+
             implementation(compose.runtime)
             implementation(compose.foundation)
             implementation(compose.material3)
@@ -67,9 +69,6 @@ kotlin {
             implementation(libs.androidx.datastore.preferences)
 
             implementation(libs.kotlinx.datetime)
-
-            implementation(libs.material3.adaptive)
-            implementation(compose.material3AdaptiveNavigationSuite)
 
             implementation(libs.ktorfit)
             implementation(ktorLibs.client.core)

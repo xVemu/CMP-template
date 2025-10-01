@@ -25,6 +25,10 @@ coil = "3.3.0"
 mockk = "1.14.5"
 roboelectric = "4.16"
 prettytime = "5.0.9.Final"
+#kotlinStdlib = "2.2.20"
+#runner = "1.5.2"
+#core = "1.5.0"
+#junit = "1.3.0"
 
 [libraries]
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
@@ -56,10 +60,13 @@ material3-adaptive-navigation = { module = "org.jetbrains.compose.material3.adap
 ktorfit = { module = "de.jensklingenberg.ktorfit:ktorfit-lib", version.ref = "ktorfit" } # https://foso.github.io/Ktorfit/CHANGELOG/
 coil = { module = "io.coil-kt.coil3:coil-compose", version.ref = "coil" } # https://github.com/coil-kt/coil/blob/main/CHANGELOG.md
 coil-ktor = { module = "io.coil-kt.coil3:coil-network-ktor3", version.ref = "coil" } # https://github.com/coil-kt/coil/blob/main/CHANGELOG.md
+#kotlin-stdlib = { group = "org.jetbrains.kotlin", name = "kotlin-stdlib", version.ref = "kotlinStdlib" }
+#androidx-runner = { group = "androidx.test", name = "runner", version.ref = "runner" }
+#androidx-core = { group = "androidx.test", name = "core", version.ref = "core" }
+#androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junit" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" } # https://developer.android.com/build/releases/past-releases
-androidLibrary = { id = "com.android.library", version.ref = "agp" } # https://developer.android.com/build/releases/past-releases
 composeHotReload = { id = "org.jetbrains.compose.hot-reload", version.ref = "composeHotReload" } # https://github.com/JetBrains/compose-hot-reload/releases
 composeMultiplatform = { id = "org.jetbrains.compose", version.ref = "composeMultiplatform" } # https://github.com/JetBrains/compose-multiplatform/releases
 composeCompiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" } # https://kotlinlang.org/docs/whatsnew2020.html
@@ -67,3 +74,5 @@ kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref =
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" } # https://github.com/google/ksp/releases
 ktorfit = { id = "de.jensklingenberg.ktorfit", version.ref = "ktorfit" } # https://foso.github.io/Ktorfit/CHANGELOG/
 kotlinx-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" } # https://kotlinlang.org/docs/whatsnew2020.html
+android-kotlin-multiplatform-library = { id = "com.android.kotlin.multiplatform.library", version.ref = "agp" }
+android-lint = { id = "com.android.lint", version.ref = "agp" }

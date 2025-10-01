@@ -1,0 +1,4 @@
+<resources>
+    <string name="error">Error!</string>
+    <string name="retry">Retry</string>
+</resources>
