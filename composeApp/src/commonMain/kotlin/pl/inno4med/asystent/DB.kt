@@ -9,16 +9,17 @@ import androidx.room.PrimaryKey
 import androidx.room.Query
 import androidx.room.RoomDatabase
 import androidx.room.RoomDatabaseConstructor
+import androidx.room.TypeConverters
 import androidx.sqlite.driver.bundled.BundledSQLiteDriver
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.IO
 import kotlinx.coroutines.flow.Flow
 import org.koin.core.annotation.Module
 import org.koin.core.annotation.Single
-import org.koin.core.component.KoinComponent
 import pl.inno4med.asystent.di.ContextWrapper
 
-@Database(entities = [TodoEntity::class], version = 1, exportSchema = false)
+@Database(entities = [TodoEntity::class], version = 1, exportSchema = true)
+@TypeConverters(Converters::class)
 @ConstructedBy(MainDatabaseConstructor::class)
 abstract class MainDatabase : RoomDatabase() {
     abstract fun todoDao(): TodoDao
@@ -52,7 +53,7 @@ data class TodoEntity(
     @PrimaryKey(autoGenerate = true) val id: Long = 0,
     val title: String,
     val content: String,
-) : KoinComponent
+)
 
 @Dao
 interface TodoDao {

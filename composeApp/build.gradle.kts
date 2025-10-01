@@ -10,6 +10,7 @@ plugins {
     alias(libs.plugins.ksp)
     alias(libs.plugins.ktorfit)
     alias(libs.plugins.kotlinx.serialization)
+    alias(libs.plugins.androidx.room)
 }
 
 kotlin {
@@ -144,6 +145,7 @@ android {
 }
 
 dependencies {
+    // TODO https://youtrack.jetbrains.com/issue/KMT-1312/Preview-not-work-in-commonMain-with-multi-module
     debugImplementation(compose.uiTooling)
     add("kspCommonMainMetadata", libs.koin.ksp.compiler)
 
@@ -170,4 +172,8 @@ afterEvaluate {
 ksp {
     arg("KOIN_CONFIG_CHECK", "true")
     arg("KOIN_USE_COMPOSE_VIEWMODEL", "true")
+}
+
+room {
+    schemaDirectory("$projectDir/schemas")
 }

@@ -1,7 +1,6 @@
 package pl.inno4med.asystent
 
 import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -17,12 +16,10 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import asystent.composeapp.generated.resources.Res
-import asystent.composeapp.generated.resources.compose_multiplatform
-import org.jetbrains.compose.resources.painterResource
 import org.koin.compose.KoinMultiplatformApplication
 import org.koin.core.annotation.KoinExperimentalAPI
 import pl.inno4med.asystent.di.DefaultKoinConfiguration
+import pl.inno4med.components.CustomError
 
 @OptIn(KoinExperimentalAPI::class)
 @Composable
@@ -45,8 +42,8 @@ fun App() {
                         modifier = Modifier.fillMaxWidth(),
                         horizontalAlignment = Alignment.CenterHorizontally,
                     ) {
-                        Image(painterResource(Res.drawable.compose_multiplatform), null)
-                        Text("Compose: ")
+//                        Image(painterResource(Res.drawable.compose_multiplatform), null)
+                        CustomError { }
                     }
                 }
             }

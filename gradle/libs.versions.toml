@@ -73,6 +73,7 @@ composeCompiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "k
 kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" } # https://kotlinlang.org/docs/whatsnew2020.html
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" } # https://github.com/google/ksp/releases
 ktorfit = { id = "de.jensklingenberg.ktorfit", version.ref = "ktorfit" } # https://foso.github.io/Ktorfit/CHANGELOG/
+androidx-room = { id = "androidx.room", version.ref = "room" } # https://developer.android.com/jetpack/androidx/releases/room
 kotlinx-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" } # https://kotlinlang.org/docs/whatsnew2020.html
 android-kotlin-multiplatform-library = { id = "com.android.kotlin.multiplatform.library", version.ref = "agp" }
 android-lint = { id = "com.android.lint", version.ref = "agp" }

@@ -62,3 +62,5 @@ TODO:
 
 - splash screen
 - edgetoedge
+- NET_CAPABILITY_VALIDATED
+- app bars

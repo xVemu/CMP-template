@@ -11,7 +11,9 @@ import pl.inno4med.asystent.DatabaseModule
 class DefaultModule
 
 val DefaultKoinConfiguration = koinConfiguration {
-    DefaultModule().module
-    DatabaseModule().module
-    NetworkModule().module
+    modules(
+        DefaultModule().module,
+        DatabaseModule().module,
+        NetworkModule().module,
+    )
 }
