@@ -16,6 +16,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import co.touchlab.kermit.Logger
 import org.koin.compose.KoinMultiplatformApplication
 import org.koin.core.annotation.KoinExperimentalAPI
 import pl.inno4med.asystent.di.DefaultKoinConfiguration
@@ -34,7 +35,10 @@ fun App() {
                     .fillMaxSize(),
                 horizontalAlignment = Alignment.CenterHorizontally,
             ) {
-                Button(onClick = { showContent = !showContent }) {
+                Button(onClick = {
+                    showContent = !showContent
+                    Logger.d { "Button clicked, showContent: $showContent" }
+                }) {
                     Text("Click me!")
                 }
                 AnimatedVisibility(showContent) {

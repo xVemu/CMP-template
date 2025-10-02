@@ -25,6 +25,7 @@ coil = "3.3.0"
 mockk = "1.14.5"
 roboelectric = "4.16"
 prettytime = "5.0.9.Final"
+kermit = "2.0.8"
 #kotlinStdlib = "2.2.20"
 #runner = "1.5.2"
 #core = "1.5.0"
@@ -60,6 +61,7 @@ material3-adaptive-navigation = { module = "org.jetbrains.compose.material3.adap
 ktorfit = { module = "de.jensklingenberg.ktorfit:ktorfit-lib", version.ref = "ktorfit" } # https://foso.github.io/Ktorfit/CHANGELOG/
 coil = { module = "io.coil-kt.coil3:coil-compose", version.ref = "coil" } # https://github.com/coil-kt/coil/blob/main/CHANGELOG.md
 coil-ktor = { module = "io.coil-kt.coil3:coil-network-ktor3", version.ref = "coil" } # https://github.com/coil-kt/coil/blob/main/CHANGELOG.md
+kermit = { module = "co.touchlab:kermit", version.ref = "kermit" } # https://github.com/touchlab/Kermit/blob/main/CHANGELOG.md
 #kotlin-stdlib = { group = "org.jetbrains.kotlin", name = "kotlin-stdlib", version.ref = "kotlinStdlib" }
 #androidx-runner = { group = "androidx.test", name = "runner", version.ref = "runner" }
 #androidx-core = { group = "androidx.test", name = "core", version.ref = "core" }
@@ -75,5 +77,5 @@ ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" } # https://github.c
 ktorfit = { id = "de.jensklingenberg.ktorfit", version.ref = "ktorfit" } # https://foso.github.io/Ktorfit/CHANGELOG/
 androidx-room = { id = "androidx.room", version.ref = "room" } # https://developer.android.com/jetpack/androidx/releases/room
 kotlinx-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" } # https://kotlinlang.org/docs/whatsnew2020.html
-android-kotlin-multiplatform-library = { id = "com.android.kotlin.multiplatform.library", version.ref = "agp" }
-android-lint = { id = "com.android.lint", version.ref = "agp" }
+android-kotlin-multiplatform-library = { id = "com.android.kotlin.multiplatform.library", version.ref = "agp" } # https://developer.android.com/build/releases/past-releases
+android-lint = { id = "com.android.lint", version.ref = "agp" } # https://developer.android.com/build/releases/past-releases

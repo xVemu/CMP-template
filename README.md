@@ -58,9 +58,21 @@ in your IDE’s toolbar or open the [/iosApp](./iosApp) directory in Xcode and r
 Learn more
 about [Kotlin Multiplatform](https://www.jetbrains.com/help/kotlin-multiplatform-dev/get-started.html)…
 
+Libraries:
+
+- https://github.com/terrakok/kmp-awesome
+- https://github.com/AAkira/Kotlin-Multiplatform-Libraries
+
 TODO:
 
 - splash screen
 - edgetoedge
 - NET_CAPABILITY_VALIDATED
 - app bars
+- tests
+- proguard
+- navigation
+- clean architecture
+- baseline profile
+- shortcuts
+- notifications

@@ -78,6 +78,8 @@ kotlin {
 
             implementation(libs.coil)
             implementation(libs.coil.ktor)
+
+            implementation(libs.kermit)
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
