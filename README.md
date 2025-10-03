@@ -76,3 +76,4 @@ TODO:
 - baseline profile
 - shortcuts
 - notifications
+- przepisać https://github.com/Milad-Akarie/skeletonizer/tree/main/lib/src

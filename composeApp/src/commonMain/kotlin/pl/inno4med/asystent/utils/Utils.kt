@@ -3,6 +3,7 @@ package pl.inno4med.asystent.utils
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.calculateEndPadding
 import androidx.compose.foundation.layout.calculateStartPadding
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.unit.LayoutDirection
 import kotlinx.datetime.LocalDateTime
 import kotlinx.datetime.TimeZone
@@ -26,3 +27,6 @@ operator fun PaddingValues.plus(other: PaddingValues) =
         bottom = calculateBottomPadding() + other.calculateBottomPadding(),
     )
 
+typealias UnitCallback = () -> Unit
+typealias Setter<T> = (T) -> Unit
+typealias UnitComposable = @Composable () -> Unit
