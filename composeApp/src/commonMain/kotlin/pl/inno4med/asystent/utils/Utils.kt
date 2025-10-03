@@ -30,3 +30,5 @@ operator fun PaddingValues.plus(other: PaddingValues) =
 typealias UnitCallback = () -> Unit
 typealias Setter<T> = (T) -> Unit
 typealias UnitComposable = @Composable () -> Unit
+
+expect fun makeToast(message: String)

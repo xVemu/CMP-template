@@ -26,6 +26,8 @@ mockk = "1.14.5"
 roboelectric = "4.16"
 prettytime = "5.0.9.Final"
 kermit = "2.0.8"
+toast = "1.0.7"
+toast = "1.0.8"
 #kotlinStdlib = "2.2.20"
 #runner = "1.5.2"
 #core = "1.5.0"
@@ -62,6 +64,8 @@ ktorfit = { module = "de.jensklingenberg.ktorfit:ktorfit-lib", version.ref = "kt
 coil = { module = "io.coil-kt.coil3:coil-compose", version.ref = "coil" } # https://github.com/coil-kt/coil/blob/main/CHANGELOG.md
 coil-ktor = { module = "io.coil-kt.coil3:coil-network-ktor3", version.ref = "coil" } # https://github.com/coil-kt/coil/blob/main/CHANGELOG.md
 kermit = { module = "co.touchlab:kermit", version.ref = "kermit" } # https://github.com/touchlab/Kermit/blob/main/CHANGELOG.md
+toast = { module = "network.chaintech:cmptoast", version.ref = "toast" }
+toast = { module = "network.chaintech:cmptoast", version.ref = "toast" } # https://central.sonatype.com/artifact/network.chaintech/cmptoast/versions
 #kotlin-stdlib = { group = "org.jetbrains.kotlin", name = "kotlin-stdlib", version.ref = "kotlinStdlib" }
 #androidx-runner = { group = "androidx.test", name = "runner", version.ref = "runner" }
 #androidx-core = { group = "androidx.test", name = "core", version.ref = "core" }

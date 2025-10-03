@@ -2,6 +2,7 @@ package pl.inno4med.asystent
 
 import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.application
+import multiplatform.network.cmptoast.ToastHost
 
 fun main() = application {
     Window(
@@ -9,5 +10,7 @@ fun main() = application {
         title = "Asystent",
     ) {
         App()
+
+        ToastHost()
     }
 }
