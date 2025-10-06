@@ -11,9 +11,12 @@ plugins {
     alias(libs.plugins.ktorfit)
     alias(libs.plugins.kotlinx.serialization)
     alias(libs.plugins.androidx.room)
+    alias(libs.plugins.google.services)
 }
 
 kotlin {
+    compilerOptions.freeCompilerArgs.add("-Xexpect-actual-classes")
+
     androidTarget {
         compilerOptions {
             jvmTarget.set(JvmTarget.JVM_11)
@@ -81,6 +84,7 @@ kotlin {
 
             implementation(libs.kermit)
             implementation(libs.toast)
+            implementation(libs.firebase.messaging)
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
