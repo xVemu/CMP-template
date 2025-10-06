@@ -30,6 +30,8 @@ kotlin {
         iosTarget.binaries.framework {
             baseName = "ComposeApp"
             isStatic = true
+
+            export(libs.firebase.messaging)
         }
     }
 
@@ -84,7 +86,7 @@ kotlin {
 
             implementation(libs.kermit)
             implementation(libs.toast)
-            implementation(libs.firebase.messaging)
+            api(libs.firebase.messaging)
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
