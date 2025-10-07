@@ -31,6 +31,7 @@ toast = "1.0.8"
 kmpnotifier = "1.6.0"
 gms = "4.4.3"
 uri = "0.0.21"
+appUpdate = "2.1.0"
 #kotlinStdlib = "2.2.20"
 #runner = "1.5.2"
 #core = "1.5.0"
@@ -71,6 +72,7 @@ kermit = { module = "co.touchlab:kermit", version.ref = "kermit" } # https://git
 toast = { module = "network.chaintech:cmptoast", version.ref = "toast" } # https://central.sonatype.com/artifact/network.chaintech/cmptoast/versions
 firebase-messaging = { module = "io.github.mirzemehdi:kmpnotifier", version.ref = "kmpnotifier" } # https://github.com/mirzemehdi/KMPNotifier/releases
 uri = { module = "com.eygraber:uri-kmp", version.ref = "uri" } # https://github.com/eygraber/uri-kmp/releases
+app-update = { module = "com.google.android.play:app-update-ktx", version.ref = "appUpdate" } # https://developer.android.com/reference/com/google/android/play/core/release-notes-in_app_updates
 #kotlin-stdlib = { group = "org.jetbrains.kotlin", name = "kotlin-stdlib", version.ref = "kotlinStdlib" }
 #androidx-runner = { group = "androidx.test", name = "runner", version.ref = "runner" }
 #androidx-core = { group = "androidx.test", name = "core", version.ref = "core" }

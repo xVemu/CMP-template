@@ -63,6 +63,10 @@ Libraries:
 - https://github.com/terrakok/kmp-awesome
 - https://github.com/AAkira/Kotlin-Multiplatform-Libraries
 
+DONE:
+
+- [In-App-Updates on Android](https://developer.android.com/guide/playcore/in-app-updates/kotlin-java)
+
 TODO:
 
 - splash screen
@@ -77,3 +81,4 @@ TODO:
 - shortcuts
 - notifications
 - przepisać https://github.com/Milad-Akarie/skeletonizer/tree/main/lib/src
+- scroll indicator
