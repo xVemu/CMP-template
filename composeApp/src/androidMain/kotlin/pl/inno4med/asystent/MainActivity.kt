@@ -1,5 +1,7 @@
 package pl.inno4med.asystent
 
+import android.annotation.SuppressLint
+import android.app.Activity
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.ComponentActivity
@@ -25,6 +27,12 @@ class MainActivity : ComponentActivity() {
         Thread.setDefaultUncaughtExceptionHandler { t, e ->
             Log.e("UncaughtException", "Thread: $t, Exception: $e")
         }
+    }
+
+    companion object {
+        @SuppressLint("StaticFieldLeak")
+        var instance: Activity? = null // needed for in-app review
+            private set
     }
 
     val permissionUtil by permissionUtil()
@@ -60,5 +68,15 @@ class MainActivity : ComponentActivity() {
         manager.requestUpdateFlow().collect { appUpdateResult ->
             if (appUpdateResult is AppUpdateResult.Downloaded) appUpdateResult.completeUpdate()
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        instance = this
+    }
+
+    override fun onPause() {
+        super.onPause()
+        instance = null
     }
 }

@@ -46,6 +46,7 @@ kotlin {
             implementation(compose.preview)
             implementation(libs.androidx.activity.compose)
             implementation(libs.app.update)
+            implementation(libs.review)
         }
         androidUnitTest.dependencies {
             implementation(libs.mockk.android)
@@ -102,6 +103,9 @@ kotlin {
         }
         jvmTest.dependencies {
             implementation(libs.mockk.jvm)
+        }
+        iosMain.dependencies {
+            implementation(libs.review)
         }
     }
 }

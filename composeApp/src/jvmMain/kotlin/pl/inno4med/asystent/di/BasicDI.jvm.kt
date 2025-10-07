@@ -7,3 +7,4 @@ actual class ContextWrapper
 
 @Single
 actual fun provideContextWrapper(scope: Scope) = ContextWrapper()
+

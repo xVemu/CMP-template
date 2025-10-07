@@ -22,6 +22,8 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.datastore.core.DataStore
+import androidx.datastore.preferences.core.Preferences
 import co.touchlab.kermit.Logger
 import coil3.compose.AsyncImage
 import com.mmk.kmpnotifier.notification.NotificationImage
@@ -29,8 +31,11 @@ import com.mmk.kmpnotifier.notification.Notifier
 import com.mmk.kmpnotifier.notification.NotifierManager
 import kotlinx.coroutines.launch
 import org.koin.compose.KoinMultiplatformApplication
+import org.koin.compose.koinInject
 import org.koin.core.annotation.KoinExperimentalAPI
 import pl.inno4med.asystent.di.DefaultKoinConfiguration
+import pl.inno4med.asystent.di.InAppReviewHelper
+import pl.inno4med.asystent.di.review
 import pl.inno4med.asystent.utils.Result
 import pl.inno4med.asystent.utils.makeToast
 import pl.inno4med.components.CustomError
@@ -41,8 +46,12 @@ import kotlin.random.Random
 fun App() {
     KoinMultiplatformApplication(config = DefaultKoinConfiguration) {
 
+        val reviewHelper = koinInject<InAppReviewHelper>()
+        val dataStore = koinInject<DataStore<Preferences>>()
+
         LaunchedEffect(Unit) {
             Logger.setTag("Application")
+            review(reviewHelper, dataStore)
         }
 
         MaterialTheme {

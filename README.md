@@ -66,6 +66,7 @@ Libraries:
 DONE:
 
 - [In-App-Updates on Android](https://developer.android.com/guide/playcore/in-app-updates/kotlin-java)
+- [In App Review](https://github.com/SergeiMikhailovskii/kmp-app-review)
 
 TODO:
 
