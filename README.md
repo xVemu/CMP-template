@@ -65,6 +65,24 @@ Libraries:
 
 DONE:
 
+- Tests
+    - [MockK](https://mockk.io/)
+    - Kotlin test
+    - [Kotest assertions](https://kotest.io/docs/assertions/assertions.html)
+- [DI](https://insert-koin.io/docs/reference/koin-annotations/start)
+- [Room](https://developer.android.com/kotlin/multiplatform/room)
+- [DataStore](https://developer.android.com/kotlin/multiplatform/datastore)
+- [Ktorfit](https://foso.github.io/Ktorfit/quick-start/)
+- [DateTimeFormatter](./composeApp/src/commonMain/kotlin/pl/inno4med/asystent/utils/Formatters.kt)
+- [Components module](./components)
+    - [CustomError](./components/src/commonMain/kotlin/pl/inno4med/components/CustomError.kt)
+    - [RetrySnackbar](./components/src/commonMain/kotlin/pl/inno4med/components/RetrySnackbar.kt)
+- [Logger](https://kermit.touchlab.co/)
+- [Result](./composeApp/src/commonMain/kotlin/pl/inno4med/asystent/utils/Result.kt)
+- [Toast](https://github.com/Chaintech-Network/CMPToast)
+- [Firebase Messaging for iOS and Android](https://firebase.google.com/docs/cloud-messaging)
+- [Sort with Polish letters](./composeApp/src/commonMain/kotlin/pl/inno4med/asystent/utils/PolishCompare.kt)
+- [Mask for TextField](./composeApp/src/commonMain/kotlin/pl/inno4med/asystent/utils/MaskVisualTransformation.kt)
 - [In-App-Updates on Android](https://developer.android.com/guide/playcore/in-app-updates/kotlin-java)
 - [In App Review](https://github.com/SergeiMikhailovskii/kmp-app-review)
 
