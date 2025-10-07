@@ -15,3 +15,5 @@ expect object DateFormatter {
      * */
     fun fullDate(date: LocalDateTime): String
 }
+
+fun String.asPhoneNumber() = replace(".{3}".toRegex(), "$0 ").trimEnd()

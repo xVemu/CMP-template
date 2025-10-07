@@ -90,6 +90,7 @@ kotlin {
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
+            implementation(libs.kotest.assertions.core)
         }
         jvmMain.dependencies {
             implementation(compose.desktop.currentOs)

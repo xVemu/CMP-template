@@ -23,6 +23,7 @@ material3-adaptive = "1.2.0-alpha06"
 ktorfit = "2.6.4"
 coil = "3.3.0"
 mockk = "1.14.5"
+kotestAssertionsCore = "6.0.3"
 roboelectric = "4.16"
 prettytime = "5.0.9.Final"
 kermit = "2.0.8"
@@ -39,6 +40,7 @@ kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotl
 mockk-jvm = { module = "io.mockk:mockk", version.ref = "mockk" } # https://github.com/mockk/mockk/releases
 mockk-android = { module = "io.mockk:mockk-android", version.ref = "mockk" } # https://github.com/mockk/mockk/releases
 mockk-android-agent = { module = "io.mockk:mockk-agent", version.ref = "mockk" } # https://github.com/mockk/mockk/releases
+kotest-assertions-core = { module = "io.kotest:kotest-assertions-core", version.ref = "kotestAssertionsCore" } # https://github.com/kotest/kotest/releases
 roboelectric = { module = "org.robolectric:robolectric", version.ref = "roboelectric" } # https://github.com/robolectric/robolectric/releases
 #kotlin-testJunit = { module = "org.jetbrains.kotlin:kotlin-test-junit", version.ref = "kotlin" }
 #junit = { module = "junit:junit", version.ref = "junit" }
