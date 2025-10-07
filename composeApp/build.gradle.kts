@@ -87,6 +87,8 @@ kotlin {
             implementation(libs.kermit)
             implementation(libs.toast)
             api(libs.firebase.messaging)
+
+            implementation(libs.uri)
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)

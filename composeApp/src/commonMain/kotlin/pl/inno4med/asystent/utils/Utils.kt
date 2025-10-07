@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.calculateEndPadding
 import androidx.compose.foundation.layout.calculateStartPadding
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.unit.LayoutDirection
+import com.eygraber.uri.Uri
 import kotlinx.datetime.LocalDateTime
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.toLocalDateTime
@@ -32,3 +33,5 @@ typealias Setter<T> = (T) -> Unit
 typealias UnitComposable = @Composable () -> Unit
 
 expect fun makeToast(message: String)
+
+expect fun getMapUrl(latitude: Double, longitude: Double, label: String): Uri
