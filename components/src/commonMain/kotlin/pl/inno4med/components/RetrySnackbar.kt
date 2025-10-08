@@ -20,7 +20,7 @@ fun BoxScope.RetrySnackbar(
     retry: () -> Unit,
     forceShow: Boolean,
 ) {
-//    val hasNetwork = rememberConnectivityState(retry)
+//    val hasNetwork = rememberConnectivityState(retry.takeUnless { forceShow })
     val hasNetwork = true
 
     Snackbar(

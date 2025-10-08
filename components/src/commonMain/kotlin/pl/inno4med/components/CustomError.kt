@@ -19,36 +19,47 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import asystent.components.generated.resources.Res
 import asystent.components.generated.resources.error
+import asystent.components.generated.resources.no_connection
+import asystent.components.generated.resources.no_connection_subtitle
 import asystent.components.generated.resources.retry
+import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
 
 @Composable
-fun CustomError(retry: (() -> Unit)? = null) {
+fun CustomError(title: StringResource? = null, withIcon: Boolean = true, retry: (() -> Unit)?) {
 //    val hasNetwork = rememberConnectivityState(onAvailable = retry) TODO
+    val hasNetwork = true
 
     Column(
         modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Icon(
-            painterResource(Res.drawable.error),
-            contentDescription = stringResource(Res.string.error),
-            modifier = Modifier.size(128.dp)
-        )
+        if (withIcon)
+            Icon(
+                painterResource(if (hasNetwork) Res.drawable.error else Res.drawable.no_connection),
+                contentDescription = stringResource(if (hasNetwork) Res.string.error else Res.string.no_connection),
+                modifier = Modifier.size(128.dp)
+            )
         Spacer(modifier = Modifier.height(12.dp))
         Text(
-//            text = stringResource(if (!hasNetwork) R.string.no_connection else R.string.error),
-            text = stringResource(Res.string.error),
+            text = stringResource(if (hasNetwork) Res.string.error else Res.string.no_connection),
             style = MaterialTheme.typography.headlineSmall
         )
-        retry?.let {
-            Spacer(modifier = Modifier.height(12.dp))
-            TextButton(onClick = it) {
-                Text(text = stringResource(Res.string.retry).capitalize())
+        if (hasNetwork)
+            retry?.let {
+                Spacer(modifier = Modifier.height(12.dp))
+                TextButton(onClick = it) {
+                    Text(text = stringResource(Res.string.retry).capitalize())
+                }
             }
+        else {
+            Spacer(Modifier.height(8.dp))
+            Text(
+                stringResource(Res.string.no_connection_subtitle)
+            )
         }
     }
 }

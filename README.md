@@ -98,6 +98,5 @@ TODO:
 - clean architecture
 - baseline profile
 - shortcuts
-- notifications
 - przepisać https://github.com/Milad-Akarie/skeletonizer/tree/main/lib/src
 - scroll indicator
