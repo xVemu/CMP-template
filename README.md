@@ -104,3 +104,9 @@ TODO:
   - [firebase crashlytics](https://github.com/firebase/firebase-ios-sdk/blob/main/SwiftPackageManager.md#:~:text=If%20you%27re%20using%20FirebaseCrashlytics%2C)
 - przepisać https://github.com/Milad-Akarie/skeletonizer/tree/main/lib/src
 - scroll indicator
+
+TODO after templating:
+
+- change bundle id
+- Link Firebase project
+- Associate deep link with app

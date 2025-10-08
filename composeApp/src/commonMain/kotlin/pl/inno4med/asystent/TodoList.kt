@@ -10,7 +10,7 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import kotlinx.serialization.Serializable
 
 @Composable
-fun TodoList() {
+fun TodoList(someText: String? = null) {
     val todos = rememberSaveable {
         mutableStateListOf(Todo("Sample 1", "Content 1"), Todo("Sample 2", "Content 2"))
     }
@@ -27,7 +27,7 @@ fun TodoList() {
             TextButton({
                 todos += Todo("Title ${todos.size + 1}", "Content ${todos.size + 1}")
             }) {
-                Text("Add")
+                Text("Add $someText")
             }
         }
     }

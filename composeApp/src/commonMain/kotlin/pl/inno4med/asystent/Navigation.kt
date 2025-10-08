@@ -8,6 +8,7 @@ import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navDeepLink
 import androidx.navigation.navigation
 import androidx.navigation.toRoute
 import androidx.savedstate.SavedState
@@ -37,8 +38,12 @@ fun NavigationHost() {
     CompositionLocalProvider(LocalNavController provides navController) {
         NavHost(navController, startDestination = TodoRoute) {
             navigation<TodoRoute>(TodoRoute.TodoListRoute) {
-                composable<TodoRoute.TodoListRoute> {
-                    TodoList()
+                composable<TodoRoute.TodoListRoute>(deepLinks = listOf(navDeepLink {
+                    uriPattern = "todo.com/{name}"
+                })) { backstack ->
+                    val name = backstack.arguments?.read { getStringOrNull("name") }
+
+                    TodoList(name)
                 }
                 composable<TodoRoute.TodoDetailsRoute>(typeMap = mapOf(typeOf<Todo>() to navTypeOf<Todo>())) { backStackEntry ->
                     val todo: TodoRoute.TodoDetailsRoute = backStackEntry.toRoute()
