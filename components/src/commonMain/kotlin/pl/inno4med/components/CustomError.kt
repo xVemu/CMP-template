@@ -29,8 +29,7 @@ import org.jetbrains.compose.ui.tooling.preview.Preview
 
 @Composable
 fun CustomError(title: StringResource? = null, withIcon: Boolean = true, retry: (() -> Unit)?) {
-//    val hasNetwork = rememberConnectivityState(onAvailable = retry) TODO
-    val hasNetwork = true
+    val hasNetwork = rememberNetwork(onAvailable = retry)
 
     Column(
         modifier = Modifier.fillMaxSize(),

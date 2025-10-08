@@ -30,6 +30,7 @@ kotlin {
     sourceSets {
         androidMain.dependencies {
             implementation(compose.preview)
+            implementation(libs.connectivity.compose.device)
         }
         commonMain.dependencies {
             implementation(compose.runtime)
@@ -38,14 +39,20 @@ kotlin {
             implementation(compose.ui)
             implementation(compose.components.uiToolingPreview)
             implementation(compose.components.resources)
+            implementation(libs.connectivity.core)
+            implementation(libs.connectivity.compose)
         }
 
         commonTest.dependencies {
             implementation(libs.kotlin.test)
         }
 
-        iosMain.dependencies {
+        jvmMain.dependencies {
+            implementation(libs.connectivity.compose.http)
+        }
 
+        iosMain.dependencies {
+            implementation(libs.connectivity.compose.device)
         }
     }
 }

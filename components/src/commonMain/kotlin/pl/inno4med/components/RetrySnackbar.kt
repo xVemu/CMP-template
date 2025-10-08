@@ -17,12 +17,12 @@ import org.jetbrains.compose.resources.stringResource
 @Composable
 fun BoxScope.RetrySnackbar(
     modifier: Modifier = Modifier,
+    forceShow: Boolean = false,
     retry: () -> Unit,
-    forceShow: Boolean,
 ) {
-//    val hasNetwork = rememberConnectivityState(retry.takeUnless { forceShow })
-    val hasNetwork = true
+    val hasNetwork = rememberNetwork(retry.takeUnless { forceShow })
 
+    if (forceShow || !hasNetwork)
     Snackbar(
         modifier = modifier
             .align(Alignment.BottomCenter),

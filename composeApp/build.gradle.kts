@@ -85,6 +85,7 @@ kotlin {
 
             implementation(libs.coil)
             implementation(libs.coil.ktor)
+            implementation(libs.coil.svg)
 
             implementation(libs.kermit)
             implementation(libs.toast)

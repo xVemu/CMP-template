@@ -77,6 +77,7 @@ DONE:
 - [Components module](./components)
     - [CustomError](./components/src/commonMain/kotlin/pl/inno4med/components/CustomError.kt)
     - [RetrySnackbar](./components/src/commonMain/kotlin/pl/inno4med/components/RetrySnackbar.kt)
+  - [rememberNetwork](./components/src/commonMain/kotlin/pl/inno4med/components/HasNetwork.kt)
 - [Logger](https://kermit.touchlab.co/)
 - [Result](./composeApp/src/commonMain/kotlin/pl/inno4med/asystent/utils/Result.kt)
 - [Toast](https://github.com/Chaintech-Network/CMPToast)
@@ -90,7 +91,6 @@ TODO:
 
 - splash screen
 - edgetoedge
-- NET_CAPABILITY_VALIDATED
 - app bars
 - tests
 - proguard

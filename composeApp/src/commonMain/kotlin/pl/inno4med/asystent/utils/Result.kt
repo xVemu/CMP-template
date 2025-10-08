@@ -41,7 +41,7 @@ sealed class Result<out T> {
             when (finalResult) {
                 is Loading -> loading?.invoke() ?: Loading()
                 is Success -> success(finalResult.body)
-                is Failure -> failure?.invoke(finalResult.error) ?: CustomError(retry)
+                is Failure -> failure?.invoke(finalResult.error) ?: CustomError(retry = retry)
             }
         }
     }
@@ -57,7 +57,7 @@ sealed class Result<out T> {
             when (finalResult) {
                 is Loading -> loading?.invoke() ?: Loading()
                 is Success -> success(finalResult.body, finalResult.refreshing, finalResult.error)
-                is Failure -> failure?.invoke(finalResult.error) ?: CustomError(retry)
+                is Failure -> failure?.invoke(finalResult.error) ?: CustomError(retry = retry)
             }
         }
     }
