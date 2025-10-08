@@ -91,6 +91,7 @@ kotlin {
 
             implementation(libs.uri)
             implementation(libs.kmp.essentials)
+            implementation(libs.androidx.navigation.compose)
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)

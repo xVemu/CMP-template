@@ -32,6 +32,7 @@ gms = "4.4.3"
 uri = "0.0.21"
 appUpdate = "2.1.0"
 kmp-essentials = "2.6.5"
+androidx-navigation-compose = "2.9.0"
 #kotlinStdlib = "2.2.20"
 #runner = "1.5.2"
 #core = "1.5.0"
@@ -74,6 +75,7 @@ firebase-messaging = { module = "io.github.mirzemehdi:kmpnotifier", version.ref 
 uri = { module = "com.eygraber:uri-kmp", version.ref = "uri" } # https://github.com/eygraber/uri-kmp/releases
 app-update = { module = "com.google.android.play:app-update-ktx", version.ref = "appUpdate" } # https://developer.android.com/reference/com/google/android/play/core/release-notes-in_app_updates
 kmp-essentials = { module = "io.github.thearchitect123:kmpEssentials", version.ref = "kmp-essentials" } # https://github.com/Ares-Defence-Labs/KmpEssentials/commits/main/
+androidx-navigation-compose = { module = "org.jetbrains.androidx.navigation:navigation-compose", version.ref = "androidx-navigation-compose" } # https://www.jetbrains.com/help/kotlin-multiplatform-dev/whats-new-compose-190.html
 #kotlin-stdlib = { group = "org.jetbrains.kotlin", name = "kotlin-stdlib", version.ref = "kotlinStdlib" }
 #androidx-runner = { group = "androidx.test", name = "runner", version.ref = "runner" }
 #androidx-core = { group = "androidx.test", name = "core", version.ref = "core" }
