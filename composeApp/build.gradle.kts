@@ -46,7 +46,6 @@ kotlin {
             implementation(compose.preview)
             implementation(libs.androidx.activity.compose)
             implementation(libs.app.update)
-            implementation(libs.review)
         }
         androidUnitTest.dependencies {
             implementation(libs.mockk.android)
@@ -88,10 +87,10 @@ kotlin {
             implementation(libs.coil.svg)
 
             implementation(libs.kermit)
-            implementation(libs.toast)
             api(libs.firebase.messaging)
 
             implementation(libs.uri)
+            implementation(libs.kmp.essentials)
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
@@ -106,7 +105,6 @@ kotlin {
             implementation(libs.mockk.jvm)
         }
         iosMain.dependencies {
-            implementation(libs.review)
         }
     }
 }

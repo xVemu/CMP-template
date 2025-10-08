@@ -4,7 +4,6 @@ import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.application
 import com.mmk.kmpnotifier.notification.NotifierManager
 import com.mmk.kmpnotifier.notification.configuration.NotificationPlatformConfiguration
-import multiplatform.network.cmptoast.ToastHost
 
 fun main() = application {
     NotifierManager.initialize(NotificationPlatformConfiguration.Desktop())
@@ -14,7 +13,5 @@ fun main() = application {
         title = "Asystent",
     ) {
         App()
-
-        ToastHost()
     }
 }

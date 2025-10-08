@@ -11,7 +11,6 @@ import com.mmk.kmpnotifier.notification.configuration.NotificationPlatformConfig
 class MainApplication : Application() {
     override fun onCreate() {
         super.onCreate()
-        multiplatform.network.cmptoast.AppContext.apply { set(applicationContext) }
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             createNotificationChannel()
