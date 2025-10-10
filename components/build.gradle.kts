@@ -39,6 +39,7 @@ kotlin {
             implementation(compose.components.uiToolingPreview)
             implementation(compose.components.resources)
             implementation(libs.kmp.essentials)
+            implementation(libs.androidx.navigation.compose)
         }
 
         commonTest.dependencies {

@@ -3,4 +3,5 @@
     <string name="retry">Retry</string>
     <string name="no_connection">No internet connection</string>
     <string name="no_connection_subtitle">Please check your settings\nand try again</string>
+    <string name="back_button">Back button</string>
 </resources>

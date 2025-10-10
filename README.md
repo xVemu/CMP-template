@@ -95,8 +95,6 @@ TODO:
 - unstyled
 - navigation
   - edgetoedge
-  - app bars
-  - shortcuts
 - clean architecture - package by feature
 - proguard
   - baseline profile
