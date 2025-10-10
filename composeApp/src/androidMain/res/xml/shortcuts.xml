@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shortcuts xmlns:tools="http://schemas.android.com/tools"
+        xmlns:android="http://schemas.android.com/apk/res/android">
+    <shortcut
+            android:shortcutId="shortcut1"
+            android:enabled="true"
+            android:icon="@drawable/ic_launcher_foreground"
+            android:shortcutShortLabel="@string/shortcut1_short_label"
+            android:shortcutLongLabel="@string/shortcut1_long_label"
+            tools:targetApi="25">
+        <intent
+                android:action="pl.inno4med.asystent.SHORTCUT"
+                android:targetPackage="pl.inno4med.asystent"
+                android:targetClass="pl.inno4med.asystent.MainActivity" />
+    </shortcut>
+</shortcuts>

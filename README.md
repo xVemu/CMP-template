@@ -97,7 +97,6 @@ TODO:
   - edgetoedge
   - app bars
   - shortcuts
-  - deeplinks
 - clean architecture - package by feature
 - proguard
   - baseline profile
@@ -105,8 +104,10 @@ TODO:
 - przepisać https://github.com/Milad-Akarie/skeletonizer/tree/main/lib/src
 - scroll indicator
 
-TODO after templating:
+Customize after templating:
 
-- change bundle id
+- icons
+- shortcuts
+- bundle id
 - Link Firebase project
 - Associate deep link with app

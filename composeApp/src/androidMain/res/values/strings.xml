@@ -2,4 +2,6 @@
     <string name="app_name">Asystent</string>
     <string name="notification_channel">General</string>
     <string name="notification_channel_id">default_channel</string>
+    <string name="shortcut1_short_label">xd1 short</string>
+    <string name="shortcut1_long_label">xd1 long</string>
 </resources>

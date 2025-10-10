@@ -1,9 +1,12 @@
 package pl.inno4med.asystent
 
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.navigation.NavController
+import androidx.navigation.NavDeepLinkRequest
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -25,6 +28,9 @@ object TodoRoute {
     object TodoListRoute
 
     @Serializable
+    object TestRoute
+
+    @Serializable
     data class TodoDetailsRoute(val todo: Todo)
 }
 
@@ -35,6 +41,17 @@ val LocalNavController = staticCompositionLocalOf<NavController> {
 @Composable
 fun NavigationHost() {
     val navController = rememberNavController()
+
+    DisposableEffect(Unit) {
+        IosQuickActionsHandler.listener = { action ->
+            navController.navigate(NavDeepLinkRequest(null, action, null))
+        }
+
+        onDispose {
+            IosQuickActionsHandler.listener = null
+        }
+    }
+
     CompositionLocalProvider(LocalNavController provides navController) {
         NavHost(navController, startDestination = TodoRoute) {
             navigation<TodoRoute>(TodoRoute.TodoListRoute) {
@@ -44,6 +61,11 @@ fun NavigationHost() {
                     val name = backstack.arguments?.read { getStringOrNull("name") }
 
                     TodoList(name)
+                }
+                composable<TodoRoute.TestRoute>(deepLinks = listOf(navDeepLink {
+                    action = "pl.inno4med.asystent.SHORTCUT"
+                })) {
+                    Text("Test")
                 }
                 composable<TodoRoute.TodoDetailsRoute>(typeMap = mapOf(typeOf<Todo>() to navTypeOf<Todo>())) { backStackEntry ->
                     val todo: TodoRoute.TodoDetailsRoute = backStackEntry.toRoute()
@@ -72,4 +94,30 @@ inline fun <reified T> navTypeOf(
         bundle.write {
             putString(key, json.encodeToString(value))
         }
+}
+
+object IosQuickActionsHandler {
+    // Storage for when a URI arrives before the listener is set up
+    private var cached: String? = null
+
+    var listener: ((action: String) -> Unit)? = null
+        set(value) {
+            field = value
+            if (value != null) {
+                // When a listener is set and `cached` is not empty,
+                // immediately invoke the listener with the cached URI
+                cached?.let { value.invoke(it) }
+                cached = null
+            }
+        }
+
+    // When a new URI arrives, cache it.
+    // If the listener is already set, invoke it and clear the cache immediately.
+    fun onAction(action: String) {
+        cached = action
+        listener?.let {
+            it.invoke(action)
+            cached = null
+        }
+    }
 }
