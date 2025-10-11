@@ -40,6 +40,10 @@ kotlin {
             implementation(compose.components.resources)
             implementation(libs.kmp.essentials)
             implementation(libs.androidx.navigation.compose)
+            implementation(libs.material3.adaptive) //  currentWindowAdaptiveInfo()
+//            implementation(libs.material3.adaptive.layout) // ListDetailPaneScaffold, SupportingPaneScaffold TODO Integrate with compose-navigation https://issuetracker.google.com/issues/294612000
+//            implementation(libs.material3.adaptive.navigation) // rememberListDetailPaneScaffoldNavigator, rememberSupportingPaneScaffoldNavigator
+            implementation(compose.material3AdaptiveNavigationSuite) // NavigationSuiteScaffoldLayout, AdaptiveLayout
         }
 
         commonTest.dependencies {

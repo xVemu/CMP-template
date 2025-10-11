@@ -19,7 +19,7 @@ fun TodoList(someText: String? = null) {
 
     LazyColumn {
         items(todos) { todo ->
-            TextButton({ navController.navigate(TodoRoute.TodoDetailsRoute(todo)) }) {
+            TextButton({ navController.navigate(TodoGraph.TodoDetailsRoute(todo)) }) {
                 Text("${todo.title} ${todo.content}")
             }
         }
