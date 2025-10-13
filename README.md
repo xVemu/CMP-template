@@ -93,8 +93,6 @@ TODO:
 - splash screen
 - tests
 - unstyled
-- navigation
-  - edgetoedge
 - clean architecture - package by feature
 - proguard
   - baseline profile

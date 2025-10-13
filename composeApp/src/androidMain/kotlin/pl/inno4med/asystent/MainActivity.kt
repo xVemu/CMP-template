@@ -1,7 +1,6 @@
 package pl.inno4med.asystent
 
-import android.annotation.SuppressLint
-import android.app.Activity
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.compose.setContent
@@ -29,15 +28,14 @@ class MainActivity : FragmentActivity() {
         }
     }
 
-    companion object {
-        @SuppressLint("StaticFieldLeak")
-        var instance: Activity? = null // needed for in-app review
-            private set
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         enableEdgeToEdge()
         super.onCreate(savedInstanceState)
+
+        // Allows to change navbar color.
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            window.isNavigationBarContrastEnforced = false
+        }
 
         KmpAndroid.initializeApp(this)
 
@@ -66,15 +64,5 @@ class MainActivity : FragmentActivity() {
         manager.requestUpdateFlow().collect { appUpdateResult ->
             if (appUpdateResult is AppUpdateResult.Downloaded) appUpdateResult.completeUpdate()
         }
-    }
-
-    override fun onResume() {
-        super.onResume()
-        instance = this
-    }
-
-    override fun onPause() {
-        super.onPause()
-        instance = null
     }
 }

@@ -4,13 +4,9 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.WindowInsetsSides
 import androidx.compose.foundation.layout.consumeWindowInsets
-import androidx.compose.foundation.layout.displayCutout
 import androidx.compose.foundation.layout.only
-import androidx.compose.foundation.layout.windowInsetsPadding
-import androidx.compose.material3.DrawerDefaults
+import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.material3.Icon
-import androidx.compose.material3.NavigationBarDefaults
-import androidx.compose.material3.NavigationRailDefaults
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.adaptive.WindowAdaptiveInfo
@@ -54,11 +50,7 @@ fun PrimaryScaffold(
 
                 NavigationSuite(
                     layoutType = layoutType,
-                    modifier = Modifier.windowInsetsPadding(
-                        WindowInsets.displayCutout.only(
-                            WindowInsetsSides.Start
-                        )
-                    ),
+                    modifier = Modifier.platformNavigationBarInsets(),
                     content = {
                         items(navController, currentEntry?.destination, bottomNavItems)
                     }
@@ -68,23 +60,27 @@ fun PrimaryScaffold(
             content = {
                 Box(
                     Modifier
-                        .consumeWindowInsets(
+                        .then(
                             when (layoutType) {
                                 NavigationSuiteType.NavigationBar ->
-                                    NavigationBarDefaults.windowInsets.only(WindowInsetsSides.Bottom)
+                                    WindowInsetsSides.Bottom
 
                                 NavigationSuiteType.NavigationRail ->
-                                    NavigationRailDefaults.windowInsets.only(WindowInsetsSides.Start)
+                                    WindowInsetsSides.Start
 
                                 NavigationSuiteType.NavigationDrawer ->
-                                    DrawerDefaults.windowInsets.only(WindowInsetsSides.Start)
+                                    WindowInsetsSides.Start
 
-                                else -> WindowInsets(0, 0, 0, 0)
-                            }
-                        )
-                        // Adds padding to appbar and content for cutout on the right side in landscape
-                        .windowInsetsPadding(WindowInsets.displayCutout.only(WindowInsetsSides.End))
-                        .consumeWindowInsets(WindowInsets.displayCutout.only(WindowInsetsSides.End))
+                                else -> null
+                            }?.let { side ->
+                                Modifier.consumeWindowInsets(
+                                    WindowInsets.safeDrawing.only(
+                                        side
+                                    ),
+                                )
+                            } ?: Modifier)
+                        // Adds padding to appbar and content for cutout and navigation bar on the right side in landscape
+                        .platformEndBodyInsets()
                 ) {
                     content()
                 }
@@ -92,6 +88,12 @@ fun PrimaryScaffold(
         )
     }
 }
+
+@Composable
+expect fun Modifier.platformNavigationBarInsets(): Modifier
+
+@Composable
+expect fun Modifier.platformEndBodyInsets(): Modifier
 
 private fun NavigationSuiteScope.items(
     navController: NavController,
