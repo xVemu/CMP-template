@@ -90,7 +90,6 @@ DONE:
 
 TODO:
 
-- splash screen
 - tests
 - unstyled
 - clean architecture - package by feature
@@ -102,8 +101,9 @@ TODO:
 
 Customize after templating:
 
-- icons
-- shortcuts
+- splash screen https://developer.android.com/develop/ui/views/launch/splash-screen https://developer.apple.com/documentation/xcode/specifying-your-apps-launch-screen#Configure-a-launch-screen-in-an-information-property-list
+- icons https://developer.android.com/develop/ui/views/launch/icon_design_adaptive https://makeappicon.com/
+- shortcuts https://developer.android.com/develop/ui/views/launch/shortcuts/creating-shortcuts https://developer.apple.com/documentation/uikit/add-home-screen-quick-actions
 - bundle id
-- Link Firebase project
-- Associate deep link with app
+- Link Firebase project https://firebase.google.com/docs/android/setup https://firebase.google.com/docs/ios/setup
+- Associate deep link with app https://developer.android.com/studio/write/app-link-indexing https://docs.flutter.dev/cookbook/navigation/set-up-universal-links

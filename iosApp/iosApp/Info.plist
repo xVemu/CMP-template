@@ -4,23 +4,30 @@
     <dict>
         <key>CADisableMinimumFrameDurationOnPhone</key>
         <true />
+        <key>UIApplicationShortcutItems</key>
+        <array>
+            <dict>
+                <key>UIApplicationShortcutItemIconType</key>
+                <string>UIApplicationShortcutIconTypeSearch</string>
+                <key>UIApplicationShortcutItemSubtitle</key>
+                <string>xd1 subtitle</string>
+                <key>UIApplicationShortcutItemTitle</key>
+                <string>xd1 title</string>
+                <key>UIApplicationShortcutItemType</key>
+                <string>pl.inno4med.asystent.SHORTCUT</string>
+            </dict>
+        </array>
         <key>UIBackgroundModes</key>
         <array>
             <string>remote-notification</string>
             <string>fetch</string>
         </array>
-        <key>UIApplicationShortcutItems</key>
-        <array>
-            <dict>
-                <key>UIApplicationShortcutItemType</key>
-                <string>pl.inno4med.asystent.SHORTCUT</string>
-                <key>UIApplicationShortcutItemIconType</key>
-                <string>UIApplicationShortcutIconTypeSearch</string>
-                <key>UIApplicationShortcutItemTitle</key>
-                <string>xd1 title</string>
-                <key>UIApplicationShortcutItemSubtitle</key>
-                <string>xd1 subtitle</string>
-            </dict>
-        </array>
+        <key>UILaunchScreen</key>
+        <dict>
+            <key>UIColorName</key>
+            <string>surface</string>
+            <key>UIImageName</key>
+            <string>LaunchImage</string>
+        </dict>
     </dict>
 </plist>
