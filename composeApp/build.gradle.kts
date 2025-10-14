@@ -46,6 +46,7 @@ kotlin {
             implementation(compose.preview)
             implementation(libs.androidx.activity.compose)
             implementation(libs.app.update)
+            implementation(libs.androidx.splashscreen)
         }
         androidUnitTest.dependencies {
             implementation(libs.mockk.android)

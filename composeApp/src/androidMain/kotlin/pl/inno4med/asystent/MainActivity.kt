@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.lifecycleScope
 import com.architect.kmpessentials.KmpAndroid
@@ -29,8 +30,10 @@ class MainActivity : FragmentActivity() {
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        enableEdgeToEdge()
+        installSplashScreen()
         super.onCreate(savedInstanceState)
+
+        enableEdgeToEdge()
 
         // Allows to change navbar color.
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
