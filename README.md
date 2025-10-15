@@ -78,6 +78,7 @@ DONE:
     - [CustomError](./components/src/commonMain/kotlin/pl/inno4med/components/CustomError.kt)
     - [RetrySnackbar](./components/src/commonMain/kotlin/pl/inno4med/components/RetrySnackbar.kt)
   - [rememberNetwork](./components/src/commonMain/kotlin/pl/inno4med/components/HasNetwork.kt)
+  - [AppBar](./components/src/commonMain/kotlin/pl/inno4med/components/AppBars.kt)
 - [Logger](https://kermit.touchlab.co/)
 - [Result](./composeApp/src/commonMain/kotlin/pl/inno4med/asystent/utils/Result.kt)
 - [KmpEssentials](https://thearchitect123.github.io/ArtifactsDocProduction/develop/kotlin/multiplatform/kmpessentials/)
@@ -87,6 +88,11 @@ DONE:
 - [Sort with Polish letters](./composeApp/src/commonMain/kotlin/pl/inno4med/asystent/utils/PolishCompare.kt)
 - [Mask for TextField](./composeApp/src/commonMain/kotlin/pl/inno4med/asystent/utils/MaskVisualTransformation.kt)
 - [In-App-Updates on Android](https://developer.android.com/guide/playcore/in-app-updates/kotlin-java)
+- Navigation
+  - [Primary Scaffold](./components/src/commonMain/kotlin/pl/inno4med/components/PrimaryScaffold.kt)
+  - Homescreen shortcuts
+  - Deeplinks
+- Splash screen
 
 TODO:
 
@@ -101,9 +107,11 @@ TODO:
 
 Customize after templating:
 
+- keystore to sign app https://developer.android.com/studio/publish/app-signing#generate-key
 - splash screen https://developer.android.com/develop/ui/views/launch/splash-screen https://developer.apple.com/documentation/xcode/specifying-your-apps-launch-screen#Configure-a-launch-screen-in-an-information-property-list
 - icons https://developer.android.com/develop/ui/views/launch/icon_design_adaptive https://makeappicon.com/
 - shortcuts https://developer.android.com/develop/ui/views/launch/shortcuts/creating-shortcuts https://developer.apple.com/documentation/uikit/add-home-screen-quick-actions
 - bundle id
 - Link Firebase project https://firebase.google.com/docs/android/setup https://firebase.google.com/docs/ios/setup
 - Associate deep link with app https://developer.android.com/studio/write/app-link-indexing https://docs.flutter.dev/cookbook/navigation/set-up-universal-links
+- [To run project from XCode](https://stackoverflow.com/a/78334953/12021861)

@@ -1,5 +1,6 @@
 import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+import java.util.Properties
 
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
@@ -120,6 +121,9 @@ compose.desktop {
             packageName = "pl.inno4med.asystent"
             packageVersion = "1.0.0"
         }
+        buildTypes.release.proguard {
+            isEnabled = false
+        }
     }
 }
 
@@ -134,11 +138,26 @@ android {
         versionCode = 1
         versionName = "1.0"
     }
+
     packaging {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
+
+    signingConfigs {
+        create("release") {
+            val keystore =
+                file("key.properties").inputStream()
+                    .use { Properties().apply { load(it) } }
+
+            storeFile = file(keystore["storeFile"] as String)
+            storePassword = keystore["storePassword"] as String
+            keyAlias = keystore["keyAlias"] as String
+            keyPassword = keystore["keyPassword"] as String
+        }
+    }
+
     buildTypes {
         release {
             isDebuggable = false
@@ -148,6 +167,7 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            signingConfig = signingConfigs.getByName("release")
         }
 
         debug {
@@ -182,6 +202,11 @@ tasks.matching { it.name.startsWith("ksp") && it.name != "kspCommonMainKotlinMet
 afterEvaluate {
     tasks.named("kspDebugKotlinAndroid") {
         dependsOn("generateResourceAccessorsForAndroidDebug")
+        dependsOn("generateResourceAccessorsForAndroidMain")
+        dependsOn("generateActualResourceCollectorsForAndroidMain")
+    }
+    tasks.named("kspReleaseKotlinAndroid") {
+        dependsOn("generateResourceAccessorsForAndroidRelease")
         dependsOn("generateResourceAccessorsForAndroidMain")
         dependsOn("generateActualResourceCollectorsForAndroidMain")
     }
