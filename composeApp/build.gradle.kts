@@ -13,6 +13,7 @@ plugins {
     alias(libs.plugins.kotlinx.serialization)
     alias(libs.plugins.androidx.room)
     alias(libs.plugins.google.services)
+    alias(libs.plugins.firebase.crashlytics)
 }
 
 kotlin {
@@ -48,6 +49,7 @@ kotlin {
             implementation(libs.androidx.activity.compose)
             implementation(libs.app.update)
             implementation(libs.androidx.splashscreen)
+            implementation(libs.firebase.crashlytics)
         }
         androidUnitTest.dependencies {
             implementation(libs.mockk.android)
@@ -168,12 +170,14 @@ android {
                 "proguard-rules.pro"
             )
             signingConfig = signingConfigs.getByName("release")
+            manifestPlaceholders["crashlyticsCollectionEnabled"] = true
         }
 
         debug {
             isDebuggable = true
             isMinifyEnabled = false
             isShrinkResources = false
+            manifestPlaceholders["crashlyticsCollectionEnabled"] = false
         }
     }
     compileOptions {
