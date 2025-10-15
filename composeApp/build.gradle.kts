@@ -14,6 +14,7 @@ plugins {
     alias(libs.plugins.androidx.room)
     alias(libs.plugins.google.services)
     alias(libs.plugins.firebase.crashlytics)
+    alias(libs.plugins.baselineprofile)
 }
 
 kotlin {
@@ -51,6 +52,7 @@ kotlin {
             implementation(libs.app.update)
             implementation(libs.androidx.splashscreen)
             implementation(libs.firebase.crashlytics)
+            implementation(libs.androidx.profileinstaller)
         }
         androidUnitTest.dependencies {
             implementation(libs.mockk.android)
@@ -189,6 +191,7 @@ android {
 }
 
 dependencies {
+    "baselineProfile"(projects.baselineprofile)
     // TODO https://youtrack.jetbrains.com/issue/KMT-1312/Preview-not-work-in-commonMain-with-multi-module
     debugImplementation(compose.uiTooling)
     add("kspCommonMainMetadata", libs.koin.ksp.compiler)
@@ -206,15 +209,19 @@ tasks.matching { it.name.startsWith("ksp") && it.name != "kspCommonMainKotlinMet
     }
 
 afterEvaluate {
-    tasks.named("kspDebugKotlinAndroid") {
-        dependsOn("generateResourceAccessorsForAndroidDebug")
-        dependsOn("generateResourceAccessorsForAndroidMain")
-        dependsOn("generateActualResourceCollectorsForAndroidMain")
-    }
-    tasks.named("kspReleaseKotlinAndroid") {
-        dependsOn("generateResourceAccessorsForAndroidRelease")
-        dependsOn("generateResourceAccessorsForAndroidMain")
-        dependsOn("generateActualResourceCollectorsForAndroidMain")
+    val list = listOf(
+        "Debug",
+        "Release",
+        "NonMinifiedRelease",
+        "BenchmarkRelease"
+    )
+
+    list.forEach { taskName ->
+        tasks.named("ksp${taskName}KotlinAndroid") {
+            dependsOn("generateResourceAccessorsForAndroid${taskName}")
+            dependsOn("generateResourceAccessorsForAndroidMain")
+            dependsOn("generateActualResourceCollectorsForAndroidMain")
+        }
     }
 }
 
@@ -225,4 +232,10 @@ ksp {
 
 room {
     schemaDirectory("$projectDir/schemas")
+}
+
+baselineProfile {
+    automaticGenerationDuringBuild = true
+    dexLayoutOptimization = true
+    saveInSrc = false
 }

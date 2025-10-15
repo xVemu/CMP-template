@@ -25,3 +25,4 @@ plugins {
 
 include(":composeApp")
 include(":components")
+include(":baselineprofile")

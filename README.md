@@ -93,14 +93,14 @@ DONE:
   - Homescreen shortcuts
   - Deeplinks
 - Splash screen
+- [Crashlytics](https://firebase.google.com/docs/crashlytics)
+- [Baseline Profile](https://developer.android.com/topic/performance/baselineprofiles/overview)
 
 TODO:
 
 - tests
 - unstyled
 - clean architecture - package by feature
-- proguard
-  - baseline profile
 - przepisać https://github.com/Milad-Akarie/skeletonizer/tree/main/lib/src
 - scroll indicator
 
