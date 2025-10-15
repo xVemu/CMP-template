@@ -34,6 +34,7 @@ kotlin {
             isStatic = true
 
             export(libs.firebase.messaging)
+            export(libs.nsexceptionkt)
         }
     }
 
@@ -110,6 +111,7 @@ kotlin {
             implementation(libs.mockk.jvm)
         }
         iosMain.dependencies {
+            api(libs.nsexceptionkt)
         }
     }
 }

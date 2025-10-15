@@ -10,6 +10,8 @@
 		2E0FF9112E93E663002674DD /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 2E0FF9102E93E663002674DD /* FirebaseMessaging */; };
 		2E0FF92F2E94FEB3002674DD /* ImageNotification.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 2E0FF9282E94FEB3002674DD /* ImageNotification.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		2E0FF9372E94FEE9002674DD /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 2E0FF9362E94FEE9002674DD /* FirebaseMessaging */; };
+		2E6128822E9F95CD006ADA01 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 2E6128812E9F95CD006ADA01 /* FirebaseCrashlytics */; };
+		2E6128992E9FB85A006ADA01 /* NSExceptionKtCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 2E6128982E9FB85A006ADA01 /* NSExceptionKtCrashlytics */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,7 +89,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2E6128992E9FB85A006ADA01 /* NSExceptionKtCrashlytics in Frameworks */,
 				2E0FF9112E93E663002674DD /* FirebaseMessaging in Frameworks */,
+				2E6128822E9F95CD006ADA01 /* FirebaseCrashlytics in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -164,6 +168,7 @@
 				207BFD208105128D4DDDDEA4 /* Frameworks */,
 				63C3DE66BA63B7730B2319A6 /* Resources */,
 				2E0FF9302E94FEB3002674DD /* Embed Foundation Extensions */,
+				2E6128832E9F9863006ADA01 /* Upload to crashlytics */,
 			);
 			buildRules = (
 			);
@@ -176,6 +181,8 @@
 			name = iosApp;
 			packageProductDependencies = (
 				2E0FF9102E93E663002674DD /* FirebaseMessaging */,
+				2E6128812E9F95CD006ADA01 /* FirebaseCrashlytics */,
+				2E6128982E9FB85A006ADA01 /* NSExceptionKtCrashlytics */,
 			);
 			productName = iosApp;
 			productReference = 5F5B56B149D21C80ACF6DDFB /* Asystent.app */;
@@ -210,6 +217,7 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				2E0FF90F2E93E663002674DD /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				2E6128972E9FB85A006ADA01 /* XCRemoteSwiftPackageReference "NSExceptionKt" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 4173A22D41A7068CA4F06B45 /* Products */;
@@ -240,6 +248,29 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		2E6128832E9F9863006ADA01 /* Upload to crashlytics */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}",
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${PRODUCT_NAME}",
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Info.plist",
+				"$(TARGET_BUILD_DIR)/$(UNLOCALIZED_RESOURCES_FOLDER_PATH)/GoogleService-Info.plist",
+				"$(TARGET_BUILD_DIR)/$(EXECUTABLE_PATH)",
+			);
+			name = "Upload to crashlytics";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [ \"${CONFIGURATION}\" = \"Release\" ]; then\n    \"${BUILD_DIR%/Build/*}/SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/run\"\nfi\n";
+		};
 		888E91E14F40419D93C5BF96 /* Compile Kotlin Framework */ = {
 			isa = PBXShellScriptBuildPhase;
 			alwaysOutOfDate = 1;
@@ -358,8 +389,9 @@
 				CODE_SIGN_ENTITLEMENTS = iosApp/iosApp.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				CrashlyticsEnabled = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"iosApp/Preview Content\"";
-				DEVELOPMENT_TEAM = "${TEAM_ID}";
+				DEVELOPMENT_TEAM = VLPPU97T2J;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = iosApp/Info.plist;
@@ -372,6 +404,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				OTHER_LDFLAGS = "-ObjC";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -387,8 +420,9 @@
 				CODE_SIGN_ENTITLEMENTS = iosApp/iosApp.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				CrashlyticsEnabled = NO;
 				DEVELOPMENT_ASSET_PATHS = "\"iosApp/Preview Content\"";
-				DEVELOPMENT_TEAM = "${TEAM_ID}";
+				DEVELOPMENT_TEAM = VLPPU97T2J;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = iosApp/Info.plist;
@@ -401,6 +435,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				OTHER_LDFLAGS = "-ObjC";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -571,6 +606,14 @@
 				minimumVersion = 12.3.0;
 			};
 		};
+		2E6128972E9FB85A006ADA01 /* XCRemoteSwiftPackageReference "NSExceptionKt" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/rickclephas/NSExceptionKt/";
+			requirement = {
+				kind = exactVersion;
+				version = "1.0.4-spm-crashlytics";
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -583,6 +626,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 2E0FF90F2E93E663002674DD /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseMessaging;
+		};
+		2E6128812E9F95CD006ADA01 /* FirebaseCrashlytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2E0FF90F2E93E663002674DD /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCrashlytics;
+		};
+		2E6128982E9FB85A006ADA01 /* NSExceptionKtCrashlytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2E6128972E9FB85A006ADA01 /* XCRemoteSwiftPackageReference "NSExceptionKt" */;
+			productName = NSExceptionKtCrashlytics;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

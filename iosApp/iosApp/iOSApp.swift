@@ -1,12 +1,14 @@
 import SwiftUI
 import FirebaseCore
 import FirebaseMessaging
+import NSExceptionKtCrashlytics
 import ComposeApp
 
 class AppDelegate: NSObject, UIApplicationDelegate {
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
         FirebaseApp.configure()
+        NSExceptionKt.addReporter(.crashlytics(causedByStrategy: .append))
 
         // TODO https://github.com/mirzemehdi/KMPNotifier/issues/151
         NotifierManager.shared.initialize(configuration: NotificationPlatformConfigurationIos(
