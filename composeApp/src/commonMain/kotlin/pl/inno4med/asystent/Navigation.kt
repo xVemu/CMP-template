@@ -3,7 +3,6 @@ package pl.inno4med.asystent
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
@@ -13,7 +12,6 @@ import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.navigation.NavController
 import androidx.navigation.NavDeepLinkRequest
 import androidx.navigation.NavGraphBuilder
@@ -101,11 +99,9 @@ private fun NavGraphBuilder.todoGraph() {
 
             Scaffold(
                 topBar = { SimpleSmallAppBar("xd") },
-                containerColor = Color.Red
+//                containerColor = Color.Red
             ) { innerPadding ->
-                Box(Modifier.padding(innerPadding)) {
-                    TodoList(name)
-                }
+                TodoList(name, innerPadding)
             }
         }
         composable<TodoGraph.TestRoute>(deepLinks = listOf(navDeepLink {

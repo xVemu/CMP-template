@@ -10,3 +10,5 @@ actual fun getMapUrl(
     .appendQueryParameter("ll", "$latitude,$longitude")
     .appendQueryParameter("q", label)
     .build()
+
+actual val platform = Platform.IOS

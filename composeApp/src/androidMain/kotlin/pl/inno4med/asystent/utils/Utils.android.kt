@@ -9,3 +9,5 @@ actual fun getMapUrl(
 ) = Uri.Builder().scheme("https").authority("maps.google.com").path("/maps")
     .appendQueryParameter("q", "$latitude,$longitude($label)")
     .build()
+
+actual val platform = Platform.ANDROID

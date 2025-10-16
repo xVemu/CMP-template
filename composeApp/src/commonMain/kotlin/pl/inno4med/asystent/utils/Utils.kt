@@ -33,3 +33,22 @@ typealias Setter<T> = (T) -> Unit
 typealias UnitComposable = @Composable () -> Unit
 
 expect fun getMapUrl(latitude: Double, longitude: Double, label: String): Uri
+
+expect val platform: Platform
+
+enum class Platform {
+    ANDROID, IOS, JVM;
+
+    val isIos: Boolean
+        get() = this == IOS
+
+    val isAndroid: Boolean
+        get() = this == ANDROID
+
+    val isJvm: Boolean
+        get() = this == JVM
+
+    companion object {
+        fun currentPlatform(): Platform = platform
+    }
+}
