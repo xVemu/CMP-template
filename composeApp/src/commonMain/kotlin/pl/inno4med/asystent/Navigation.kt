@@ -9,6 +9,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -36,6 +37,8 @@ import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
 import pl.inno4med.components.BottomNavItem
 import pl.inno4med.components.SimpleSmallAppBar
+import pl.inno4med.components.Transitions
+import pl.inno4med.components.rememberSlideDistance
 import kotlin.reflect.typeOf
 
 @Serializable
@@ -170,7 +173,19 @@ fun NavigationHost(navController: NavHostController) {
         }
     }
 
-    NavHost(navController, startDestination = TodoGraph) {
+    val slideDistance = rememberSlideDistance()
+    val transitions = remember(slideDistance) {
+        Transitions(slideDistance)
+    }
+
+    NavHost(
+        navController,
+        startDestination = TodoGraph,
+        enterTransition = transitions.enterTransition,
+        exitTransition = transitions.exitTransition,
+        popEnterTransition = transitions.popEnterTransition,
+        popExitTransition = transitions.popExitTransition,
+    ) {
         todoGraph()
         secondGraph()
         thirdGraph()

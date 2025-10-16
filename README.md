@@ -92,6 +92,7 @@ DONE:
   - [Primary Scaffold](./components/src/commonMain/kotlin/pl/inno4med/components/PrimaryScaffold.kt)
   - Homescreen shortcuts
   - Deeplinks
+  - Platform Transitions
 - Splash screen
 - [Crashlytics](https://firebase.google.com/docs/crashlytics)
 - [Baseline Profile](https://developer.android.com/topic/performance/baselineprofiles/overview)
