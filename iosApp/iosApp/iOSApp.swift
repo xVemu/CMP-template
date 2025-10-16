@@ -35,6 +35,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 @main
 struct iOSApp: App {
+
+    init() {
+        MainViewControllerKt.doInitKoin()
+    }
+
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
 
     var body: some Scene {

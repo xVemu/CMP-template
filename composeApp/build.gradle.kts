@@ -53,6 +53,7 @@ kotlin {
             implementation(libs.androidx.splashscreen)
             implementation(libs.firebase.crashlytics)
             implementation(libs.androidx.profileinstaller)
+            implementation(libs.koin.androidx.startup)
         }
         androidUnitTest.dependencies {
             implementation(libs.mockk.android)

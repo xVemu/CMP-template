@@ -53,8 +53,9 @@ kotlinx-coroutinesSwing = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-s
 koin-compose = { module = "io.insert-koin:koin-compose", version.ref = "koin" } # https://github.com/InsertKoinIO/koin/releases
 koin-compose-viewmodel = { module = "io.insert-koin:koin-compose-viewmodel", version.ref = "koin" } # https://github.com/InsertKoinIO/koin/releases
 koin-compose-viewmodel-navigation = { module = "io.insert-koin:koin-compose-viewmodel-navigation", version.ref = "koin" } # https://github.com/InsertKoinIO/koin/releases
-koin-annotations = { module = "io.insert-koin:koin-annotations", version.ref = "koin-annotations" } # https://github.com/InsertKoinIO/koin/releases
-koin-ksp-compiler = { module = "io.insert-koin:koin-ksp-compiler", version.ref = "koin-annotations" } # https://github.com/InsertKoinIO/koin/releases
+koin-androidx-startup = { module = "io.insert-koin:koin-androidx-startup", version.ref = "koin" } # https://github.com/InsertKoinIO/koin/releases
+koin-annotations = { module = "io.insert-koin:koin-annotations", version.ref = "koin-annotations" } # https://github.com/InsertKoinIO/koin-annotations/releases
+koin-ksp-compiler = { module = "io.insert-koin:koin-ksp-compiler", version.ref = "koin-annotations" } # https://github.com/InsertKoinIO/koin-annotations/releases
 androidx-sqlite-bundled = { module = "androidx.sqlite:sqlite-bundled", version.ref = "sqlite" } # https://developer.android.com/jetpack/androidx/releases/sqlite
 androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "room" } # https://developer.android.com/jetpack/androidx/releases/room
 androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref = "room" } # https://developer.android.com/jetpack/androidx/releases/room

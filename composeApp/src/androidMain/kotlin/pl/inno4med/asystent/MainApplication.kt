@@ -7,8 +7,17 @@ import android.os.Build
 import androidx.annotation.RequiresApi
 import com.mmk.kmpnotifier.notification.NotifierManager
 import com.mmk.kmpnotifier.notification.configuration.NotificationPlatformConfiguration
+import org.koin.android.ext.koin.androidContext
+import org.koin.android.ext.koin.androidLogger
+import org.koin.androix.startup.KoinStartup
+import org.koin.core.annotation.KoinExperimentalAPI
+import org.koin.dsl.KoinConfiguration
+import org.koin.dsl.includes
+import org.koin.dsl.koinConfiguration
+import pl.inno4med.asystent.di.DefaultKoinConfiguration
 
-class MainApplication : Application() {
+@OptIn(KoinExperimentalAPI::class)
+class MainApplication : Application(), KoinStartup {
     override fun onCreate() {
         super.onCreate()
 
@@ -38,5 +47,11 @@ class MainApplication : Application() {
                 NotificationManager.IMPORTANCE_DEFAULT,
             )
         )
+    }
+
+    override fun onKoinStartup(): KoinConfiguration = koinConfiguration {
+        androidContext(this@MainApplication)
+        androidLogger()
+        includes(DefaultKoinConfiguration)
     }
 }
