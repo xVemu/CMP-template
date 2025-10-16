@@ -18,6 +18,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.navigation.NavController
 import asystent.components.generated.resources.Res
 import asystent.components.generated.resources.back_button
+import asystent.components.generated.resources.ios_back_button
 import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
@@ -117,6 +118,8 @@ fun SimpleLargeAppBar(
     )
 }
 
+internal expect val isChevronIcon: Boolean
+
 @Composable
 private fun AutoBackButton(navController: NavController? = null) {
     if (navController == null) return
@@ -125,7 +128,7 @@ private fun AutoBackButton(navController: NavController? = null) {
         navController.navigateUp()
     }) {
         Icon(
-            painterResource(Res.drawable.back_button),
+            painterResource(if (isChevronIcon) Res.drawable.ios_back_button else Res.drawable.back_button),
             contentDescription = stringResource(Res.string.back_button),
         )
     }
