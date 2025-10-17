@@ -1,17 +1,17 @@
 plugins {
-    alias(libs.plugins.kotlinMultiplatform)
-    alias(libs.plugins.composeMultiplatform)
-    alias(libs.plugins.composeCompiler)
-    alias(libs.plugins.composeHotReload)
-    alias(libs.plugins.android.kotlin.multiplatform.library)
-    alias(libs.plugins.android.lint)
+    alias(libs.plugins.shared.kotlin)
+    alias(libs.plugins.shared.compose.kotlin)
+    alias(libs.plugins.shared.compose.compiler)
+    alias(libs.plugins.shared.compose.hotreload)
+    alias(libs.plugins.android.library.kotlin)
+    alias(libs.plugins.android.library.lint)
 }
 
 kotlin {
     androidLibrary {
         namespace = "pl.inno4med.components"
-        compileSdk = libs.versions.android.compileSdk.get().toInt()
-        minSdk = libs.versions.android.minSdk.get().toInt()
+        compileSdk = libs.versions.android.sdk.compile.get().toInt()
+        minSdk = libs.versions.android.sdk.min.get().toInt()
 
         androidResources.enable = true
     }
@@ -38,16 +38,19 @@ kotlin {
             implementation(compose.ui)
             implementation(compose.components.uiToolingPreview)
             implementation(compose.components.resources)
-            implementation(libs.kmp.essentials)
-            implementation(libs.androidx.navigation.compose)
-            implementation(libs.material3.adaptive) //  currentWindowAdaptiveInfo()
+
+            implementation(libs.shared.utils.kmpessentials)
+
+            implementation(libs.shared.navigation.compose)
+
+            implementation(libs.shared.compose.adaptive) //  currentWindowAdaptiveInfo()
+            implementation(compose.material3AdaptiveNavigationSuite) // NavigationSuiteScaffoldLayout, AdaptiveLayout
 //            implementation(libs.material3.adaptive.layout) // ListDetailPaneScaffold, SupportingPaneScaffold TODO Integrate with compose-navigation https://issuetracker.google.com/issues/294612000
 //            implementation(libs.material3.adaptive.navigation) // rememberListDetailPaneScaffoldNavigator, rememberSupportingPaneScaffoldNavigator
-            implementation(compose.material3AdaptiveNavigationSuite) // NavigationSuiteScaffoldLayout, AdaptiveLayout
         }
 
         commonTest.dependencies {
-            implementation(libs.kotlin.test)
+            implementation(libs.shared.test)
         }
 
         jvmMain.dependencies {

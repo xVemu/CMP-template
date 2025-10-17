@@ -1,102 +1,102 @@
 [versions]
-agp = "8.13.0"
-android-compileSdk = "36"
-android-minSdk = "24"
-android-targetSdk = "36"
-androidx-activity = "1.11.0"
-androidx-lifecycle = "2.9.4"
-composeHotReload = "1.0.0-beta08"
-composeMultiplatform = "1.9.0"
-kotlin = "2.2.20"
-kotlinx-coroutines = "1.10.2"
-koin = "4.1.1"
-koin-annotations = "2.1.0"
-ksp = "2.2.20-2.0.3"
-room = "2.8.1"
-sqlite = "2.6.1"
-datastore = "1.1.7"
-kotlinx-datetime = "0.7.1"
-material3-adaptive = "1.2.0-alpha06"
-ktorfit = "2.6.4"
-coil = "3.3.0"
-mockk = "1.14.5"
-kotestAssertionsCore = "6.0.3"
-roboelectric = "4.16"
-prettytime = "5.0.9.Final"
-kermit = "2.0.8"
-kmpnotifier = "1.6.0"
-gms = "4.4.3"
-uri = "0.0.21"
-appUpdate = "2.1.0"
-kmp-essentials = "2.6.5"
-androidx-navigation-compose = "2.9.0"
-androidx-splashscreen = "1.0.1"
-crashlytics = "20.0.3"
-crashlytics-plugin = "3.0.6"
-nsexceptionkt = "1.0.4"
-androidx-junit = "1.3.0"
-espressoCore = "3.5.1"
-benchmark = "1.4.1"
-profileinstaller = "1.4.1"
+android-baseline = "1.4.1" # https://developer.android.com/jetpack/androidx/releases/benchmark
+android-baseline-installer = "1.4.1" # https://developer.android.com/jetpack/androidx/releases/profileinstaller
+android-compose = "1.11.0" # https://developer.android.com/jetpack/androidx/releases/activity
+android-firebase-crashlytics = "20.0.3" # https://firebase.google.com/support/release-notes/android
+android-firebase-crashlytics-plugin = "3.0.6" # https://firebase.google.com/support/release-notes/android
+android-google-services = "4.4.4" # https://firebase.google.com/support/release-notes/android
+android-gradle = "8.13.0" # https://developer.android.com/build/releases/past-releases
+android-sdk-compile = "36" # https://developer.android.com/about/versions/16
+android-sdk-min = "24"
+android-sdk-target = "36" # https://developer.android.com/about/versions/16
+android-splashscreen = "1.0.1" # https://developer.android.com/jetpack/androidx/releases/core#core_splashscreen_version_12_2
+android-test-junit = "1.3.0" # https://developer.android.com/jetpack/androidx/releases/test
+android-test-mock = "1.14.6" # https://github.com/mockk/mockk/releases
+android-test-runtime = "4.16" # https://github.com/robolectric/robolectric/releases
+android-test-ui = "3.7.0" # https://developer.android.com/jetpack/androidx/releases/test
+android-utils-appupdate = "2.1.0" # https://developer.android.com/reference/com/google/android/play/core/release-notes-in_app_updates
+ios-firebase-crashlytics = "1.0.4" # https://github.com/rickclephas/NSExceptionKt/releases
+jvm-utils-coroutines = "1.10.2" # https://github.com/Kotlin/kotlinx.coroutines/releases
+jvm-utils-datetime = "5.0.9.Final" # https://github.com/ocpsoft/prettytime/tags
+shared-coil = "3.3.0" # https://github.com/coil-kt/coil/blob/main/CHANGELOG.md
+shared-compose-adaptive = "1.2.0-alpha07" # https://developer.android.com/jetpack/androidx/releases/compose-material3-adaptive
+shared-compose-hotreload = "1.0.0-rc02"  # https://github.com/JetBrains/compose-hot-reload/releases
+shared-compose-kotlin = "1.9.0" # https://github.com/JetBrains/compose-multiplatform/releases
+shared-compose-lifecycle = "2.9.4" # https://developer.android.com/jetpack/androidx/releases/lifecycle
+shared-db = "2.8.2" # https://developer.android.com/jetpack/androidx/releases/room
+shared-db-datastore = "1.1.7" # https://developer.android.com/jetpack/androidx/releases/datastore
+shared-db-sql = "2.6.1" # https://developer.android.com/jetpack/androidx/releases/sqlite
+shared-di = "4.1.1" # https://github.com/InsertKoinIO/koin/releases
+shared-di-annotations = "2.2.0"  # https://github.com/InsertKoinIO/koin-annotations/releases
+shared-firebase-messaging = "1.6.0" # https://github.com/mirzemehdi/KMPNotifier/releases
+shared-kotlin = "2.2.20" # https://kotlinlang.org/docs/whatsnew2020.html
+shared-ksp = "2.2.20-2.0.3" # https://github.com/google/ksp/releases
+shared-navigation-compose = "2.9.0" # https://github.com/JetBrains/compose-multiplatform/releases
+shared-network-ktorfit = "2.6.4" # https://foso.github.io/Ktorfit/CHANGELOG/
+shared-test-assertions = "6.0.3" # https://github.com/kotest/kotest/releases
+shared-utils-datetime = "0.7.1" # https://github.com/Kotlin/kotlinx-datetime/releases
+shared-utils-kmpessentials = "2.7.1" # https://github.com/Ares-Defence-Labs/KmpEssentials/commits/main/
+shared-utils-logging = "2.0.8" # https://github.com/touchlab/Kermit/blob/main/CHANGELOG.md
+shared-utils-uri = "0.0.21" # https://github.com/eygraber/uri-kmp/releases
 
 [libraries]
-kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
-mockk-jvm = { module = "io.mockk:mockk", version.ref = "mockk" } # https://github.com/mockk/mockk/releases
-mockk-android = { module = "io.mockk:mockk-android", version.ref = "mockk" } # https://github.com/mockk/mockk/releases
-mockk-android-agent = { module = "io.mockk:mockk-agent", version.ref = "mockk" } # https://github.com/mockk/mockk/releases
-kotest-assertions-core = { module = "io.kotest:kotest-assertions-core", version.ref = "kotestAssertionsCore" } # https://github.com/kotest/kotest/releases
-roboelectric = { module = "org.robolectric:robolectric", version.ref = "roboelectric" } # https://github.com/robolectric/robolectric/releases
-androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activity" } # https://developer.android.com/jetpack/androidx/releases/activity
-androidx-lifecycle-viewmodelCompose = { module = "org.jetbrains.androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "androidx-lifecycle" } # https://developer.android.com/jetpack/androidx/releases/lifecycle
-androidx-lifecycle-runtimeCompose = { module = "org.jetbrains.androidx.lifecycle:lifecycle-runtime-compose", version.ref = "androidx-lifecycle" } # https://developer.android.com/jetpack/androidx/releases/lifecycle
-kotlinx-coroutinesSwing = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-swing", version.ref = "kotlinx-coroutines" } # https://github.com/Kotlin/kotlinx.coroutines/releases
-koin-compose = { module = "io.insert-koin:koin-compose", version.ref = "koin" } # https://github.com/InsertKoinIO/koin/releases
-koin-compose-viewmodel = { module = "io.insert-koin:koin-compose-viewmodel", version.ref = "koin" } # https://github.com/InsertKoinIO/koin/releases
-koin-compose-viewmodel-navigation = { module = "io.insert-koin:koin-compose-viewmodel-navigation", version.ref = "koin" } # https://github.com/InsertKoinIO/koin/releases
-koin-androidx-startup = { module = "io.insert-koin:koin-androidx-startup", version.ref = "koin" } # https://github.com/InsertKoinIO/koin/releases
-koin-annotations = { module = "io.insert-koin:koin-annotations", version.ref = "koin-annotations" } # https://github.com/InsertKoinIO/koin-annotations/releases
-koin-ksp-compiler = { module = "io.insert-koin:koin-ksp-compiler", version.ref = "koin-annotations" } # https://github.com/InsertKoinIO/koin-annotations/releases
-androidx-sqlite-bundled = { module = "androidx.sqlite:sqlite-bundled", version.ref = "sqlite" } # https://developer.android.com/jetpack/androidx/releases/sqlite
-androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "room" } # https://developer.android.com/jetpack/androidx/releases/room
-androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref = "room" } # https://developer.android.com/jetpack/androidx/releases/room
-androidx-datastore-preferences = { module = "androidx.datastore:datastore-preferences", version.ref = "datastore" } # https://developer.android.com/jetpack/androidx/releases/datastore
-kotlinx-datetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version.ref = "kotlinx-datetime" } # https://github.com/Kotlin/kotlinx-datetime/releases
-prettytime = { module = "org.ocpsoft.prettytime:prettytime", version.ref = "prettytime" } # https://github.com/ocpsoft/prettytime/tags
-material3-adaptive = { module = "org.jetbrains.compose.material3.adaptive:adaptive", version.ref = "material3-adaptive" } # https://developer.android.com/jetpack/androidx/releases/compose-material3-adaptive
-material3-adaptive-layout = { module = "org.jetbrains.compose.material3.adaptive:adaptive-layout", version.ref = "material3-adaptive" } # https://developer.android.com/jetpack/androidx/releases/compose-material3-adaptive
-material3-adaptive-navigation = { module = "org.jetbrains.compose.material3.adaptive:adaptive-navigation", version.ref = "material3-adaptive" } # https://developer.android.com/jetpack/androidx/releases/compose-material3-adaptive
-ktorfit = { module = "de.jensklingenberg.ktorfit:ktorfit-lib", version.ref = "ktorfit" } # https://foso.github.io/Ktorfit/CHANGELOG/
-coil = { module = "io.coil-kt.coil3:coil-compose", version.ref = "coil" } # https://github.com/coil-kt/coil/blob/main/CHANGELOG.md
-coil-ktor = { module = "io.coil-kt.coil3:coil-network-ktor3", version.ref = "coil" } # https://github.com/coil-kt/coil/blob/main/CHANGELOG.md
-coil-svg = { module = "io.coil-kt.coil3:coil-svg", version.ref = "coil" } # https://github.com/coil-kt/coil/blob/main/CHANGELOG.md
-kermit = { module = "co.touchlab:kermit", version.ref = "kermit" } # https://github.com/touchlab/Kermit/blob/main/CHANGELOG.md
-firebase-messaging = { module = "io.github.mirzemehdi:kmpnotifier", version.ref = "kmpnotifier" } # https://github.com/mirzemehdi/KMPNotifier/releases
-uri = { module = "com.eygraber:uri-kmp", version.ref = "uri" } # https://github.com/eygraber/uri-kmp/releases
-app-update = { module = "com.google.android.play:app-update-ktx", version.ref = "appUpdate" } # https://developer.android.com/reference/com/google/android/play/core/release-notes-in_app_updates
-kmp-essentials = { module = "io.github.thearchitect123:kmpEssentials", version.ref = "kmp-essentials" } # https://github.com/Ares-Defence-Labs/KmpEssentials/commits/main/
-androidx-navigation-compose = { module = "org.jetbrains.androidx.navigation:navigation-compose", version.ref = "androidx-navigation-compose" } # https://www.jetbrains.com/help/kotlin-multiplatform-dev/whats-new-compose-190.html
-androidx-splashscreen = { module = "androidx.core:core-splashscreen", version.ref = "androidx-splashscreen" } # https://developer.android.com/jetpack/androidx/releases/core#core_splashscreen_version_12_2
-firebase-crashlytics = { module = "com.google.firebase:firebase-crashlytics", version.ref = "crashlytics" } # https://firebase.google.com/support/release-notes/android
-nsexceptionkt = { module = "com.rickclephas.kmp:nsexception-kt-core", version.ref = "nsexceptionkt" } # https://github.com/rickclephas/NSExceptionKt/releases
-androidx-junit = { module = "androidx.test.ext:junit", version.ref = "androidx-junit" } # https://developer.android.com/jetpack/androidx/releases/test
-androidx-espresso-core = { module = "androidx.test.espresso:espresso-core", version.ref = "espressoCore" } # https://developer.android.com/jetpack/androidx/releases/test
-androidx-benchmark-macro-junit4 = { module = "androidx.benchmark:benchmark-macro-junit4", version.ref = "benchmark" } # https://developer.android.com/jetpack/androidx/releases/benchmark
-androidx-profileinstaller = { module = "androidx.profileinstaller:profileinstaller", version.ref = "profileinstaller" } # https://developer.android.com/jetpack/androidx/releases/profileinstaller
+android-baseline-installer = { module = "androidx.profileinstaller:profileinstaller", version.ref = "android-baseline-installer" }
+android-compose = { module = "androidx.activity:activity-compose", version.ref = "android-compose" }
+android-di-startup = { module = "io.insert-koin:koin-androidx-startup", version.ref = "shared-di" }
+android-firebase-crashlytics = { module = "com.google.firebase:firebase-crashlytics", version.ref = "android-firebase-crashlytics" }
+android-splashscreen = { module = "androidx.core:core-splashscreen", version.ref = "android-splashscreen" }
+android-test-benchmark = { module = "androidx.benchmark:benchmark-macro-junit4", version.ref = "android-baseline" }
+android-test-junit = { module = "androidx.test.ext:junit", version.ref = "android-test-junit" }
+android-test-mock = { module = "io.mockk:mockk-android", version.ref = "android-test-mock" }
+android-test-mock-runtime = { module = "io.mockk:mockk-agent", version.ref = "android-test-mock" }
+android-test-runtime = { module = "org.robolectric:robolectric", version.ref = "android-test-runtime" }
+android-test-ui = { module = "androidx.test.espresso:espresso-core", version.ref = "android-test-ui" }
+android-utils-appupdate = { module = "com.google.android.play:app-update-ktx", version.ref = "android-utils-appupdate" }
+ios-firebase-crashlytics = { module = "com.rickclephas.kmp:nsexception-kt-core", version.ref = "ios-firebase-crashlytics" }
+jvm-test-mock = { module = "io.mockk:mockk", version.ref = "android-test-mock" }
+jvm-utils-coroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-swing", version.ref = "jvm-utils-coroutines" }
+jvm-utils-datetime = { module = "org.ocpsoft.prettytime:prettytime", version.ref = "jvm-utils-datetime" }
+shared-coil = { module = "io.coil-kt.coil3:coil-compose", version.ref = "shared-coil" }
+shared-coil-ktor = { module = "io.coil-kt.coil3:coil-network-ktor3", version.ref = "shared-coil" }
+shared-coil-svg = { module = "io.coil-kt.coil3:coil-svg", version.ref = "shared-coil" }
+shared-compose-adaptive = { module = "org.jetbrains.compose.material3.adaptive:adaptive", version.ref = "shared-compose-adaptive" }
+shared-compose-adaptive-layout = { module = "org.jetbrains.compose.material3.adaptive:adaptive-layout", version.ref = "shared-compose-adaptive" }
+shared-compose-adaptive-navigation = { module = "org.jetbrains.compose.material3.adaptive:adaptive-navigation", version.ref = "shared-compose-adaptive" }
+shared-compose-lifecycle = { module = "org.jetbrains.androidx.lifecycle:lifecycle-runtime-compose", version.ref = "shared-compose-lifecycle" }
+shared-compose-viewmodel = { module = "org.jetbrains.androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "shared-compose-lifecycle" }
+shared-db-compiler = { module = "androidx.room:room-compiler", version.ref = "shared-db" }
+shared-db-datastore = { module = "androidx.datastore:datastore-preferences", version.ref = "shared-db-datastore" }
+shared-db-runtime = { module = "androidx.room:room-runtime", version.ref = "shared-db" }
+shared-db-sql = { module = "androidx.sqlite:sqlite-bundled", version.ref = "shared-db-sql" }
+shared-di-annotations = { module = "io.insert-koin:koin-annotations", version.ref = "shared-di-annotations" }
+shared-di-compiler = { module = "io.insert-koin:koin-ksp-compiler", version.ref = "shared-di-annotations" }
+shared-di-compose = { module = "io.insert-koin:koin-compose", version.ref = "shared-di" }
+shared-di-navigation = { module = "io.insert-koin:koin-compose-viewmodel-navigation", version.ref = "shared-di" }
+shared-di-viewmodel = { module = "io.insert-koin:koin-compose-viewmodel", version.ref = "shared-di" }
+shared-firebase-messaging = { module = "io.github.mirzemehdi:kmpnotifier", version.ref = "shared-firebase-messaging" }
+shared-navigation-compose = { module = "org.jetbrains.androidx.navigation:navigation-compose", version.ref = "shared-navigation-compose" }
+shared-network-ktorfit = { module = "de.jensklingenberg.ktorfit:ktorfit-lib", version.ref = "shared-network-ktorfit" }
+shared-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "shared-kotlin" }
+shared-test-assertions = { module = "io.kotest:kotest-assertions-core", version.ref = "shared-test-assertions" }
+shared-utils-datetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version.ref = "shared-utils-datetime" }
+shared-utils-kmpessentials = { module = "io.github.thearchitect123:kmpEssentials", version.ref = "shared-utils-kmpessentials" }
+shared-utils-logging = { module = "co.touchlab:kermit", version.ref = "shared-utils-logging" }
+shared-utils-uri = { module = "com.eygraber:uri-kmp", version.ref = "shared-utils-uri" }
 
 [plugins]
-androidApplication = { id = "com.android.application", version.ref = "agp" } # https://developer.android.com/build/releases/past-releases
-composeHotReload = { id = "org.jetbrains.compose.hot-reload", version.ref = "composeHotReload" } # https://github.com/JetBrains/compose-hot-reload/releases
-composeMultiplatform = { id = "org.jetbrains.compose", version.ref = "composeMultiplatform" } # https://www.jetbrains.com/help/kotlin-multiplatform-dev/whats-new-compose-190.html
-composeCompiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" } # https://kotlinlang.org/docs/whatsnew2020.html
-kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" } # https://kotlinlang.org/docs/whatsnew2020.html
-ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" } # https://github.com/google/ksp/releases
-ktorfit = { id = "de.jensklingenberg.ktorfit", version.ref = "ktorfit" } # https://foso.github.io/Ktorfit/CHANGELOG/
-androidx-room = { id = "androidx.room", version.ref = "room" } # https://developer.android.com/jetpack/androidx/releases/room
-kotlinx-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" } # https://kotlinlang.org/docs/whatsnew2020.html
-android-kotlin-multiplatform-library = { id = "com.android.kotlin.multiplatform.library", version.ref = "agp" } # https://developer.android.com/build/releases/past-releases
-android-lint = { id = "com.android.lint", version.ref = "agp" } # https://developer.android.com/build/releases/past-releases
-google-services = { id = "com.google.gms.google-services", version.ref = "gms" } # https://firebase.google.com/support/release-notes/android
-firebase-crashlytics = { id = "com.google.firebase.crashlytics", version.ref = "crashlytics-plugin" } # https://firebase.google.com/support/release-notes/android
-android-test = { id = "com.android.test", version.ref = "agp" } # https://developer.android.com/build/releases/past-releases
-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" } # https://kotlinlang.org/docs/whatsnew2020.html
-baselineprofile = { id = "androidx.baselineprofile", version.ref = "benchmark" } # https://developer.android.com/jetpack/androidx/releases/benchmark
+android-app = { id = "com.android.application", version.ref = "android-gradle" }
+android-baseline = { id = "androidx.baselineprofile", version.ref = "android-baseline" }
+android-baseline-kotlin = { id = "org.jetbrains.kotlin.android", version.ref = "shared-kotlin" }
+android-baseline-test = { id = "com.android.test", version.ref = "android-gradle" }
+android-firebase-crashlytics = { id = "com.google.firebase.crashlytics", version.ref = "android-firebase-crashlytics-plugin" }
+android-google-services = { id = "com.google.gms.google-services", version.ref = "android-google-services" }
+android-library-kotlin = { id = "com.android.kotlin.multiplatform.library", version.ref = "android-gradle" }
+android-library-lint = { id = "com.android.lint", version.ref = "android-gradle" }
+shared-compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "shared-kotlin" }
+shared-compose-hotreload = { id = "org.jetbrains.compose.hot-reload", version.ref = "shared-compose-hotreload" }
+shared-compose-kotlin = { id = "org.jetbrains.compose", version.ref = "shared-compose-kotlin" }
+shared-db-room = { id = "androidx.room", version.ref = "shared-db" }
+shared-kotlin = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "shared-kotlin" }
+shared-ksp = { id = "com.google.devtools.ksp", version.ref = "shared-ksp" }
+shared-network-ktorfit = { id = "de.jensklingenberg.ktorfit", version.ref = "shared-network-ktorfit" }
+shared-network-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "shared-kotlin" }

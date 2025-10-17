@@ -3,18 +3,19 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import java.util.Properties
 
 plugins {
-    alias(libs.plugins.kotlinMultiplatform)
-    alias(libs.plugins.androidApplication)
-    alias(libs.plugins.composeMultiplatform)
-    alias(libs.plugins.composeCompiler)
-    alias(libs.plugins.composeHotReload)
-    alias(libs.plugins.ksp)
-    alias(libs.plugins.ktorfit)
-    alias(libs.plugins.kotlinx.serialization)
-    alias(libs.plugins.androidx.room)
-    alias(libs.plugins.google.services)
-    alias(libs.plugins.firebase.crashlytics)
-    alias(libs.plugins.baselineprofile)
+    alias(libs.plugins.android.app)
+    alias(libs.plugins.android.google.services) // in app update, review
+    alias(libs.plugins.android.firebase.crashlytics)
+    alias(libs.plugins.android.baseline)
+
+    alias(libs.plugins.shared.kotlin)
+    alias(libs.plugins.shared.compose.kotlin)
+    alias(libs.plugins.shared.compose.compiler)
+    alias(libs.plugins.shared.compose.hotreload)
+    alias(libs.plugins.shared.ksp)
+    alias(libs.plugins.shared.network.ktorfit)
+    alias(libs.plugins.shared.network.serialization)
+    alias(libs.plugins.shared.db.room)
 }
 
 kotlin {
@@ -34,8 +35,8 @@ kotlin {
             baseName = "ComposeApp"
             isStatic = true
 
-            export(libs.firebase.messaging)
-            export(libs.nsexceptionkt)
+            export(libs.shared.firebase.messaging)
+            export(libs.ios.firebase.crashlytics)
         }
     }
 
@@ -48,17 +49,17 @@ kotlin {
     sourceSets {
         androidMain.dependencies {
             implementation(compose.preview)
-            implementation(libs.androidx.activity.compose)
-            implementation(libs.app.update)
-            implementation(libs.androidx.splashscreen)
-            implementation(libs.firebase.crashlytics)
-            implementation(libs.androidx.profileinstaller)
-            implementation(libs.koin.androidx.startup)
+            implementation(libs.android.compose)
+            implementation(libs.android.utils.appupdate)
+            implementation(libs.android.splashscreen)
+            implementation(libs.android.firebase.crashlytics)
+            implementation(libs.android.baseline.installer)
+            implementation(libs.android.di.startup)
         }
         androidUnitTest.dependencies {
-            implementation(libs.mockk.android)
-            implementation(libs.mockk.android.agent)
-            implementation(libs.roboelectric)
+            implementation(libs.android.test.mock)
+            implementation(libs.android.test.mock.runtime)
+            implementation(libs.android.test.runtime)
         }
         commonMain.dependencies {
             implementation(projects.components)
@@ -70,51 +71,50 @@ kotlin {
             implementation(compose.components.resources)
             implementation(compose.components.uiToolingPreview)
 
-            implementation(libs.androidx.lifecycle.viewmodelCompose)
-            implementation(libs.androidx.lifecycle.runtimeCompose)
+            implementation(libs.shared.navigation.compose)
 
-            implementation(libs.koin.compose)
-            implementation(libs.koin.compose.viewmodel)
-            implementation(libs.koin.compose.viewmodel.navigation)
-            api(libs.koin.annotations)
+            implementation(libs.shared.compose.viewmodel)
+            implementation(libs.shared.compose.lifecycle)
 
-            implementation(libs.androidx.room.runtime)
-            implementation(libs.androidx.sqlite.bundled)
+            implementation(libs.shared.di.compose)
+            implementation(libs.shared.di.viewmodel)
+            implementation(libs.shared.di.navigation)
+            api(libs.shared.di.annotations)
 
-            implementation(libs.androidx.datastore.preferences)
+            implementation(libs.shared.db.runtime)
+            implementation(libs.shared.db.sql)
+            implementation(libs.shared.db.datastore)
 
-            implementation(libs.kotlinx.datetime)
-
-            implementation(libs.ktorfit)
-            implementation(ktorLibs.client.core)
+            implementation(libs.shared.network.ktorfit)
+            implementation(ktorLibs.client.core) // TODO alias to libs.shared.network.ktor.client
             implementation(ktorLibs.client.contentNegotiation)
             implementation(ktorLibs.serialization.kotlinx.json)
 
-            implementation(libs.coil)
-            implementation(libs.coil.ktor)
-            implementation(libs.coil.svg)
+            implementation(libs.shared.coil)
+            implementation(libs.shared.coil.ktor)
+            implementation(libs.shared.coil.svg)
 
-            implementation(libs.kermit)
-            api(libs.firebase.messaging)
+            api(libs.shared.firebase.messaging)
 
-            implementation(libs.uri)
-            implementation(libs.kmp.essentials)
-            implementation(libs.androidx.navigation.compose)
+            implementation(libs.shared.utils.logging)
+            implementation(libs.shared.utils.uri)
+            implementation(libs.shared.utils.kmpessentials)
+            implementation(libs.shared.utils.datetime)
         }
         commonTest.dependencies {
-            implementation(libs.kotlin.test)
-            implementation(libs.kotest.assertions.core)
+            implementation(libs.shared.test)
+            implementation(libs.shared.test.assertions)
         }
         jvmMain.dependencies {
             implementation(compose.desktop.currentOs)
-            implementation(libs.kotlinx.coroutinesSwing)
-            implementation(libs.prettytime)
+            implementation(libs.jvm.utils.coroutines)
+            implementation(libs.jvm.utils.datetime)
         }
         jvmTest.dependencies {
-            implementation(libs.mockk.jvm)
+            implementation(libs.jvm.test.mock)
         }
         iosMain.dependencies {
-            api(libs.nsexceptionkt)
+            api(libs.ios.firebase.crashlytics)
         }
     }
 }
@@ -136,12 +136,12 @@ compose.desktop {
 
 android {
     namespace = "pl.inno4med.asystent"
-    compileSdk = libs.versions.android.compileSdk.get().toInt()
+    compileSdk = libs.versions.android.sdk.compile.get().toInt()
 
     defaultConfig {
         applicationId = "pl.inno4med.asystent"
-        minSdk = libs.versions.android.minSdk.get().toInt()
-        targetSdk = libs.versions.android.targetSdk.get().toInt()
+        minSdk = libs.versions.android.sdk.min.get().toInt()
+        targetSdk = libs.versions.android.sdk.target.get().toInt()
         versionCode = 1
         versionName = "1.0"
     }
@@ -195,11 +195,11 @@ dependencies {
     "baselineProfile"(projects.baselineprofile)
     // TODO https://youtrack.jetbrains.com/issue/KMT-1312/Preview-not-work-in-commonMain-with-multi-module
     debugImplementation(compose.uiTooling)
-    add("kspCommonMainMetadata", libs.koin.ksp.compiler)
+    add("kspCommonMainMetadata", libs.shared.di.compiler)
 
     listOf("kspAndroid", "kspIosArm64", "kspIosSimulatorArm64", "kspJvm").forEach {
-        add(it, libs.koin.ksp.compiler)
-        add(it, libs.androidx.room.compiler)
+        add(it, libs.shared.di.compiler)
+        add(it, libs.shared.db.compiler)
     }
 }
 

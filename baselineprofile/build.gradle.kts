@@ -1,14 +1,14 @@
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
-    alias(libs.plugins.android.test)
-    alias(libs.plugins.kotlin.android)
-    alias(libs.plugins.baselineprofile)
+    alias(libs.plugins.android.baseline.test)
+    alias(libs.plugins.android.baseline.kotlin)
+    alias(libs.plugins.android.baseline)
 }
 
 android {
     namespace = "pl.inno4med.baselineprofile"
-    compileSdk = libs.versions.android.compileSdk.get().toInt()
+    compileSdk = libs.versions.android.sdk.compile.get().toInt()
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
@@ -16,8 +16,8 @@ android {
     }
 
     defaultConfig {
-        minSdk = libs.versions.android.minSdk.get().toInt()
-        targetSdk = libs.versions.android.targetSdk.get().toInt()
+        minSdk = libs.versions.android.sdk.min.get().toInt()
+        targetSdk = libs.versions.android.sdk.target.get().toInt()
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 //        testInstrumentationRunnerArguments["androidx.benchmark.suppressErrors"] = "EMULATOR"
@@ -39,9 +39,9 @@ baselineProfile {
 }
 
 dependencies {
-    implementation(libs.androidx.junit)
-    implementation(libs.androidx.espresso.core)
-    implementation(libs.androidx.benchmark.macro.junit4)
+    implementation(libs.android.test.junit)
+    implementation(libs.android.test.ui)
+    implementation(libs.android.test.benchmark)
 }
 
 androidComponents {

@@ -1,18 +1,18 @@
 plugins {
     // this is necessary to avoid the plugins to be loaded multiple times
     // in each subproject's classloader
-    alias(libs.plugins.androidApplication) apply false
-    alias(libs.plugins.composeHotReload) apply false
-    alias(libs.plugins.composeMultiplatform) apply false
-    alias(libs.plugins.composeCompiler) apply false
-    alias(libs.plugins.kotlinMultiplatform) apply false
-    alias(libs.plugins.ktorfit) apply false
-    alias(libs.plugins.kotlinx.serialization) apply false
-    alias(libs.plugins.android.kotlin.multiplatform.library) apply false
-    alias(libs.plugins.android.lint) apply false
-    alias(libs.plugins.google.services) apply false
-    alias(libs.plugins.firebase.crashlytics) apply false
-    alias(libs.plugins.android.test) apply false
-    alias(libs.plugins.kotlin.android) apply false
-    alias(libs.plugins.baselineprofile) apply false
+    alias(libs.plugins.android.app) apply false
+    alias(libs.plugins.shared.compose.hotreload) apply false
+    alias(libs.plugins.shared.compose.kotlin) apply false
+    alias(libs.plugins.shared.compose.compiler) apply false
+    alias(libs.plugins.shared.kotlin) apply false
+    alias(libs.plugins.shared.network.ktorfit) apply false
+    alias(libs.plugins.shared.network.serialization) apply false
+    alias(libs.plugins.android.library.kotlin) apply false
+    alias(libs.plugins.android.library.lint) apply false
+    alias(libs.plugins.android.google.services) apply false
+    alias(libs.plugins.android.firebase.crashlytics) apply false
+    alias(libs.plugins.android.baseline.test) apply false
+    alias(libs.plugins.android.baseline.kotlin) apply false
+    alias(libs.plugins.android.baseline) apply false
 }
