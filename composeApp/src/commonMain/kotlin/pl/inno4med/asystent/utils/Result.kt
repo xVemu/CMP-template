@@ -53,12 +53,10 @@ sealed class Result<out T> {
         failure: (@Composable (error: Exception) -> Unit)? = null,
         success: @Composable (body: T, refreshing: Boolean, error: Exception?) -> Unit,
     ) {
-        Crossfade(this) { finalResult ->
-            when (finalResult) {
-                is Loading -> loading?.invoke() ?: Loading()
-                is Success -> success(finalResult.body, finalResult.refreshing, finalResult.error)
-                is Failure -> failure?.invoke(finalResult.error) ?: CustomError(retry = retry)
-            }
+        when (this) {
+            is Loading -> loading?.invoke() ?: Loading()
+            is Success -> success(body, refreshing, error)
+            is Failure -> failure?.invoke(error) ?: CustomError(retry = retry)
         }
     }
 

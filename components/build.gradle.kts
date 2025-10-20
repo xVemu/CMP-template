@@ -8,6 +8,8 @@ plugins {
 }
 
 kotlin {
+    compilerOptions.freeCompilerArgs.add("-Xexpect-actual-classes")
+
     androidLibrary {
         namespace = "pl.inno4med.components"
         compileSdk = libs.versions.android.sdk.compile.get().toInt()
