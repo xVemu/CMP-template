@@ -9,24 +9,24 @@ import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.navigation.NavBackStackEntry
 
-actual class Transitions actual constructor(slideDistance: Int) {
-    actual val enterTransition: AnimatedContentTransitionScope<NavBackStackEntry>.() -> EnterTransition =
+public actual class Transitions actual constructor(slideDistance: Int) {
+    public actual val enterTransition: AnimatedContentTransitionScope<NavBackStackEntry>.() -> EnterTransition =
         {
             if (isSameNavGraph) IosTransitions.enterTransition(this)
             else fadeIn(animationSpec = tween(700))
         }
-    actual val exitTransition: AnimatedContentTransitionScope<NavBackStackEntry>.() -> ExitTransition =
+    public actual val exitTransition: AnimatedContentTransitionScope<NavBackStackEntry>.() -> ExitTransition =
         {
             if (isSameNavGraph) IosTransitions.exitTransition(this)
             else fadeOut(animationSpec = tween(700))
         }
 
-    actual val popEnterTransition: AnimatedContentTransitionScope<NavBackStackEntry>.() -> EnterTransition =
+    public actual val popEnterTransition: AnimatedContentTransitionScope<NavBackStackEntry>.() -> EnterTransition =
         {
             if (isSameNavGraph) IosTransitions.popEnterTransition(this)
             else fadeIn(animationSpec = tween(700))
         }
-    actual val popExitTransition: AnimatedContentTransitionScope<NavBackStackEntry>.() -> ExitTransition =
+    public actual val popExitTransition: AnimatedContentTransitionScope<NavBackStackEntry>.() -> ExitTransition =
         {
             if (isSameNavGraph) IosTransitions.popExitTransition(this)
             else fadeOut(animationSpec = tween(700))

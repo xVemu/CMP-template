@@ -27,7 +27,7 @@ import org.jetbrains.compose.resources.stringResource
  * @param navController if null, no back button will be shown
  * */
 @Composable
-fun SimpleSmallAppBar(
+public fun SimpleSmallAppBar(
     title: StringResource,
     navController: NavController? = null,
     scrollBehavior: TopAppBarScrollBehavior? = null,
@@ -40,7 +40,7 @@ fun SimpleSmallAppBar(
  * @param navController if null, no back button will be shown
  * */
 @Composable
-fun SimpleMediumAppBar(
+public fun SimpleMediumAppBar(
     title: StringResource,
     navController: NavController? = null,
     scrollBehavior: TopAppBarScrollBehavior? = null,
@@ -53,7 +53,7 @@ fun SimpleMediumAppBar(
  * @param navController if null, no back button will be shown
  * */
 @Composable
-fun SimpleLargeAppBar(
+public fun SimpleLargeAppBar(
     title: StringResource,
     navController: NavController? = null,
     scrollBehavior: TopAppBarScrollBehavior? = null,
@@ -66,7 +66,7 @@ fun SimpleLargeAppBar(
  * @param navController if null, no back button will be shown
  * */
 @Composable
-fun SimpleSmallAppBar(
+public fun SimpleSmallAppBar(
     title: String,
     navController: NavController? = null,
     scrollBehavior: TopAppBarScrollBehavior? = null,
@@ -84,7 +84,7 @@ fun SimpleSmallAppBar(
  * @param navController if null, no back button will be shown
  * */
 @Composable
-fun SimpleMediumAppBar(
+public fun SimpleMediumAppBar(
     title: String,
     navController: NavController? = null,
     scrollBehavior: TopAppBarScrollBehavior? = null,
@@ -104,7 +104,7 @@ fun SimpleMediumAppBar(
  * @param navController if null, no back button will be shown
  * */
 @Composable
-fun SimpleLargeAppBar(
+public fun SimpleLargeAppBar(
     title: String,
     navController: NavController? = null,
     scrollBehavior: TopAppBarScrollBehavior? = null,

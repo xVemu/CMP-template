@@ -9,6 +9,7 @@ plugins {
 
 kotlin {
     compilerOptions.freeCompilerArgs.add("-Xexpect-actual-classes")
+    explicitApi()
 
     androidLibrary {
         namespace = "pl.inno4med.components"

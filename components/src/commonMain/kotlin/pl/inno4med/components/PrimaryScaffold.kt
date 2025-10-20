@@ -33,7 +33,7 @@ import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 
 @Composable
-fun PrimaryScaffold(
+public fun PrimaryScaffold(
     navController: NavController,
     bottomNavItems: List<BottomNavItem>,
     content: @Composable () -> Unit,
@@ -90,10 +90,10 @@ fun PrimaryScaffold(
 }
 
 @Composable
-expect fun Modifier.platformNavigationBarInsets(): Modifier
+internal expect fun Modifier.platformNavigationBarInsets(): Modifier
 
 @Composable
-expect fun Modifier.platformEndBodyInsets(): Modifier
+internal expect fun Modifier.platformEndBodyInsets(): Modifier
 
 private fun NavigationSuiteScope.items(
     navController: NavController,
@@ -149,7 +149,7 @@ private fun WindowAdaptiveInfo.calculateType(): NavigationSuiteType {
     }
 }
 
-data class BottomNavItem(
+public data class BottomNavItem(
     val graph: Any,
     val icon: DrawableResource,
     val iconFilled: DrawableResource,

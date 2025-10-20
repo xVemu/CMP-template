@@ -12,14 +12,14 @@ import androidx.compose.ui.Modifier
 
 // For some reason iOS has safeDrawing padding at start, even tho notch is at right side
 @Composable
-actual fun Modifier.platformNavigationBarInsets() = this.windowInsetsPadding(
+internal actual fun Modifier.platformNavigationBarInsets() = this.windowInsetsPadding(
     WindowInsets.displayCutout.only(
         WindowInsetsSides.Start
     )
 ).consumeWindowInsets(WindowInsets.safeDrawing.only(WindowInsetsSides.Start))
 
 @Composable
-actual fun Modifier.platformEndBodyInsets() = this.windowInsetsPadding(
+internal actual fun Modifier.platformEndBodyInsets() = this.windowInsetsPadding(
     WindowInsets.displayCutout.only(
         WindowInsetsSides.End
     )

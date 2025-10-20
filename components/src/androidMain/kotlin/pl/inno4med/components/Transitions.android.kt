@@ -14,24 +14,24 @@ import androidx.compose.animation.slideInHorizontally
 import androidx.compose.animation.slideOutHorizontally
 import androidx.navigation.NavBackStackEntry
 
-actual class Transitions actual constructor(slideDistance: Int) {
-    actual val enterTransition: AnimatedContentTransitionScope<NavBackStackEntry>.() -> EnterTransition =
+public actual class Transitions actual constructor(slideDistance: Int) {
+    public actual val enterTransition: AnimatedContentTransitionScope<NavBackStackEntry>.() -> EnterTransition =
         {
             if (isSameNavGraph) materialSharedAxisXIn(true, slideDistance)
             else materialFadeThroughIn()
         }
-    actual val exitTransition: AnimatedContentTransitionScope<NavBackStackEntry>.() -> ExitTransition =
+    public actual val exitTransition: AnimatedContentTransitionScope<NavBackStackEntry>.() -> ExitTransition =
         {
             if (isSameNavGraph) materialSharedAxisXOut(true, slideDistance)
             else materialFadeThroughOut()
         }
 
-    actual val popEnterTransition: AnimatedContentTransitionScope<NavBackStackEntry>.() -> EnterTransition =
+    public actual val popEnterTransition: AnimatedContentTransitionScope<NavBackStackEntry>.() -> EnterTransition =
         {
             if (isSameNavGraph) materialSharedAxisXIn(false, slideDistance)
             else materialFadeThroughIn()
         }
-    actual val popExitTransition: AnimatedContentTransitionScope<NavBackStackEntry>.() -> ExitTransition =
+    public actual val popExitTransition: AnimatedContentTransitionScope<NavBackStackEntry>.() -> ExitTransition =
         {
             if (isSameNavGraph) materialSharedAxisXOut(false, slideDistance)
             else materialFadeThroughOut()

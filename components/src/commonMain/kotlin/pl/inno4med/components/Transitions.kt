@@ -10,19 +10,19 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavBackStackEntry
 
-expect class Transitions(slideDistance: Int) {
-    val enterTransition: AnimatedContentTransitionScope<NavBackStackEntry>.() -> EnterTransition
-    val exitTransition: AnimatedContentTransitionScope<NavBackStackEntry>.() -> ExitTransition
+public expect class Transitions(slideDistance: Int) {
+    public val enterTransition: AnimatedContentTransitionScope<NavBackStackEntry>.() -> EnterTransition
+    public val exitTransition: AnimatedContentTransitionScope<NavBackStackEntry>.() -> ExitTransition
 
-    val popEnterTransition: AnimatedContentTransitionScope<NavBackStackEntry>.() -> EnterTransition
-    val popExitTransition: AnimatedContentTransitionScope<NavBackStackEntry>.() -> ExitTransition
+    public val popEnterTransition: AnimatedContentTransitionScope<NavBackStackEntry>.() -> EnterTransition
+    public val popExitTransition: AnimatedContentTransitionScope<NavBackStackEntry>.() -> ExitTransition
 }
 
-val AnimatedContentTransitionScope<NavBackStackEntry>.isSameNavGraph
+internal val AnimatedContentTransitionScope<NavBackStackEntry>.isSameNavGraph
     get() = initialState.destination.parent?.startDestinationRoute == targetState.destination.parent?.startDestinationRoute
 
 @Composable
-fun rememberSlideDistance(
+public fun rememberSlideDistance(
     slideDistance: Dp = 30.dp,
 ): Int {
     val density = LocalDensity.current

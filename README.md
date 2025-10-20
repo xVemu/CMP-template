@@ -65,6 +65,7 @@ Libraries:
 
 DONE:
 
+- Clean Architecture
 - Tests
     - [MockK](https://mockk.io/)
     - Kotlin test
@@ -101,7 +102,6 @@ TODO:
 
 - tests
 - unstyled
-- clean architecture - package by feature
 - przepisać https://github.com/Milad-Akarie/skeletonizer/tree/main/lib/src
 - scroll indicator
 
@@ -115,3 +115,4 @@ Customize after templating:
 - Link Firebase project https://firebase.google.com/docs/android/setup https://firebase.google.com/docs/ios/setup
 - Associate deep link with app https://developer.android.com/studio/write/app-link-indexing https://docs.flutter.dev/cookbook/navigation/set-up-universal-links
 - [To run project from XCode](https://stackoverflow.com/a/78334953/12021861)
+- https://github.com/mikepenz/AboutLibraries#setup

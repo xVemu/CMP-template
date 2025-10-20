@@ -10,7 +10,7 @@ import androidx.compose.runtime.setValue
 import com.architect.kmpessentials.connectivity.KmpConnectivity
 
 @Composable
-fun rememberNetwork(onAvailable: (() -> Unit)? = null): Boolean {
+public fun rememberNetwork(onAvailable: (() -> Unit)? = null): Boolean {
     val callback by rememberUpdatedState(onAvailable)
     var hasNetwork by rememberSaveable { mutableStateOf(true) }
 

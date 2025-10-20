@@ -28,7 +28,11 @@ import org.jetbrains.compose.resources.stringResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
 
 @Composable
-fun CustomError(title: StringResource? = null, withIcon: Boolean = true, retry: (() -> Unit)?) {
+public fun CustomError(
+    title: StringResource? = null,
+    withIcon: Boolean = true,
+    retry: (() -> Unit)?,
+) {
     val hasNetwork = rememberNetwork(onAvailable = retry)
 
     Column(

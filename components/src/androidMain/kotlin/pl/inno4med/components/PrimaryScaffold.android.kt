@@ -9,14 +9,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 
 @Composable
-actual fun Modifier.platformNavigationBarInsets(): Modifier = this.windowInsetsPadding(
+internal actual fun Modifier.platformNavigationBarInsets(): Modifier = this.windowInsetsPadding(
     WindowInsets.safeDrawing.only(
         WindowInsetsSides.Start
     )
 )
 
 @Composable
-actual fun Modifier.platformEndBodyInsets() = this.windowInsetsPadding(
+internal actual fun Modifier.platformEndBodyInsets() = this.windowInsetsPadding(
     WindowInsets.safeDrawing.only(
         WindowInsetsSides.End
     )

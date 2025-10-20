@@ -20,7 +20,7 @@ import asystent.components.generated.resources.retry
 import org.jetbrains.compose.resources.stringResource
 
 @Composable
-fun BoxScope.RetrySnackbar(
+public fun BoxScope.RetrySnackbar(
     modifier: Modifier = Modifier,
     forceShow: Boolean = false,
     automaticRetryOnNetworkRestored: Boolean = true,
@@ -51,7 +51,7 @@ fun BoxScope.RetrySnackbar(
 }
 
 @Composable
-fun RetrySnackbarBox(forceShow: Boolean = false, retry: () -> Unit) {
+public fun RetrySnackbarBox(forceShow: Boolean = false, retry: () -> Unit) {
     Box {
         RetrySnackbar(forceShow = forceShow, retry = retry)
     }
@@ -59,7 +59,7 @@ fun RetrySnackbarBox(forceShow: Boolean = false, retry: () -> Unit) {
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun PullToRefreshAndRetrySnackbarBox(
+public fun PullToRefreshAndRetrySnackbarBox(
     isRefreshing: Boolean,
     onRefresh: () -> Unit,
     modifier: Modifier = Modifier,
