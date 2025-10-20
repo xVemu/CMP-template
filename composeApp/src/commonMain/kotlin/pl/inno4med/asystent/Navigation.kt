@@ -5,7 +5,6 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
@@ -35,11 +34,11 @@ import asystent.composeapp.generated.resources.square_filled
 import com.eygraber.uri.Uri
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
+import pl.inno4med.asystent.features.todo.details.presentation.TodoDetails
+import pl.inno4med.asystent.features.todo.list.presentation.TodoList
 import pl.inno4med.components.BottomNavItem
-import pl.inno4med.components.SimpleSmallAppBar
 import pl.inno4med.components.Transitions
 import pl.inno4med.components.rememberSlideDistance
-import kotlin.reflect.typeOf
 
 @Serializable
 object TodoGraph {
@@ -50,7 +49,7 @@ object TodoGraph {
     object TestRoute
 
     @Serializable
-    data class TodoDetailsRoute(val todo: Todo)
+    data class TodoDetailsRoute(val todoId: Long)
 }
 
 @Serializable
@@ -100,22 +99,17 @@ private fun NavGraphBuilder.todoGraph() {
         })) { backstack ->
             val name = backstack.arguments?.read { getStringOrNull("name") }
 
-            Scaffold(
-                topBar = { SimpleSmallAppBar("xd") },
-//                containerColor = Color.Red
-            ) { innerPadding ->
-                TodoList(name, innerPadding)
-            }
+            TodoList(name)
         }
         composable<TodoGraph.TestRoute>(deepLinks = listOf(navDeepLink {
             action = "pl.inno4med.asystent.SHORTCUT"
         })) {
             Text("Test")
         }
-        composable<TodoGraph.TodoDetailsRoute>(typeMap = mapOf(typeOf<Todo>() to navTypeOf<Todo>())) { backStackEntry ->
+        composable<TodoGraph.TodoDetailsRoute> { backStackEntry ->
             val todo: TodoGraph.TodoDetailsRoute = backStackEntry.toRoute()
 
-            TodoDetails(todo.todo)
+            TodoDetails(todo.todoId)
         }
     }
 }

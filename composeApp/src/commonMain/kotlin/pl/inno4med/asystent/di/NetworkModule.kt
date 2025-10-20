@@ -22,7 +22,7 @@ class NetworkModule {
 
     @Single
     fun provideRetrofit(httpClient: HttpClient) = Ktorfit.Builder()
-        .baseUrl("BASE_URL")
+        .baseUrl("https://api.sampleapis.com/")
         .httpClient(httpClient)
         .build()
 }
