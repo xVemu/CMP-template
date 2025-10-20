@@ -227,7 +227,7 @@ afterEvaluate {
 }
 
 ksp {
-//    arg("KOIN_CONFIG_CHECK", "true") TODO https://github.com/InsertKoinIO/koin-annotations/issues/312
+    arg("KOIN_CONFIG_CHECK", "true")
 }
 
 room {

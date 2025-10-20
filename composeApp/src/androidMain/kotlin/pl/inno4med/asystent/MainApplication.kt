@@ -14,7 +14,8 @@ import org.koin.core.annotation.KoinExperimentalAPI
 import org.koin.dsl.KoinConfiguration
 import org.koin.dsl.includes
 import org.koin.dsl.koinConfiguration
-import pl.inno4med.asystent.di.DefaultKoinConfiguration
+import org.koin.ksp.generated.koinConfiguration
+import pl.inno4med.asystent.di.MainKoinApplication
 
 @OptIn(KoinExperimentalAPI::class)
 class MainApplication : Application(), KoinStartup {
@@ -50,8 +51,8 @@ class MainApplication : Application(), KoinStartup {
     }
 
     override fun onKoinStartup(): KoinConfiguration = koinConfiguration {
+        includes(MainKoinApplication.koinConfiguration())
         androidContext(this@MainApplication)
         androidLogger()
-        includes(DefaultKoinConfiguration)
     }
 }

@@ -8,6 +8,7 @@ import androidx.room.TypeConverters
 import androidx.sqlite.driver.bundled.BundledSQLiteDriver
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.IO
+import org.koin.core.annotation.Configuration
 import org.koin.core.annotation.Module
 import org.koin.core.annotation.Single
 import pl.inno4med.asystent.di.ContextWrapper
@@ -28,6 +29,7 @@ expect object MainDatabaseConstructor : RoomDatabaseConstructor<MainDatabase> {
 }
 
 @Module
+@Configuration
 class DatabaseModule {
     @Single
     fun provideDatabase(contextW: ContextWrapper) =
