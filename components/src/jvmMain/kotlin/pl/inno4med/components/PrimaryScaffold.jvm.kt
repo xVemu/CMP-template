@@ -16,7 +16,7 @@ public actual fun Modifier.platformNavigationBarInsets(): Modifier = this.window
 )
 
 @Composable
-public actual fun Modifier.platformEndBodyInsets() = this.windowInsetsPadding(
+public actual fun Modifier.platformEndBodyInsets(): Modifier = this.windowInsetsPadding(
     WindowInsets.safeDrawing.only(
         WindowInsetsSides.End
     )

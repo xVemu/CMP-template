@@ -13,36 +13,37 @@ import pl.inno4med.asystent.utils.ResultList
 
 @Single
 class TodoRemoteMediator(private val todoDao: TodoDao, private val todoApi: TodoApi) : TodoRepo {
-    override suspend fun getTodos(): Flow<ResultList<Todo>> = coroutineScope {
+    override fun getTodos(): Flow<ResultList<Todo>> =
         flow {
-            try {
-                val networkDefer = async { todoApi.getTodos() }
+            coroutineScope {
+                try {
+                    val networkDefer = async { todoApi.getTodos() }
 
-                val local = todoDao.getAllTodos().map { it.toDomain() }
+                    val local = todoDao.getAllTodos().map { it.toDomain() }
 
-                if (local.isNotEmpty())
-                    emit(Result.Success(local, refreshing = true))
-                else emit(Result.Loading)
+                    if (local.isNotEmpty())
+                        emit(Result.Success(local, refreshing = true))
+                    else emit(Result.Loading)
 
-                val network = try {
-                    networkDefer.await()
+                    val network = try {
+                        networkDefer.await()
+                    } catch (e: Exception) {
+                        ensureActive()
+                        if (local.isNotEmpty())
+                            return@coroutineScope emit(Result.Success(local, error = e))
+
+                        throw e
+                    }
+
+                    emit(Result.Success(network.map { it.toDomain() }))
+
+                    todoDao.deleteAndInsertAll(network.map { it.toEntity() })
                 } catch (e: Exception) {
                     ensureActive()
-                    if (local.isNotEmpty())
-                        return@flow emit(Result.Success(local, error = e))
-
-                    throw e
+                    emit(Result.Failure(e))
                 }
-
-                emit(Result.Success(network.map { it.toDomain() }))
-
-                todoDao.deleteAndInsertAll(network.map { it.toEntity() })
-            } catch (e: Exception) {
-                ensureActive()
-                emit(Result.Failure(e))
             }
         }
-    }
 
     override suspend fun addTodo(todo: Todo) {
         TODO("Not yet implemented")
