@@ -1,6 +1,5 @@
 package pl.inno4med.asystent
 
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.LaunchedEffect
@@ -16,6 +15,7 @@ import pl.inno4med.asystent.di.review
 import pl.inno4med.asystent.navigation.LocalNavController
 import pl.inno4med.asystent.navigation.NavigationHost
 import pl.inno4med.asystent.navigation.bottomItems
+import pl.inno4med.asystent.theme.AppTheme
 import pl.inno4med.components.PrimaryScaffold
 
 @OptIn(KoinExperimentalAPI::class)
@@ -31,7 +31,7 @@ fun App() {
         review(dataStore)
     }
 
-    MaterialTheme {
+    AppTheme {
         val navController = rememberNavController()
 
         CompositionLocalProvider(LocalNavController provides navController) {
