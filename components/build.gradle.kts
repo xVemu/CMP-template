@@ -1,3 +1,5 @@
+import org.jetbrains.compose.ExperimentalComposeLibrary
+
 plugins {
     alias(libs.plugins.shared.kotlin)
     alias(libs.plugins.shared.compose.kotlin)
@@ -54,9 +56,13 @@ kotlin {
 
         commonTest.dependencies {
             implementation(libs.shared.test)
+            implementation(libs.shared.test.assertions)
+            @OptIn(ExperimentalComposeLibrary::class)
+            implementation(compose.uiTest)
         }
 
-        jvmMain.dependencies {
+        jvmTest.dependencies {
+            implementation(compose.desktop.currentOs)
         }
 
         iosMain.dependencies {
