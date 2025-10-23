@@ -1,27 +1,14 @@
-package pl.inno4med.asystent
+package pl.inno4med.asystent.navigation
 
-import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.Button
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.staticCompositionLocalOf
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
 import androidx.navigation.NavDeepLinkRequest
-import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable
-import androidx.navigation.navDeepLink
-import androidx.navigation.navigation
-import androidx.navigation.toRoute
 import androidx.savedstate.SavedState
 import androidx.savedstate.read
 import androidx.savedstate.write
@@ -32,43 +19,10 @@ import asystent.composeapp.generated.resources.bottom_nav_3
 import asystent.composeapp.generated.resources.square
 import asystent.composeapp.generated.resources.square_filled
 import com.eygraber.uri.Uri
-import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
-import pl.inno4med.asystent.features.todo.details.presentation.TodoDetails
-import pl.inno4med.asystent.features.todo.list.presentation.TodoList
 import pl.inno4med.components.BottomNavItem
 import pl.inno4med.components.Transitions
 import pl.inno4med.components.rememberSlideDistance
-
-@Serializable
-object TodoGraph {
-    @Serializable
-    object TodoListRoute
-
-    @Serializable
-    object TestRoute
-
-    @Serializable
-    data class TodoDetailsRoute(val todoId: Long)
-}
-
-@Serializable
-object SecondGraph {
-    @Serializable
-    object SecondRoute
-
-    @Serializable
-    object SecondDetailsRoute
-}
-
-@Serializable
-object ThirdGraph {
-    @Serializable
-    object ThirdRoute
-
-    @Serializable
-    object ThirdDetailsRoute
-}
 
 val bottomItems = listOf(
     BottomNavItem(
@@ -90,66 +44,6 @@ val bottomItems = listOf(
         Res.string.bottom_nav_3
     )
 )
-
-@OptIn(ExperimentalMaterial3Api::class)
-private fun NavGraphBuilder.todoGraph() {
-    navigation<TodoGraph>(TodoGraph.TodoListRoute) {
-        composable<TodoGraph.TodoListRoute>(deepLinks = listOf(navDeepLink {
-            uriPattern = "todo.com/{name}"
-        })) { backstack ->
-            val name = backstack.arguments?.read { getStringOrNull("name") }
-
-            TodoList(name)
-        }
-        composable<TodoGraph.TestRoute>(deepLinks = listOf(navDeepLink {
-            action = "pl.inno4med.asystent.SHORTCUT"
-        })) {
-            Text("Test")
-        }
-        composable<TodoGraph.TodoDetailsRoute> { backStackEntry ->
-            val todo: TodoGraph.TodoDetailsRoute = backStackEntry.toRoute()
-
-            TodoDetails(todo.todoId)
-        }
-    }
-}
-
-private fun NavGraphBuilder.secondGraph() {
-    navigation<SecondGraph>(SecondGraph.SecondRoute) {
-        composable<SecondGraph.SecondRoute> {
-            Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-                val navController = LocalNavController.current
-
-                Button({ navController.navigate(SecondGraph.SecondDetailsRoute) }) {
-                    Text("Second")
-                }
-            }
-        }
-        composable<SecondGraph.SecondDetailsRoute> {
-            Text("Second details")
-        }
-    }
-}
-
-private fun NavGraphBuilder.thirdGraph() {
-    navigation<ThirdGraph>(ThirdGraph.ThirdRoute) {
-        composable<ThirdGraph.ThirdRoute> {
-            Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-                val navController = LocalNavController.current
-
-                Button({ navController.navigate(ThirdGraph.ThirdDetailsRoute) }) {
-                    Text("Third")
-                }
-            }
-        }
-        composable<ThirdGraph.ThirdDetailsRoute> {
-            val navController = LocalNavController.current
-            Text("Third details", modifier = Modifier.clickable {
-                navController.navigateUp()
-            })
-        }
-    }
-}
 
 val LocalNavController = staticCompositionLocalOf<NavController> {
     error("No NavController provided")
@@ -186,7 +80,7 @@ fun NavigationHost(navController: NavHostController) {
     }
 }
 
-private inline fun <reified T> navTypeOf(
+inline fun <reified T> navTypeOf(
     isNullableAllowed: Boolean = false,
     json: Json = Json,
 ) = object : NavType<T>(isNullableAllowed = isNullableAllowed) {

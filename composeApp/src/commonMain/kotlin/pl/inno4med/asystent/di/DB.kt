@@ -1,22 +1,24 @@
-package pl.inno4med.asystent
+package pl.inno4med.asystent.di
 
 import androidx.room.ConstructedBy
 import androidx.room.Database
 import androidx.room.RoomDatabase
 import androidx.room.RoomDatabaseConstructor
+import androidx.room.TypeConverter
 import androidx.room.TypeConverters
 import androidx.sqlite.driver.bundled.BundledSQLiteDriver
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.IO
+import kotlinx.datetime.LocalDateTime
+import kotlinx.datetime.LocalTime
 import org.koin.core.annotation.Configuration
 import org.koin.core.annotation.Module
 import org.koin.core.annotation.Single
-import pl.inno4med.asystent.di.ContextWrapper
 import pl.inno4med.asystent.features.todo.list.data.TodoDao
 import pl.inno4med.asystent.features.todo.list.data.TodoEntity
 
 @Database(entities = [TodoEntity::class], version = 1, exportSchema = true)
-@TypeConverters(Converters::class)
+@TypeConverters(DbConverters::class)
 @ConstructedBy(MainDatabaseConstructor::class)
 abstract class MainDatabase : RoomDatabase() {
     abstract fun todoDao(): TodoDao
@@ -41,3 +43,17 @@ class DatabaseModule {
 }
 
 expect fun getDatabasePlatformBuilder(contextW: ContextWrapper): RoomDatabase.Builder<MainDatabase>
+
+class DbConverters {
+    @TypeConverter
+    fun fromISO(value: String) = LocalDateTime.Companion.parse(value)
+
+    @TypeConverter
+    fun toISO(date: LocalDateTime) = date.toString()
+
+    @TypeConverter
+    fun fromTime(time: String) = LocalTime.Companion.parse(time)
+
+    @TypeConverter
+    fun toTime(time: LocalTime) = time.toString()
+}

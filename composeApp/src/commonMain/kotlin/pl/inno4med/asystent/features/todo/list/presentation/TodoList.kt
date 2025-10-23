@@ -17,8 +17,8 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import coil3.compose.AsyncImage
 import org.koin.compose.viewmodel.koinViewModel
-import pl.inno4med.asystent.LocalNavController
-import pl.inno4med.asystent.TodoGraph
+import pl.inno4med.asystent.navigation.LocalNavController
+import pl.inno4med.asystent.navigation.TodoGraph
 import pl.inno4med.components.PullToRefreshAndRetrySnackbarBox
 import pl.inno4med.components.SimpleSmallAppBar
 

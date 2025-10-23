@@ -1,9 +1,8 @@
-package pl.inno4med.asystent
+package pl.inno4med.asystent.di
 
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import kotlinx.cinterop.ExperimentalForeignApi
-import pl.inno4med.asystent.di.ContextWrapper
 import platform.Foundation.NSDocumentDirectory
 import platform.Foundation.NSFileManager
 import platform.Foundation.NSUserDomainMask
