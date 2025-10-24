@@ -34,6 +34,7 @@ shared-ksp = "2.2.20-2.0.3" # https://github.com/google/ksp/releases
 shared-navigation-compose = "2.9.0" # https://github.com/JetBrains/compose-multiplatform/releases
 shared-network-ktorfit = "2.6.4" # https://foso.github.io/Ktorfit/CHANGELOG/
 shared-test-assertions = "6.0.3" # https://github.com/kotest/kotest/releases
+shared-test-mock-plugin = "2.10.1" # https://github.com/lupuuss/Mokkery/releases
 shared-utils-datetime = "0.7.1" # https://github.com/Kotlin/kotlinx-datetime/releases
 shared-utils-kmpessentials = "2.7.1" # https://github.com/Ares-Defence-Labs/KmpEssentials/commits/main/
 shared-utils-logging = "2.0.8" # https://github.com/touchlab/Kermit/blob/main/CHANGELOG.md
@@ -100,3 +101,4 @@ shared-kotlin = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "shar
 shared-ksp = { id = "com.google.devtools.ksp", version.ref = "shared-ksp" }
 shared-network-ktorfit = { id = "de.jensklingenberg.ktorfit", version.ref = "shared-network-ktorfit" }
 shared-network-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "shared-kotlin" }
+shared-test-mock = { id = "dev.mokkery", version.ref = "shared-test-mock-plugin" }

@@ -1,5 +1,6 @@
 package pl.inno4med.asystent.di
 
+import androidx.annotation.VisibleForTesting
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.edit
@@ -13,9 +14,12 @@ import kotlin.time.ExperimentalTime
 import kotlin.time.Instant
 
 @OptIn(ExperimentalTime::class)
-suspend fun review(dataStore: DataStore<Preferences>) {
+suspend fun review(
+    dataStore: DataStore<Preferences>,
+    @VisibleForTesting clock: Clock = Clock.System,
+) {
     val key = longPreferencesKey("lastOpenTime")
-    val now = Clock.System.now()
+    val now = clock.now()
 
     val lastOpenTime =
         dataStore.data.map { it[key]?.let(Instant::fromEpochMilliseconds) }.firstOrNull()

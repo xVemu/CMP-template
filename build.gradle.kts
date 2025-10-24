@@ -8,6 +8,7 @@ plugins {
     alias(libs.plugins.shared.kotlin) apply false
     alias(libs.plugins.shared.network.ktorfit) apply false
     alias(libs.plugins.shared.network.serialization) apply false
+    alias(libs.plugins.shared.test.mock) apply false
     alias(libs.plugins.android.library.kotlin) apply false
     alias(libs.plugins.android.library.lint) apply false
     alias(libs.plugins.android.google.services) apply false

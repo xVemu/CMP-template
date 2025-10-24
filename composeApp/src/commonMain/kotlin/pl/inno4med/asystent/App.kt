@@ -17,8 +17,9 @@ import pl.inno4med.asystent.navigation.NavigationHost
 import pl.inno4med.asystent.navigation.bottomItems
 import pl.inno4med.asystent.theme.AppTheme
 import pl.inno4med.components.PrimaryScaffold
+import kotlin.time.ExperimentalTime
 
-@OptIn(KoinExperimentalAPI::class)
+@OptIn(KoinExperimentalAPI::class, ExperimentalTime::class)
 @Composable
 fun App() {
 //    KoinMultiplatformApplication(config = DefaultKoinConfiguration) { TODO https://github.com/InsertKoinIO/koin/issues/2078 https://github.com/InsertKoinIO/koin/issues/2203

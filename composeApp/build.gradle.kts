@@ -1,3 +1,4 @@
+import org.jetbrains.compose.ExperimentalComposeLibrary
 import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import java.util.Properties
@@ -16,6 +17,8 @@ plugins {
     alias(libs.plugins.shared.network.ktorfit)
     alias(libs.plugins.shared.network.serialization)
     alias(libs.plugins.shared.db.room)
+
+    alias(libs.plugins.shared.test.mock)
 }
 
 kotlin {
@@ -104,6 +107,8 @@ kotlin {
         commonTest.dependencies {
             implementation(libs.shared.test)
             implementation(libs.shared.test.assertions)
+            @OptIn(ExperimentalComposeLibrary::class)
+            implementation(compose.uiTest)
         }
         jvmMain.dependencies {
             implementation(compose.desktop.currentOs)
