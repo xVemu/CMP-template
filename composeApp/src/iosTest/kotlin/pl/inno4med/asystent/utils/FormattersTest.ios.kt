@@ -2,6 +2,7 @@ package pl.inno4med.asystent.utils
 
 import kotlinx.cinterop.ExperimentalForeignApi
 import kotlinx.datetime.LocalDateTime
+import kotlinx.datetime.TimeZone
 import kotlinx.datetime.toInstant
 import kotlinx.datetime.toNSDate
 import platform.Foundation.NSLocale
@@ -25,7 +26,7 @@ class DateTimeFormatterTest {
     fun setup() {
         DateFormatter.testLocale = NSLocale.localeWithLocaleIdentifier("pl_PL")
         NSTimeZone.setDefaultTimeZone(timezone)
-        DateFormatter.now = now.toInstant(kotlinx.datetime.TimeZone.of("GMT+01:00")).toNSDate()
+        DateFormatter.now = now.toInstant(TimeZone.of("GMT+01:00")).toNSDate()
     }
 
     @Test
