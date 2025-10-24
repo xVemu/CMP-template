@@ -5,6 +5,6 @@ import java.io.File
 
 @Single
 actual fun provideDataStore(contextW: ContextWrapper) = createDataStore {
-    val file = File(System.getProperty("java.io.tmpdir"), dataStoreFileName)
+    val file = File(getLocalAppDataDir(), dataStoreFileName)
     file.absolutePath
 }
