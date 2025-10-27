@@ -97,6 +97,8 @@ DONE:
 - Splash screen
 - [Crashlytics](https://firebase.google.com/docs/crashlytics)
 - [Baseline Profile](https://developer.android.com/topic/performance/baselineprofiles/overview)
+- [RemoteMediator](./composeApp/src/commonMain/kotlin/pl/inno4med/asystent/core/RemoteMediator.kt)
+- Can't run commonTests on iOS https://github.com/RevenueCat/purchases-kmp/issues/420 https://github.com/getsentry/sentry-kotlin-multiplatform/issues/176
 
 TODO:
 
