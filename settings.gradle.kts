@@ -4,12 +4,31 @@ enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 pluginManagement {
     repositories {
         maven("https://proxyrepo.inno4med.pl/repository/maven-proxy-grouped/")
+        google {
+            mavenContent {
+                includeGroupAndSubgroups("androidx")
+                includeGroupAndSubgroups("com.android")
+                includeGroupAndSubgroups("com.google")
+            }
+        }
+        mavenCentral()
+        gradlePluginPortal()
     }
 }
 
 dependencyResolutionManagement {
     repositories {
-        maven("https://proxyrepo.inno4med.pl/repository/maven-proxy-grouped/")
+        if(System.getenv("USE_PROXY_REPO") == "true")
+            maven("https://proxyrepo.inno4med.pl/repository/maven-proxy-grouped/")
+
+        google {
+            mavenContent {
+                includeGroupAndSubgroups("androidx")
+                includeGroupAndSubgroups("com.android")
+                includeGroupAndSubgroups("com.google")
+            }
+        }
+        mavenCentral()
     }
 
     versionCatalogs {

@@ -5,7 +5,8 @@ import java.util.Properties
 
 plugins {
     alias(libs.plugins.android.app)
-    alias(libs.plugins.android.google.services) // in app update, review
+    if (System.getenv("GITLAB_CI") == null && System.getenv("GITHUB_ACTIONS") == null)
+        alias(libs.plugins.android.google.services) // Firebase
     alias(libs.plugins.android.firebase.crashlytics)
     alias(libs.plugins.android.baseline)
     alias(libs.plugins.android.test.screenshot)
@@ -161,6 +162,10 @@ android {
 
     signingConfigs {
         create("release") {
+            // key.properties doesn't exist in CI/CD environments
+            if (System.getenv("GITLAB_CI") != null || System.getenv("GITHUB_ACTIONS") != null)
+                return@create
+
             val keystore =
                 file("key.properties").inputStream()
                     .use { Properties().apply { load(it) } }
@@ -255,4 +260,10 @@ baselineProfile {
 
 roborazzi {
     outputDir = file("src/androidUnitTest/screenshots")
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
 }

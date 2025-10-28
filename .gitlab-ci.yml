@@ -1,0 +1,43 @@
+image: runmymind/docker-android-sdk:ubuntu-standalone-20251027
+
+variables:
+  USE_PROXY_REPO: true
+
+before_script:
+  - export GRADLE_USER_HOME=`pwd`/.gradle
+
+cache:
+  - when: always
+    paths:
+      - .gradle/wrapper
+      - .gradle/caches
+      - .gradle/jdks
+
+stages:
+  - test
+
+components-tests:
+  stage: test
+  script: ./gradlew :components:jvmTest
+  artifacts:
+    when: always
+    reports:
+      junit: components/build/test-results/jvmTest/**/TEST-*.xml
+
+android-tests:
+  stage: test
+  script: ./gradlew :composeApp:testDebugUnitTest
+  artifacts:
+    when: always
+    paths:
+      - composeApp/build/outputs/roborazzi/*_compare.png
+    reports:
+      junit: composeApp/build/test-results/testDebugUnitTest/**/TEST-*.xml
+
+jvm-tests:
+  stage: test
+  script: ./gradlew :composeApp:jvmTest
+  artifacts:
+    when: always
+    reports:
+      junit: composeApp/build/test-results/jvmTest/**/TEST-*.xml
