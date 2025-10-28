@@ -26,7 +26,7 @@ fun NavGraphBuilder.secondGraph() {
             Box(Modifier.Companion.fillMaxSize(), contentAlignment = Alignment.Companion.Center) {
                 val navController = LocalNavController.current
 
-                Button({ navController.navigate(SecondGraph.SecondDetailsRoute) }) {
+                Button({ navController?.navigate(SecondGraph.SecondDetailsRoute) }) {
                     Text("Second")
                 }
             }

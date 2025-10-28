@@ -17,7 +17,7 @@ fun TodoDetails(todoId: Long) {
         Column {
 //            Text("Details: ${todo.title} ${todo.content}")
 
-            TextButton({ navController.navigateUp() }) {
+            TextButton({ navController?.navigateUp() }) {
                 Text("Back")
             }
         }

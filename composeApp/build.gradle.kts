@@ -8,6 +8,7 @@ plugins {
     alias(libs.plugins.android.google.services) // in app update, review
     alias(libs.plugins.android.firebase.crashlytics)
     alias(libs.plugins.android.baseline)
+    alias(libs.plugins.android.test.screenshot)
 
     alias(libs.plugins.shared.kotlin)
     alias(libs.plugins.shared.compose.kotlin)
@@ -63,6 +64,7 @@ kotlin {
             implementation(libs.android.test.mock)
             implementation(libs.android.test.mock.runtime)
             implementation(libs.android.test.runtime)
+            implementation(libs.android.test.screenshot.compose)
         }
         commonMain.dependencies {
             implementation(projects.components)
@@ -194,6 +196,12 @@ android {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
+
+    testOptions {
+        unitTests {
+            isIncludeAndroidResources = true
+        }
+    }
 }
 
 dependencies {
@@ -243,4 +251,8 @@ baselineProfile {
     automaticGenerationDuringBuild = true
     dexLayoutOptimization = true
     saveInSrc = false
+}
+
+roborazzi {
+    outputDir = file("src/androidUnitTest/screenshots")
 }

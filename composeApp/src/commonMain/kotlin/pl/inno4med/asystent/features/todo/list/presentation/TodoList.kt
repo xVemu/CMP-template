@@ -49,7 +49,7 @@ fun TodoList(someText: String? = null, vm: TodoViewModel = koinViewModel()) {
                         Row {
                             AsyncImage(model = todo.image, contentDescription = todo.name)
                             Spacer(Modifier.width(8.dp))
-                            TextButton({ navController.navigate(TodoGraph.TodoDetailsRoute(todo.id)) }) {
+                            TextButton({ navController?.navigate(TodoGraph.TodoDetailsRoute(todo.id)) }) {
                                 Text("${todo.name} ${todo.image}")
                             }
                         }

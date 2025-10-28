@@ -27,7 +27,7 @@ fun NavGraphBuilder.thirdGraph() {
             Box(Modifier.Companion.fillMaxSize(), contentAlignment = Alignment.Companion.Center) {
                 val navController = LocalNavController.current
 
-                Button({ navController.navigate(ThirdGraph.ThirdDetailsRoute) }) {
+                Button({ navController?.navigate(ThirdGraph.ThirdDetailsRoute) }) {
                     Text("Third")
                 }
             }
@@ -35,7 +35,7 @@ fun NavGraphBuilder.thirdGraph() {
         composable<ThirdGraph.ThirdDetailsRoute> {
             val navController = LocalNavController.current
             Text("Third details", modifier = Modifier.Companion.clickable {
-                navController.navigateUp()
+                navController?.navigateUp()
             })
         }
     }

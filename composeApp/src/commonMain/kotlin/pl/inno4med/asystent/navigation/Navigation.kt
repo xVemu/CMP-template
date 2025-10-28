@@ -45,8 +45,9 @@ val bottomItems = listOf(
     )
 )
 
-val LocalNavController = staticCompositionLocalOf<NavController> {
-    error("No NavController provided")
+/** It's `null` in tests*/
+val LocalNavController = staticCompositionLocalOf<NavController?> {
+    null
 }
 
 @Composable

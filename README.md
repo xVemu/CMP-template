@@ -70,6 +70,7 @@ DONE:
     - [MockK](https://mockk.io/)
     - Kotlin test
     - [Kotest assertions](https://kotest.io/docs/assertions/assertions.html)
+  - [Screenshot Tests in androidUnitTest](https://github.com/sergio-sastre/Android-screenshot-testing-playground)
 - [DI](https://insert-koin.io/docs/reference/koin-annotations/start)
 - [Room](https://developer.android.com/kotlin/multiplatform/room)
 - [DataStore](https://developer.android.com/kotlin/multiplatform/datastore)
@@ -102,7 +103,6 @@ DONE:
 
 TODO:
 
-- tests
 - unstyled
 - przepisać https://github.com/Milad-Akarie/skeletonizer/tree/main/lib/src
 - scroll indicator

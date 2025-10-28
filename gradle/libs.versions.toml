@@ -13,6 +13,7 @@ android-splashscreen = "1.0.1" # https://developer.android.com/jetpack/androidx/
 android-test-junit = "1.3.0" # https://developer.android.com/jetpack/androidx/releases/test
 android-test-mock = "1.14.6" # https://github.com/mockk/mockk/releases
 android-test-runtime = "4.16" # https://github.com/robolectric/robolectric/releases
+android-test-screenshot = "1.50.0" # https://github.com/takahirom/roborazzi/releases
 android-test-ui = "3.7.0" # https://developer.android.com/jetpack/androidx/releases/test
 android-utils-appupdate = "2.1.0" # https://developer.android.com/reference/com/google/android/play/core/release-notes-in_app_updates
 ios-firebase-crashlytics = "1.0.4" # https://github.com/rickclephas/NSExceptionKt/releases
@@ -51,6 +52,7 @@ android-test-junit = { module = "androidx.test.ext:junit", version.ref = "androi
 android-test-mock = { module = "io.mockk:mockk-android", version.ref = "android-test-mock" }
 android-test-mock-runtime = { module = "io.mockk:mockk-agent", version.ref = "android-test-mock" }
 android-test-runtime = { module = "org.robolectric:robolectric", version.ref = "android-test-runtime" }
+android-test-screenshot-compose = { module = "io.github.takahirom.roborazzi:roborazzi-compose", version.ref = "android-test-screenshot" }
 android-test-ui = { module = "androidx.test.espresso:espresso-core", version.ref = "android-test-ui" }
 android-utils-appupdate = { module = "com.google.android.play:app-update-ktx", version.ref = "android-utils-appupdate" }
 ios-firebase-crashlytics = { module = "com.rickclephas.kmp:nsexception-kt-core", version.ref = "ios-firebase-crashlytics" }
@@ -93,6 +95,7 @@ android-firebase-crashlytics = { id = "com.google.firebase.crashlytics", version
 android-google-services = { id = "com.google.gms.google-services", version.ref = "android-google-services" }
 android-library-kotlin = { id = "com.android.kotlin.multiplatform.library", version.ref = "android-gradle" }
 android-library-lint = { id = "com.android.lint", version.ref = "android-gradle" }
+android-test-screenshot = { id = "io.github.takahirom.roborazzi", version.ref = "android-test-screenshot" }
 shared-compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "shared-kotlin" }
 shared-compose-hotreload = { id = "org.jetbrains.compose.hot-reload", version.ref = "shared-compose-hotreload" }
 shared-compose-kotlin = { id = "org.jetbrains.compose", version.ref = "shared-compose-kotlin" }

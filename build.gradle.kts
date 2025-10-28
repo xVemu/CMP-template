@@ -16,4 +16,5 @@ plugins {
     alias(libs.plugins.android.baseline.test) apply false
     alias(libs.plugins.android.baseline.kotlin) apply false
     alias(libs.plugins.android.baseline) apply false
+    alias(libs.plugins.android.test.screenshot) apply false
 }

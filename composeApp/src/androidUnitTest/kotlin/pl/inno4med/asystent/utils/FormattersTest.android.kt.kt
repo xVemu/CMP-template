@@ -7,7 +7,6 @@ import kotlinx.datetime.toInstant
 import org.junit.Before
 import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
-import org.robolectric.annotation.Config
 import java.util.Locale
 import java.util.TimeZone
 import kotlin.test.Test
@@ -16,7 +15,6 @@ import kotlin.time.Clock
 import kotlin.time.ExperimentalTime
 
 @RunWith(RobolectricTestRunner::class)
-@Config(manifest = Config.NONE)
 class DateTimeFormatterTest {
 
     val date = LocalDateTime(2025, 9, 29, 12, 33)
