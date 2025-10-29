@@ -118,3 +118,4 @@ Customize after templating:
 - Associate deep link with app https://developer.android.com/studio/write/app-link-indexing https://docs.flutter.dev/cookbook/navigation/set-up-universal-links
 - [To run project from XCode](https://stackoverflow.com/a/78334953/12021861)
 - https://github.com/mikepenz/AboutLibraries#setup
+- If you use gitlab, configure Access Token in CI/CD variables to update screenshots

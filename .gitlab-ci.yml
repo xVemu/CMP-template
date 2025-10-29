@@ -41,3 +41,15 @@ jvm-tests:
     when: always
     reports:
       junit: composeApp/build/test-results/jvmTest/**/TEST-*.xml
+
+update-screenshots:
+  when: manual
+  allow_failure: true
+  stage: test
+  script: ./gradlew :composeApp:recordRoborazziDebug
+  after_script:
+    - git config user.email "${GITLAB_USER_EMAIL}"
+    - git config user.name "GitLab CI Bot"
+    - git add .
+    - git commit -m "[gitlab-ci] Update screenshots"
+    - git push "https://oauth2:${REPO_PUSH_TOKEN}@${CI_SERVER_HOST}/${CI_PROJECT_PATH}.git" HEAD:"${CI_COMMIT_REF_NAME}"

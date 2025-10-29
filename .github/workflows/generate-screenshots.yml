@@ -1,0 +1,27 @@
+name: generate-screenshots
+
+env:
+  USE_PROXY_REPO: false
+
+on: workflow_dispatch
+
+jobs:
+  generate-screenshots:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+    - run: echo $ANDROID_HOME
+    - uses: actions/checkout@v4
+    - name: set up JDK 21
+      uses: actions/setup-java@v4
+      with:
+        java-version: '21'
+        distribution: 'temurin'
+        cache: gradle
+        cache-dependency-path: gradle/wrapper/gradle-wrapper.properties
+    - run: ./gradlew :composeApp:recordRoborazziDebug
+    - name: Commit screenshots
+      uses: stefanzweifel/git-auto-commit-action@v7
+      with:
+        commit_message: "[github-actions] Update screenshots"
