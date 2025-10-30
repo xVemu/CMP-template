@@ -21,35 +21,47 @@ components-tests:
   cache:
     <<: *global_cache
     key: components-tests
-  script: ./gradlew :components:jvmTest
+  script: ./gradlew :components:koverXmlReportJvm :components:koverLogJvm
+  coverage: '/application line coverage: (\d+)\./'
   artifacts:
     when: always
     reports:
       junit: components/build/test-results/jvmTest/**/TEST-*.xml
+      coverage_report:
+        coverage_format: jacoco
+        path: components/build/reports/kover/reportJvm.xml
 
 android-tests:
   stage: test
   cache:
     <<: *global_cache
     key: android-tests
-  script: ./gradlew :composeApp:testDebugUnitTest
+  script: ./gradlew :composeApp:koverXmlReportDebug :composeApp:koverLogDebug
+  coverage: '/application line coverage: (\d+)\./'
   artifacts:
     when: always
     paths:
       - composeApp/build/outputs/roborazzi/*_compare.png
     reports:
       junit: composeApp/build/test-results/testDebugUnitTest/**/TEST-*.xml
+      coverage_report:
+        coverage_format: jacoco
+        path: composeApp/build/reports/kover/reportDebug.xml
 
 jvm-tests:
   stage: test
   cache:
     <<: *global_cache
     key: jvm-tests
-  script: ./gradlew :composeApp:jvmTest
+  script: ./gradlew :composeApp:koverXmlReportJvm :composeApp:koverLogJvm
+  coverage: '/application line coverage: (\d+)\./'
   artifacts:
     when: always
     reports:
       junit: composeApp/build/test-results/jvmTest/**/TEST-*.xml
+      coverage_report:
+        coverage_format: jacoco
+        path: composeApp/build/reports/kover/reportJvm.xml
 
 update-screenshots:
   stage: test

@@ -21,6 +21,7 @@ plugins {
     alias(libs.plugins.shared.db.room)
 
     alias(libs.plugins.shared.test.mock)
+    alias(libs.plugins.shared.test.coverage)
 }
 
 kotlin {
@@ -265,5 +266,11 @@ roborazzi {
 java {
     toolchain {
         languageVersion = JavaLanguageVersion.of(21)
+    }
+}
+
+kover {
+    reports.filters.includes {
+        classes("pl.inno4med.asystent.*")
     }
 }

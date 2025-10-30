@@ -3,6 +3,10 @@ name: tests
 env:
   USE_PROXY_REPO: false
 
+permissions:
+  checks: write
+  contents: read
+
 on:
   push:
     branches: [ "master" ]
@@ -20,7 +24,7 @@ jobs:
         distribution: 'temurin'
         cache: gradle
         cache-dependency-path: gradle/wrapper/gradle-wrapper.properties
-    - run: ./gradlew :components:jvmTest
+    - run: ./gradlew :components:koverXmlReportJvm :components:koverLogJvm
     - name: Test Report
       uses: dorny/test-reporter@v2
       if: always()
@@ -28,6 +32,24 @@ jobs:
         name: Components
         path: components/build/test-results/jvmTest/**/TEST-*.xml
         reporter: java-junit
+    - name: Test coverage
+      id: jacoco_reporter
+      if: always()
+      uses: PavanMudigonda/jacoco-reporter@v5.0
+      with:
+        coverage_results_path: components/build/reports/kover/reportJvm.xml
+        coverage_report_name: Components coverage
+    - name: Add Jacocoo report to summary
+      run: |
+        cat << EOF >> $GITHUB_STEP_SUMMARY
+        | Outcome | Value |
+        | --- | --- |
+        | Code Coverage % | ${{ steps.jacoco_reporter.outputs.coverage_percentage }} |
+        | :heavy_check_mark: Number of Lines Covered | ${{ steps.jacoco_reporter.outputs.covered_lines }} |
+        | :x: Number of Lines Missed | ${{ steps.jacoco_reporter.outputs.missed_lines }} |
+        | Total Number of Lines | ${{ steps.jacoco_reporter.outputs.total_lines }} |
+        EOF
+
   jvm-tests:
     runs-on: ubuntu-latest
     steps:
@@ -39,7 +61,7 @@ jobs:
         distribution: 'temurin'
         cache: gradle
         cache-dependency-path: gradle/wrapper/gradle-wrapper.properties
-    - run: ./gradlew :composeApp:jvmTest
+    - run: ./gradlew :composeApp:koverXmlReportJvm :composeApp:koverLogJvm
     - name: Test Report
       uses: dorny/test-reporter@v2
       if: always()
@@ -47,6 +69,24 @@ jobs:
         name: Components
         path: composeApp/build/test-results/jvmTest/**/TEST-*.xml
         reporter: java-junit
+    - name: Test coverage
+      id: jacoco_reporter
+      if: always()
+      uses: PavanMudigonda/jacoco-reporter@v5.0
+      with:
+        coverage_results_path: composeApp/build/reports/kover/reportJvm.xml
+        coverage_report_name: Jvm coverage
+    - name: Add Jacocoo report to summary
+      run: |
+        cat << EOF >> $GITHUB_STEP_SUMMARY
+        | Outcome | Value |
+        | --- | --- |
+        | Code Coverage % | ${{ steps.jacoco_reporter.outputs.coverage_percentage }} |
+        | :heavy_check_mark: Number of Lines Covered | ${{ steps.jacoco_reporter.outputs.covered_lines }} |
+        | :x: Number of Lines Missed | ${{ steps.jacoco_reporter.outputs.missed_lines }} |
+        | Total Number of Lines | ${{ steps.jacoco_reporter.outputs.total_lines }} |
+        EOF
+
   android-tests:
     runs-on: ubuntu-latest
     steps:
@@ -59,7 +99,7 @@ jobs:
         distribution: 'temurin'
         cache: gradle
         cache-dependency-path: gradle/wrapper/gradle-wrapper.properties
-    - run: ./gradlew :composeApp:testDebugUnitTest
+    - run: ./gradlew :composeApp:koverXmlReportDebug :composeApp:koverLogDebug
     - name: Screenshots
       uses: actions/upload-artifact@v4
       if: always()
@@ -73,3 +113,20 @@ jobs:
         name: Components
         path: composeApp/build/test-results/testDebugUnitTest/**/TEST-*.xml
         reporter: java-junit
+    - name: Test coverage
+      id: jacoco_reporter
+      if: always()
+      uses: PavanMudigonda/jacoco-reporter@v5.0
+      with:
+        coverage_results_path: composeApp/build/reports/kover/reportDebug.xml
+        coverage_report_name: Android coverage
+    - name: Add Jacocoo report to summary
+      run: |
+        cat << EOF >> $GITHUB_STEP_SUMMARY
+        | Outcome | Value |
+        | --- | --- |
+        | Code Coverage % | ${{ steps.jacoco_reporter.outputs.coverage_percentage }} |
+        | :heavy_check_mark: Number of Lines Covered | ${{ steps.jacoco_reporter.outputs.covered_lines }} |
+        | :x: Number of Lines Missed | ${{ steps.jacoco_reporter.outputs.missed_lines }} |
+        | Total Number of Lines | ${{ steps.jacoco_reporter.outputs.total_lines }} |
+        EOF

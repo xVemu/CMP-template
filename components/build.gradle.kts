@@ -5,6 +5,7 @@ plugins {
     alias(libs.plugins.shared.compose.kotlin)
     alias(libs.plugins.shared.compose.compiler)
     alias(libs.plugins.shared.compose.hotreload)
+    alias(libs.plugins.shared.test.coverage)
     alias(libs.plugins.android.library.kotlin)
     alias(libs.plugins.android.library.lint)
 }
@@ -67,5 +68,11 @@ kotlin {
 
         iosMain.dependencies {
         }
+    }
+}
+
+kover {
+    reports.filters.includes {
+        classes("pl.inno4med.components.*")
     }
 }
