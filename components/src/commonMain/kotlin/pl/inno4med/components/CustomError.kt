@@ -67,7 +67,7 @@ public fun CustomError(
     }
 }
 
-// TODO https://youtrack.jetbrains.com/issue/KMT-1312/Preview-not-work-in-commonMain-with-multi-module
+// WAIT https://youtrack.jetbrains.com/issue/KMT-1312/Preview-not-work-in-commonMain-with-multi-module
 @Preview
 @Composable
 private fun CustomErrorPreview() {

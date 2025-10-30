@@ -63,6 +63,12 @@ Libraries:
 - https://github.com/terrakok/kmp-awesome
 - https://github.com/AAkira/Kotlin-Multiplatform-Libraries
 
+Tags:
+
+- TODO
+- WAIT
+- RELEASE
+
 DONE:
 
 - Clean Architecture
@@ -104,7 +110,6 @@ DONE:
 
 TODO:
 
-- unstyled
 - przepisać https://github.com/Milad-Akarie/skeletonizer/tree/main/lib/src
 - scroll indicator
 
@@ -120,3 +125,5 @@ Customize after templating:
 - [To run project from XCode](https://stackoverflow.com/a/78334953/12021861)
 - https://github.com/mikepenz/AboutLibraries#setup
 - If you use gitlab, configure Access Token in CI/CD variables to update screenshots
+- Find `pl.inno4med.asystent` and change to your app's package name
+- Create unstyled components: https://www.lumoui.com/ https://composables.com/docs/compose-unstyled/overview

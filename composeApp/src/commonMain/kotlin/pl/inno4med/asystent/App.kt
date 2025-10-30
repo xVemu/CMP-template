@@ -22,7 +22,7 @@ import kotlin.time.ExperimentalTime
 @OptIn(KoinExperimentalAPI::class, ExperimentalTime::class)
 @Composable
 fun App() {
-//    KoinMultiplatformApplication(config = DefaultKoinConfiguration) { TODO https://github.com/InsertKoinIO/koin/issues/2078 https://github.com/InsertKoinIO/koin/issues/2203
+//    KoinMultiplatformApplication(config = DefaultKoinConfiguration) { WAIT https://github.com/InsertKoinIO/koin/issues/2078 https://github.com/InsertKoinIO/koin/issues/2203
 
     val dataStore = koinInject<DataStore<Preferences>>()
 

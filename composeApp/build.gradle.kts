@@ -93,7 +93,7 @@ kotlin {
             implementation(libs.shared.db.datastore)
 
             implementation(libs.shared.network.ktorfit)
-            implementation(ktorLibs.client.core) // TODO alias to libs.shared.network.ktor.client
+            implementation(ktorLibs.client.core)
             implementation(ktorLibs.client.contentNegotiation)
             implementation(ktorLibs.serialization.kotlinx.json)
 
@@ -212,7 +212,7 @@ android {
 
 dependencies {
     "baselineProfile"(projects.baselineprofile)
-    // TODO https://youtrack.jetbrains.com/issue/KMT-1312/Preview-not-work-in-commonMain-with-multi-module
+    // WAIT https://youtrack.jetbrains.com/issue/KMT-1312/Preview-not-work-in-commonMain-with-multi-module
     debugImplementation(compose.uiTooling)
     add("kspCommonMainMetadata", libs.shared.di.compiler)
 
@@ -222,7 +222,7 @@ dependencies {
     }
 }
 
-// TODO https://github.com/google/ksp/issues/2442 https://github.com/InsertKoinIO/koin/issues/2174
+// WAIT https://github.com/google/ksp/issues/2442 https://github.com/InsertKoinIO/koin/issues/2174
 tasks.matching { it.name.startsWith("ksp") && it.name != "kspCommonMainKotlinMetadata" }
     .configureEach {
         dependsOn("kspCommonMainKotlinMetadata")

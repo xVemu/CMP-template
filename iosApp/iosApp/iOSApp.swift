@@ -10,7 +10,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         FirebaseApp.configure()
         NSExceptionKt.addReporter(.crashlytics(causedByStrategy: .append))
 
-        // TODO https://github.com/mirzemehdi/KMPNotifier/issues/151
+        // WAIT https://github.com/mirzemehdi/KMPNotifier/issues/151
         NotifierManager.shared.initialize(configuration: NotificationPlatformConfigurationIos(
             showPushNotification: true,
             askNotificationPermissionOnStart: true,
