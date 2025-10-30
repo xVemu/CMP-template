@@ -71,6 +71,7 @@ DONE:
     - Kotlin test
     - [Kotest assertions](https://kotest.io/docs/assertions/assertions.html)
   - [Screenshot Tests in androidUnitTest](https://github.com/sergio-sastre/Android-screenshot-testing-playground)
+  - CI
 - [DI](https://insert-koin.io/docs/reference/koin-annotations/start)
 - [Room](https://developer.android.com/kotlin/multiplatform/room)
 - [DataStore](https://developer.android.com/kotlin/multiplatform/datastore)

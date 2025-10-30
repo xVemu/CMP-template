@@ -6,18 +6,21 @@ variables:
 before_script:
   - export GRADLE_USER_HOME=`pwd`/.gradle
 
-cache:
-  - when: always
-    paths:
-      - .gradle/wrapper
-      - .gradle/caches
-      - .gradle/jdks
+cache: &global_cache
+  when: always
+  paths:
+    - .gradle/wrapper
+    - .gradle/caches
+    - .gradle/jdks
 
 stages:
   - test
 
 components-tests:
   stage: test
+  cache:
+    <<: *global_cache
+    key: components-tests
   script: ./gradlew :components:jvmTest
   artifacts:
     when: always
@@ -26,6 +29,9 @@ components-tests:
 
 android-tests:
   stage: test
+  cache:
+    <<: *global_cache
+    key: android-tests
   script: ./gradlew :composeApp:testDebugUnitTest
   artifacts:
     when: always
@@ -36,6 +42,9 @@ android-tests:
 
 jvm-tests:
   stage: test
+  cache:
+    <<: *global_cache
+    key: jvm-tests
   script: ./gradlew :composeApp:jvmTest
   artifacts:
     when: always
@@ -43,9 +52,12 @@ jvm-tests:
       junit: composeApp/build/test-results/jvmTest/**/TEST-*.xml
 
 update-screenshots:
+  stage: test
+  cache:
+    <<: *global_cache
+    key: update-screenshots
   when: manual
   allow_failure: true
-  stage: test
   script: ./gradlew :composeApp:recordRoborazziDebug
   after_script:
     - git config user.email "${GITLAB_USER_EMAIL}"
