@@ -34,6 +34,7 @@ shared-kotlin = "2.2.20" # https://kotlinlang.org/docs/whatsnew2020.html
 shared-ksp = "2.2.20-2.0.3" # https://github.com/google/ksp/releases
 shared-navigation-compose = "2.9.0" # https://github.com/JetBrains/compose-multiplatform/releases
 shared-network-ktorfit = "2.6.4" # https://foso.github.io/Ktorfit/CHANGELOG/
+shared-test-architecture = "0.17.3" # https://github.com/LemonAppDev/konsist/releases
 shared-test-assertions = "6.0.3" # https://github.com/kotest/kotest/releases
 shared-test-coverage = "0.9.3" # https://github.com/Kotlin/kotlinx-kover/releases
 shared-test-mock-plugin = "2.10.1" # https://github.com/lupuuss/Mokkery/releases
@@ -81,6 +82,7 @@ shared-firebase-messaging = { module = "io.github.mirzemehdi:kmpnotifier", versi
 shared-navigation-compose = { module = "org.jetbrains.androidx.navigation:navigation-compose", version.ref = "shared-navigation-compose" }
 shared-network-ktorfit = { module = "de.jensklingenberg.ktorfit:ktorfit-lib", version.ref = "shared-network-ktorfit" }
 shared-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "shared-kotlin" }
+shared-test-architecture = { module = "com.lemonappdev:konsist", version.ref = "shared-test-architecture" }
 shared-test-assertions = { module = "io.kotest:kotest-assertions-core", version.ref = "shared-test-assertions" }
 shared-utils-datetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version.ref = "shared-utils-datetime" }
 shared-utils-kmpessentials = { module = "io.github.thearchitect123:kmpEssentials", version.ref = "shared-utils-kmpessentials" }

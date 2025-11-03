@@ -52,6 +52,8 @@ kotlin {
         kotlin.srcDir("build/generated/ksp/metadata/commonMain/kotlin")
     }
 
+    applyDefaultHierarchyTemplate()
+
     sourceSets {
         androidMain.dependencies {
             implementation(compose.preview)
@@ -125,6 +127,15 @@ kotlin {
         iosMain.dependencies {
             api(libs.ios.firebase.crashlytics)
         }
+
+        val jvmArchitectureTest by creating {
+            dependsOn(commonTest.get())
+            dependencies {
+                implementation(libs.shared.test.architecture)
+            }
+        }
+
+        jvmTest.get().dependsOn(jvmArchitectureTest)
     }
 }
 
