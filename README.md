@@ -85,6 +85,7 @@ Run configurations for Jetbrains IDEs are available in the [.run](./.run) direct
     - [RetrySnackbar](./components/src/commonMain/kotlin/pl/inno4med/components/RetrySnackbar.kt)
     - [rememberNetwork](./components/src/commonMain/kotlin/pl/inno4med/components/HasNetwork.kt)
     - [AppBar](./components/src/commonMain/kotlin/pl/inno4med/components/AppBars.kt)
+    - [Scroll indicator](./components/src/commonMain/kotlin/pl/inno4med/components/ScrollIndicator.kt)
 - Utils
     - [DateTimeFormatter](./composeApp/src/commonMain/kotlin/pl/inno4med/asystent/utils/Formatters.kt)
     - [Mask for TextField](./composeApp/src/commonMain/kotlin/pl/inno4med/asystent/utils/MaskVisualTransformation.kt)
@@ -100,7 +101,7 @@ Run configurations for Jetbrains IDEs are available in the [.run](./.run) direct
 # Things to improve
 
 - Rewrite [skeleton loading](https://github.com/Milad-Akarie/skeletonizer/tree/main/lib/src)
-- Scroll Indicator
+- Write tests for [ScrollIndicator](./components/src/commonMain/kotlin/pl/inno4med/components/ScrollIndicator.kt), WAIT https://github.com/takahirom/roborazzi/issues/757 https://github.com/takahirom/roborazzi/issues/754 https://github.com/Kotlin/kotlinx-kover/issues/772
 - Maybe use [Preview](https://github.com/sergio-sastre/Android-screenshot-testing-playground) annotation for screenshot tests in future
 - Can't run commonTests on iOS https://github.com/RevenueCat/purchases-kmp/issues/420 https://github.com/getsentry/sentry-kotlin-multiplatform/issues/176
 - [AboutLibraries](https://github.com/mikepenz/AboutLibraries#setup)
