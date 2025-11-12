@@ -57,7 +57,7 @@ public fun SimpleLargeAppBar(
     title: StringResource,
     navController: NavController? = null,
     scrollBehavior: TopAppBarScrollBehavior? = null,
-    colors: TopAppBarColors = TopAppBarDefaults.largeTopAppBarColors(),
+    colors: TopAppBarColors = TopAppBarDefaults.topAppBarColors(),
 ) {
     SimpleLargeAppBar(stringResource(title), navController, scrollBehavior, colors)
 }
@@ -89,7 +89,7 @@ public fun SimpleMediumAppBar(
     navController: NavController? = null,
     scrollBehavior: TopAppBarScrollBehavior? = null,
     actions: @Composable RowScope.() -> Unit = {},
-    colors: TopAppBarColors = TopAppBarDefaults.largeTopAppBarColors(),
+    colors: TopAppBarColors = TopAppBarDefaults.topAppBarColors(),
 ) {
     MediumTopAppBar(
         title = { Text(title) },
@@ -108,7 +108,7 @@ public fun SimpleLargeAppBar(
     title: String,
     navController: NavController? = null,
     scrollBehavior: TopAppBarScrollBehavior? = null,
-    colors: TopAppBarColors = TopAppBarDefaults.largeTopAppBarColors(),
+    colors: TopAppBarColors = TopAppBarDefaults.topAppBarColors(),
 ) {
     LargeTopAppBar(
         title = { Text(title, maxLines = 2, overflow = TextOverflow.Ellipsis) },
