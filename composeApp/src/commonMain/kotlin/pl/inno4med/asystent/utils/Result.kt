@@ -1,12 +1,12 @@
 package pl.inno4med.asystent.utils
 
 import androidx.compose.animation.Crossfade
-import androidx.compose.foundation.layout.Box
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.semantics.clearAndSetSemantics
+import androidx.compose.runtime.CompositionLocalProvider
 import pl.inno4med.components.CustomError
 import pl.inno4med.components.Loading
+import pl.inno4med.components.ShimmerCompositionLocal
+import pl.inno4med.components.ShimmerScope
 
 @Suppress("ComposableNaming")
 sealed class Result<out T> {
@@ -67,16 +67,15 @@ sealed class Result<out T> {
         loading: UnitComposable? = null,
         failure: (@Composable (error: Exception) -> Unit)? = null,
         success: @Composable (body: T) -> Unit,
-    ) = switch(
-        retry,
-        {
-            Box(
-                Modifier.clearAndSetSemantics { }) {
+    ) = CompositionLocalProvider(ShimmerCompositionLocal provides ShimmerScope(isLoading)) {
+        switch(
+            retry,
+            {
                 success(emptyItem)
-            }
-        },
-        failure, success,
-    )
+            },
+            failure, success,
+        )
+    }
 
     @Composable
     fun switchPlaceholderRefresh(
@@ -85,15 +84,15 @@ sealed class Result<out T> {
         loading: UnitComposable? = null,
         failure: (@Composable (error: Exception) -> Unit)? = null,
         success: @Composable (body: T, refreshing: Boolean, error: Exception?) -> Unit,
-    ) = switchRefresh(
-        retry,
-        {
-            Box(Modifier.clearAndSetSemantics { }) {
+    ) = CompositionLocalProvider(ShimmerCompositionLocal provides ShimmerScope(isLoading)) {
+        switchRefresh(
+            retry,
+            {
                 success(emptyItem, true, null)
-            }
-        },
-        failure, success,
-    )
+            },
+            failure, success,
+        )
+    }
 }
 
 typealias ResultList<T> = Result<List<T>>

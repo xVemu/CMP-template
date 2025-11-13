@@ -100,9 +100,12 @@ Run configurations for Jetbrains IDEs are available in the [.run](./.run) direct
 
 # Things to improve
 
-- Rewrite [skeleton loading](https://github.com/Milad-Akarie/skeletonizer/tree/main/lib/src)
 - Write tests for [ScrollIndicator](./components/src/commonMain/kotlin/pl/inno4med/components/ScrollIndicator.kt), WAIT https://github.com/takahirom/roborazzi/issues/757 https://github.com/takahirom/roborazzi/issues/754 https://github.com/Kotlin/kotlinx-kover/issues/772
 - Maybe use [Preview](https://github.com/sergio-sastre/Android-screenshot-testing-playground) annotation for screenshot tests in future
 - Can't run commonTests on iOS https://github.com/RevenueCat/purchases-kmp/issues/420 https://github.com/getsentry/sentry-kotlin-multiplatform/issues/176
 - [AboutLibraries](https://github.com/mikepenz/AboutLibraries#setup)
 - [Detekt](https://github.com/detekt/detekt)
+
+# Inspiration
+
+[nowinandroid](https://github.com/android/nowinandroid/tree/main), [CMPMemeCreator](https://github.com/philipplackner/CMPMemeCreator), [Open-API-Android-App](https://github.com/mitchtabian/Open-API-Android-App), [kmp-movie](https://github.com/piashcse/kmp-movie), [CryptoTracker](https://github.com/philipplackner/CryptoTracker), [architecture-samples](https://github.com/android/architecture-samples), [Android - Clean Architecture - Kotlin](https://github.com/android10/Android-CleanArchitecture-Kotlin), [MVVMTodo](https://github.com/codinginflow/MVVMTodo), [Clean-Notes](https://github.com/mitchtabian/Clean-Notes), [AnimeListApp](https://github.com/daniatitienei/AnimeListApp), [NoteAppKMM](https://github.com/philipplackner/NoteAppKMM), [CleanArchitectureNoteApp](https://github.com/philipplackner/CleanArchitectureNoteApp/tree/app) 

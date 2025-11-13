@@ -2,7 +2,9 @@ package pl.inno4med.asystent.features.todo.list.presentation
 
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.sizeIn
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -17,10 +19,12 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import coil3.compose.AsyncImage
 import org.koin.compose.viewmodel.koinViewModel
+import pl.inno4med.asystent.features.todo.list.domain.Todo
 import pl.inno4med.asystent.navigation.LocalNavController
 import pl.inno4med.asystent.navigation.TodoGraph
 import pl.inno4med.components.PullToRefreshAndRetrySnackbarBox
 import pl.inno4med.components.SimpleSmallAppBar
+import pl.inno4med.components.shimmer
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -28,7 +32,10 @@ fun TodoList(someText: String? = null, vm: TodoViewModel = koinViewModel()) {
     val result by vm.todos.collectAsStateWithLifecycle()
 
     Scaffold(topBar = { SimpleSmallAppBar("xd") }) { innerPadding ->
-        result.switchRefresh(vm::refreshTodos) { todos, refreshing, exception ->
+        result.switchPlaceholderRefresh(
+            vm::refreshTodos,
+            List(10) { Todo.empty() }
+        ) { todos, refreshing, exception ->
 
             PullToRefreshAndRetrySnackbarBox(
                 isRefreshing = refreshing,
@@ -47,10 +54,15 @@ fun TodoList(someText: String? = null, vm: TodoViewModel = koinViewModel()) {
 
                     items(todos) { todo ->
                         Row {
-                            AsyncImage(model = todo.image, contentDescription = todo.name)
+                            AsyncImage(
+                                modifier = Modifier.sizeIn(maxWidth = 50.dp).aspectRatio(0.7132867F)
+                                    .shimmer(),
+                                model = todo.image,
+                                contentDescription = todo.name,
+                            )
                             Spacer(Modifier.width(8.dp))
                             TextButton({ navController?.navigate(TodoGraph.TodoDetailsRoute(todo.id)) }) {
-                                Text("${todo.name} ${todo.image}")
+                                Text("${todo.name} ${todo.image}", Modifier.shimmer())
                             }
                         }
                     }
@@ -59,3 +71,4 @@ fun TodoList(someText: String? = null, vm: TodoViewModel = koinViewModel()) {
         }
     }
 }
+

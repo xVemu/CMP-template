@@ -4,4 +4,8 @@ data class Todo(
     val id: Long,
     val name: String,
     val image: String,
-)
+) {
+    companion object {
+        fun empty() = Todo(0, "", "")
+    }
+}
