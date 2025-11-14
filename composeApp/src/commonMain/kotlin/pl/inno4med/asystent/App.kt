@@ -1,12 +1,18 @@
 package pl.inno4med.asystent
 
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.ui.graphics.toArgb
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.navigation.compose.rememberNavController
 import co.touchlab.kermit.Logger
+import coil3.ColorImage
+import coil3.ImageLoader
+import coil3.compose.setSingletonImageLoaderFactory
+import coil3.request.crossfade
 import com.architect.kmpessentials.permissions.KmpPermissionsManager
 import com.architect.kmpessentials.permissions.Permission
 import org.koin.compose.koinInject
@@ -33,6 +39,16 @@ fun App() {
     }
 
     AppTheme {
+        val color = MaterialTheme.colorScheme.onSurface.copy(.1F)
+
+        setSingletonImageLoaderFactory { context ->
+            ImageLoader.Builder(context)
+                .crossfade(true)
+                .placeholder(ColorImage(color.toArgb()))
+                .error(ColorImage(color.toArgb()))
+                .build()
+        }
+
         val navController = rememberNavController()
 
         CompositionLocalProvider(LocalNavController provides navController) {

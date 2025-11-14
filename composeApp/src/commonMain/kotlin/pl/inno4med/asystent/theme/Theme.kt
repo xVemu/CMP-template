@@ -238,7 +238,7 @@ val highContrastDarkColorScheme = darkColorScheme(
 
 @Composable
 fun AppTheme(
-    content: @Composable() () -> Unit,
+    content: @Composable () -> Unit,
 ) {
     MaterialTheme(
         colorScheme = platformColorScheme,
