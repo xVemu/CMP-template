@@ -6,7 +6,6 @@ import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
 import androidx.navigation.navDeepLink
 import androidx.navigation.navigation
-import androidx.navigation.toRoute
 import androidx.savedstate.read
 import kotlinx.serialization.Serializable
 import pl.inno4med.asystent.features.todo.details.presentation.TodoDetails
@@ -42,10 +41,8 @@ fun NavGraphBuilder.todoGraph() {
             Text("Test")
         }
 
-        composable<TodoGraph.TodoDetailsRoute> { backStackEntry ->
-            val todo: TodoGraph.TodoDetailsRoute = backStackEntry.toRoute()
-
-            TodoDetails(todo.todoId)
+        composable<TodoGraph.TodoDetailsRoute> {
+            TodoDetails()
         }
     }
 }

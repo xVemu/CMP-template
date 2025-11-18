@@ -22,7 +22,10 @@ sealed class Result<out T> {
 
     val isSuccess = this is Success
     val asSuccess = this as? Success
-    val value = asSuccess?.body
+
+    // WAIT https://youtrack.jetbrains.com/issue/KT-82490
+    val value
+        get() = asSuccess?.body
 
     val isFailure = this is Failure
     val asFailure = this as? Failure

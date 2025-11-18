@@ -105,6 +105,7 @@ Run configurations for Jetbrains IDEs are available in the [.run](./.run) direct
 - Can't run commonTests on iOS https://github.com/RevenueCat/purchases-kmp/issues/420 https://github.com/getsentry/sentry-kotlin-multiplatform/issues/176
 - [AboutLibraries](https://github.com/mikepenz/AboutLibraries#setup)
 - [Detekt](https://github.com/detekt/detekt)
+- [BlockHound](https://nitin-karthy.medium.com/using-blockhound-with-kotlin-7aa0a3f28364)
 
 # Inspiration
 

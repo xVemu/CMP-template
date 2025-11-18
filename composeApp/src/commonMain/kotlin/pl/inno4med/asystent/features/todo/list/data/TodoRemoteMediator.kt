@@ -25,4 +25,6 @@ class TodoRemoteMediator(private val todoDao: TodoDao, private val todoApi: Todo
     override suspend fun addTodo(todo: Todo) {
         TODO("Not yet implemented")
     }
+
+    override suspend fun getTodoById(id: Long): Todo = todoDao.getTodoById(id).toDomain()
 }

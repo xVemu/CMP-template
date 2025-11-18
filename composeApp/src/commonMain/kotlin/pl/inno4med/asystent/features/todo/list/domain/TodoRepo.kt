@@ -7,4 +7,6 @@ interface TodoRepo {
     fun getTodos(): Flow<ResultList<Todo>>
 
     suspend fun addTodo(todo: Todo)
+
+    suspend fun getTodoById(id: Long): Todo
 }

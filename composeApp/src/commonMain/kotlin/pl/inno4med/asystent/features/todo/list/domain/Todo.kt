@@ -6,6 +6,6 @@ data class Todo(
     val image: String,
 ) {
     companion object {
-        fun empty() = Todo(0, "", "")
+        fun empty() = Todo(0, "rsaahsahneirssr", "rsaahsarhrsahneirsanheihasrnhashnasr")
     }
 }

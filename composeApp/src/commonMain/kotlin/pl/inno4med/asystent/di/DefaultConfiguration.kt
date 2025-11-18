@@ -4,6 +4,7 @@ import org.koin.core.annotation.ComponentScan
 import org.koin.core.annotation.Configuration
 import org.koin.core.annotation.KoinApplication
 import org.koin.core.annotation.Module
+import pl.inno4med.asystent.features.todo.details.TodoDetailsModule
 import pl.inno4med.asystent.features.todo.list.TodoListModule
 
 @Module
@@ -15,6 +16,6 @@ class DefaultModule
 object MainKoinApplication
 
 // Sometimes explicit return type in providers is needed, otherwise koin-annotations generator behaves unexpectedly
-@Module(includes = [TodoListModule::class])
+@Module(includes = [TodoListModule::class, TodoDetailsModule::class])
 @Configuration
 class FeatureModule
