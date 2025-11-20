@@ -14,39 +14,42 @@ import androidx.compose.material3.TopAppBarColors
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.TopAppBarScrollBehavior
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.ProvidableCompositionLocal
+import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.navigation.NavController
 import asystent.components.generated.resources.Res
 import asystent.components.generated.resources.back_button
-import asystent.components.generated.resources.ios_back_button
+import asystent.components.generated.resources.close_button
+import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 
 /**
- * @param navController if null, no back button will be shown
+ * @param useCloseButton true -> close button, false -> back button, null -> no button
  * */
 @Composable
 public fun SimpleSmallAppBar(
     title: StringResource,
-    navController: NavController? = null,
+    useCloseButton: Boolean?,
     scrollBehavior: TopAppBarScrollBehavior? = null,
     actions: @Composable RowScope.() -> Unit = {},
 ) {
-    SimpleSmallAppBar(stringResource(title), navController, scrollBehavior, actions)
+    SimpleSmallAppBar(stringResource(title), useCloseButton, scrollBehavior, actions)
 }
 
 /**
- * @param navController if null, no back button will be shown
+ * @param useCloseButton true -> close button, false -> back button, null -> no button
  * */
 @Composable
 public fun SimpleMediumAppBar(
     title: StringResource,
-    navController: NavController? = null,
+    useCloseButton: Boolean?,
     scrollBehavior: TopAppBarScrollBehavior? = null,
     actions: @Composable RowScope.() -> Unit = {},
 ) {
-    SimpleMediumAppBar(stringResource(title), navController, scrollBehavior, actions)
+    SimpleMediumAppBar(stringResource(title), useCloseButton, scrollBehavior, actions)
 }
 
 /**
@@ -55,45 +58,45 @@ public fun SimpleMediumAppBar(
 @Composable
 public fun SimpleLargeAppBar(
     title: StringResource,
-    navController: NavController? = null,
+    useCloseButton: Boolean?,
     scrollBehavior: TopAppBarScrollBehavior? = null,
     colors: TopAppBarColors = TopAppBarDefaults.topAppBarColors(),
 ) {
-    SimpleLargeAppBar(stringResource(title), navController, scrollBehavior, colors)
+    SimpleLargeAppBar(stringResource(title), useCloseButton, scrollBehavior, colors)
 }
 
 /**
- * @param navController if null, no back button will be shown
+ * @param useCloseButton true -> close button, false -> back button, null -> no button
  * */
 @Composable
 public fun SimpleSmallAppBar(
     title: String,
-    navController: NavController? = null,
+    useCloseButton: Boolean?,
     scrollBehavior: TopAppBarScrollBehavior? = null,
     actions: @Composable RowScope.() -> Unit = {},
 ) {
     TopAppBar(
         title = { Text(title) },
-        navigationIcon = { AutoBackButton(navController) },
+        navigationIcon = { AutoBackButton(useCloseButton) },
         scrollBehavior = scrollBehavior,
         actions = actions,
     )
 }
 
 /**
- * @param navController if null, no back button will be shown
+ * @param useCloseButton true -> close button, false -> back button, null -> no button
  * */
 @Composable
 public fun SimpleMediumAppBar(
     title: String,
-    navController: NavController? = null,
+    useCloseButton: Boolean?,
     scrollBehavior: TopAppBarScrollBehavior? = null,
     actions: @Composable RowScope.() -> Unit = {},
     colors: TopAppBarColors = TopAppBarDefaults.topAppBarColors(),
 ) {
     MediumTopAppBar(
         title = { Text(title) },
-        navigationIcon = { AutoBackButton(navController) },
+        navigationIcon = { AutoBackButton(useCloseButton) },
         scrollBehavior = scrollBehavior,
         actions = actions,
         colors = colors,
@@ -101,35 +104,45 @@ public fun SimpleMediumAppBar(
 }
 
 /**
- * @param navController if null, no back button will be shown
+ * @param useCloseButton true -> close button, false -> back button, null -> no button
  * */
 @Composable
 public fun SimpleLargeAppBar(
     title: String,
-    navController: NavController? = null,
+    useCloseButton: Boolean?,
     scrollBehavior: TopAppBarScrollBehavior? = null,
     colors: TopAppBarColors = TopAppBarDefaults.topAppBarColors(),
 ) {
     LargeTopAppBar(
         title = { Text(title, maxLines = 2, overflow = TextOverflow.Ellipsis) },
-        navigationIcon = { AutoBackButton(navController) },
+        navigationIcon = { AutoBackButton(useCloseButton) },
         scrollBehavior = scrollBehavior,
         colors = colors,
     )
 }
 
-internal expect val isChevronIcon: Boolean
+internal expect val backIcon: DrawableResource
 
 @Composable
-private fun AutoBackButton(navController: NavController? = null) {
-    if (navController == null) return
+private fun AutoBackButton(useCloseButton: Boolean?) {
+    if (useCloseButton == null) return
+
+    val navController = LocalNavController.current
 
     IconButton(onClick = {
-        navController.navigateUp()
+        navController?.navigateUp()
     }) {
         Icon(
-            painterResource(if (isChevronIcon) Res.drawable.ios_back_button else Res.drawable.back_button),
+            painterResource(
+                if (useCloseButton) Res.drawable.close_button else backIcon
+            ),
             contentDescription = stringResource(Res.string.back_button),
         )
     }
 }
+
+/** It's `null` in tests*/
+public val LocalNavController: ProvidableCompositionLocal<NavController?> =
+    staticCompositionLocalOf {
+        null
+    }

@@ -22,18 +22,17 @@ import kotlinx.coroutines.flow.StateFlow
 import org.jetbrains.compose.ui.tooling.preview.Preview
 import org.koin.compose.viewmodel.koinViewModel
 import pl.inno4med.asystent.features.todo.list.domain.Todo
-import pl.inno4med.asystent.navigation.LocalNavController
+import pl.inno4med.asystent.navigation.TodoGraph
 import pl.inno4med.asystent.utils.Result
 import pl.inno4med.asystent.utils.UnitCallback
+import pl.inno4med.components.LocalNavController
 import pl.inno4med.components.SimpleSmallAppBar
 import pl.inno4med.components.shimmer
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TodoDetails(vm: TodoDetailsViewModel = koinViewModel()) {
-    val navController = LocalNavController.current
-
-    Scaffold(topBar = { SimpleSmallAppBar("details", navController) }) { padding ->
+    Scaffold(topBar = { SimpleSmallAppBar("details", false) }) { padding ->
         TodoDetailsContent(vm.todo, vm::loadTodo, padding)
     }
 }
@@ -62,6 +61,10 @@ fun TodoDetailsContent(
             val navController = LocalNavController.current
             TextButton({ navController?.navigateUp() }) {
                 Text("Back")
+            }
+
+            TextButton({ navController?.navigate(TodoGraph.TodoDialog) }) {
+                Text("Dialog")
             }
         }
     }

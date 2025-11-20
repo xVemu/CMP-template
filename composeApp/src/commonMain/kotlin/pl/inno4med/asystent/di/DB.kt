@@ -46,13 +46,13 @@ expect fun getDatabasePlatformBuilder(contextW: ContextWrapper): RoomDatabase.Bu
 
 class DbConverters {
     @TypeConverter
-    fun fromISO(value: String) = LocalDateTime.Companion.parse(value)
+    fun fromISO(value: String) = LocalDateTime.parse(value)
 
     @TypeConverter
     fun toISO(date: LocalDateTime) = date.toString()
 
     @TypeConverter
-    fun fromTime(time: String) = LocalTime.Companion.parse(time)
+    fun fromTime(time: String) = LocalTime.parse(time)
 
     @TypeConverter
     fun toTime(time: LocalTime) = time.toString()

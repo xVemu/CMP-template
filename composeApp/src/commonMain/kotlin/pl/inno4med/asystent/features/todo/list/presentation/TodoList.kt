@@ -20,8 +20,8 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import coil3.compose.AsyncImage
 import org.koin.compose.viewmodel.koinViewModel
 import pl.inno4med.asystent.features.todo.list.domain.Todo
-import pl.inno4med.asystent.navigation.LocalNavController
 import pl.inno4med.asystent.navigation.TodoGraph
+import pl.inno4med.components.LocalNavController
 import pl.inno4med.components.PullToRefreshAndRetrySnackbarBox
 import pl.inno4med.components.SimpleSmallAppBar
 import pl.inno4med.components.shimmer
@@ -31,7 +31,7 @@ import pl.inno4med.components.shimmer
 fun TodoList(someText: String? = null, vm: TodoViewModel = koinViewModel()) {
     val result by vm.todos.collectAsStateWithLifecycle()
 
-    Scaffold(topBar = { SimpleSmallAppBar("xd") }) { innerPadding ->
+    Scaffold(topBar = { SimpleSmallAppBar("xd", null) }) { innerPadding ->
         result.switchPlaceholderRefresh(
             vm::refreshTodos,
             List(10) { Todo.empty() }

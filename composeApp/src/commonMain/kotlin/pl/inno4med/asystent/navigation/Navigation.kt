@@ -3,8 +3,6 @@ package pl.inno4med.asystent.navigation
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.staticCompositionLocalOf
-import androidx.navigation.NavController
 import androidx.navigation.NavDeepLinkRequest
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
@@ -45,10 +43,6 @@ val bottomItems = listOf(
     )
 )
 
-/** It's `null` in tests*/
-val LocalNavController = staticCompositionLocalOf<NavController?> {
-    null
-}
 
 @Composable
 fun NavigationHost(navController: NavHostController) {

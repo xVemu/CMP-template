@@ -18,10 +18,10 @@ import com.architect.kmpessentials.permissions.Permission
 import org.koin.compose.koinInject
 import org.koin.core.annotation.KoinExperimentalAPI
 import pl.inno4med.asystent.di.review
-import pl.inno4med.asystent.navigation.LocalNavController
 import pl.inno4med.asystent.navigation.NavigationHost
 import pl.inno4med.asystent.navigation.bottomItems
 import pl.inno4med.asystent.theme.AppTheme
+import pl.inno4med.components.LocalNavController
 import pl.inno4med.components.PrimaryScaffold
 import kotlin.time.ExperimentalTime
 

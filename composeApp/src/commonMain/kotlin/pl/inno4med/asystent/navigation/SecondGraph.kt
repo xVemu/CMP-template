@@ -10,6 +10,7 @@ import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
 import androidx.navigation.navigation
 import kotlinx.serialization.Serializable
+import pl.inno4med.components.LocalNavController
 
 @Serializable
 object SecondGraph {
@@ -23,7 +24,7 @@ object SecondGraph {
 fun NavGraphBuilder.secondGraph() {
     navigation<SecondGraph>(SecondGraph.SecondRoute) {
         composable<SecondGraph.SecondRoute> {
-            Box(Modifier.Companion.fillMaxSize(), contentAlignment = Alignment.Companion.Center) {
+            Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
                 val navController = LocalNavController.current
 
                 Button({ navController?.navigate(SecondGraph.SecondDetailsRoute) }) {

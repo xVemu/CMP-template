@@ -6,7 +6,6 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.ui.test.ExperimentalTestApi
 import androidx.compose.ui.test.onNodeWithContentDescription
 import androidx.compose.ui.test.runComposeUiTest
-import androidx.navigation.NavController
 import kotlin.test.Test
 
 class AppBarsTest {
@@ -15,7 +14,7 @@ class AppBarsTest {
         setContent {
             SimpleSmallAppBar(
                 title = "Title",
-                navController = null
+                useCloseButton = null
             )
         }
 
@@ -27,12 +26,22 @@ class AppBarsTest {
         setContent {
             SimpleSmallAppBar(
                 title = "Title",
-                navController = MockNavController()
+                useCloseButton = false
+            )
+        }
+
+        onNodeWithContentDescription("Back button").assertExists()
+    }
+
+    @Test
+    fun `should have close button`() = runComposeUiTest {
+        setContent {
+            SimpleSmallAppBar(
+                title = "Title",
+                useCloseButton = true
             )
         }
 
         onNodeWithContentDescription("Back button").assertExists()
     }
 }
-
-private class MockNavController : NavController()

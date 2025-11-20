@@ -1,7 +1,10 @@
 package pl.inno4med.asystent.navigation
 
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.ui.Modifier
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
 import androidx.navigation.navDeepLink
@@ -10,6 +13,7 @@ import androidx.savedstate.read
 import kotlinx.serialization.Serializable
 import pl.inno4med.asystent.features.todo.details.presentation.TodoDetails
 import pl.inno4med.asystent.features.todo.list.presentation.TodoList
+import pl.inno4med.components.SimpleSmallAppBar
 
 
 @Serializable
@@ -19,6 +23,9 @@ object TodoGraph {
 
     @Serializable
     object TestRoute
+
+    @Serializable
+    object TodoDialog
 
     @Serializable
     data class TodoDetailsRoute(val todoId: Long)
@@ -43,6 +50,12 @@ fun NavGraphBuilder.todoGraph() {
 
         composable<TodoGraph.TodoDetailsRoute> {
             TodoDetails()
+        }
+
+        fullscreenDialog<TodoGraph.TodoDialog> {
+            Scaffold(topBar = { SimpleSmallAppBar("Dialog", true) }) { padding ->
+                Text("Dialog", Modifier.padding(padding))
+            }
         }
     }
 }

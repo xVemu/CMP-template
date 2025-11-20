@@ -11,6 +11,7 @@ import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
 import androidx.navigation.navigation
 import kotlinx.serialization.Serializable
+import pl.inno4med.components.LocalNavController
 
 @Serializable
 object ThirdGraph {
@@ -24,7 +25,7 @@ object ThirdGraph {
 fun NavGraphBuilder.thirdGraph() {
     navigation<ThirdGraph>(ThirdGraph.ThirdRoute) {
         composable<ThirdGraph.ThirdRoute> {
-            Box(Modifier.Companion.fillMaxSize(), contentAlignment = Alignment.Companion.Center) {
+            Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
                 val navController = LocalNavController.current
 
                 Button({ navController?.navigate(ThirdGraph.ThirdDetailsRoute) }) {
@@ -34,7 +35,7 @@ fun NavGraphBuilder.thirdGraph() {
         }
         composable<ThirdGraph.ThirdDetailsRoute> {
             val navController = LocalNavController.current
-            Text("Third details", modifier = Modifier.Companion.clickable {
+            Text("Third details", modifier = Modifier.clickable {
                 navController?.navigateUp()
             })
         }
