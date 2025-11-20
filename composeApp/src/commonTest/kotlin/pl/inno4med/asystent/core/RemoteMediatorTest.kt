@@ -6,10 +6,13 @@ import io.kotest.matchers.shouldBe
 import io.kotest.matchers.throwable.shouldHaveCauseOfType
 import io.kotest.matchers.types.shouldBeInstanceOf
 import kotlinx.coroutines.CancellationException
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.cancelAndJoin
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.toList
+import kotlinx.coroutines.test.currentTime
 import kotlinx.coroutines.test.runTest
 import pl.inno4med.asystent.utils.Result
 import kotlin.test.Test
@@ -131,4 +134,20 @@ class RemoteMediatorTest : RemoteMediator {
         cancelled shouldBe true
     }
 
+    @OptIn(ExperimentalCoroutinesApi::class)
+    @Test
+    fun `should download data async`() = runTest {
+        sync(
+            getLocal = {
+                delay(1000)
+            },
+            getRemote = {
+                delay(1000)
+            },
+            mapDtoToDomain = { },
+            deleteAndInsert = null,
+        ).collect()
+
+        currentTime shouldBe 1000
+    }
 }
