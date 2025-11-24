@@ -3,6 +3,7 @@ package pl.inno4med.asystent.utils
 import androidx.compose.animation.Crossfade
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
+import pl.inno4med.asystent.utils.Result.Success
 import pl.inno4med.components.CustomError
 import pl.inno4med.components.Loading
 import pl.inno4med.components.ShimmerCompositionLocal
@@ -23,7 +24,7 @@ sealed class Result<out T> {
     val isSuccess = this is Success
     val asSuccess = this as? Success
 
-    // WAIT https://youtrack.jetbrains.com/issue/KT-82490
+    // Must be getter. See https://youtrack.jetbrains.com/issue/KT-82490
     val value
         get() = asSuccess?.body
 
@@ -97,6 +98,10 @@ sealed class Result<out T> {
         )
     }
 }
+
+inline fun <T> Result<T>.mapSuccess(onResult: (T) -> T): Result<T> =
+    if (this is Success) copy(body = onResult(body)) else this
+
 
 typealias ResultList<T> = Result<List<T>>
 typealias ResultMap<K, V> = Result<Map<K, V>>
