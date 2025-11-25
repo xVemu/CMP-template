@@ -29,7 +29,7 @@ import org.junit.runner.RunWith
  *
  * After you run the generator, you can verify the improvements running the [StartupBenchmarks] benchmark.
  *
- * When using this class to generate a baseline profile, only API 33+ or rooted API 28+ are supported.
+ * When using this class to generate a baseline profile, only 33+ or rooted 28+ are supported.
  *
  * The minimum required version of androidx.benchmark to generate a baseline profile is 1.2.0.
  **/
@@ -58,7 +58,7 @@ class BaselineProfileGenerator {
             pressHome()
             startActivityAndWait()
 
-            // TODO Write more interactions to optimize advanced journeys of your app.
+            // Write more interactions to optimize advanced journeys of your app.
             // For example:
             // 1. Wait until the content is asynchronously loaded
             // 2. Scroll the feed content

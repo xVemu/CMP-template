@@ -233,29 +233,6 @@ dependencies {
     }
 }
 
-// WAIT https://github.com/google/ksp/issues/2442 https://github.com/InsertKoinIO/koin/issues/2174
-tasks.matching { it.name.startsWith("ksp") && it.name != "kspCommonMainKotlinMetadata" }
-    .configureEach {
-        dependsOn("kspCommonMainKotlinMetadata")
-    }
-
-afterEvaluate {
-    val list = listOf(
-        "Debug",
-        "Release",
-        "NonMinifiedRelease",
-        "BenchmarkRelease"
-    )
-
-    list.forEach { taskName ->
-        tasks.named("ksp${taskName}KotlinAndroid") {
-            dependsOn("generateResourceAccessorsForAndroid${taskName}")
-            dependsOn("generateResourceAccessorsForAndroidMain")
-            dependsOn("generateActualResourceCollectorsForAndroidMain")
-        }
-    }
-}
-
 ksp {
     arg("KOIN_CONFIG_CHECK", "true")
 }
