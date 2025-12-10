@@ -106,7 +106,7 @@ Run configurations for Jetbrains IDEs are available in the [.run](./.run) direct
 - [AboutLibraries](https://github.com/mikepenz/AboutLibraries#setup)
 - [Detekt](https://github.com/detekt/detekt)
 - [BlockHound](https://nitin-karthy.medium.com/using-blockhound-with-kotlin-7aa0a3f28364)
-- [Navigation3](https://youtu.be/6L6GfvlmKj8) https://youtu.be/tYttz59gKMY https://youtu.be/G_e9XL5tI6U https://youtu.be/8jZ0O5fZ5DU
+- [Navigation3](https://youtu.be/6L6GfvlmKj8) https://youtu.be/tYttz59gKMY https://youtu.be/G_e9XL5tI6U https://youtu.be/8jZ0O5fZ5DU https://youtu.be/hNzRWVr_Yvs
 
 # Inspiration
 
